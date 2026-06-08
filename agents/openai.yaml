@@ -1,0 +1,7 @@
+interface:
+  display_name: "SVGFlow Response"
+  short_description: "Turn answers into SVG or HTML infographics"
+  default_prompt: "Use $svgflow-response to turn the previous assistant response into a compact SVGFlow infographic."
+
+policy:
+  allow_implicit_invocation: true

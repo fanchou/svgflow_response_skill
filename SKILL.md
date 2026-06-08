@@ -42,31 +42,6 @@ Assistant Response
 - Render SVG: `prompts/svg_renderer.md`, `templates/preview_svg.template.svg`, `templates/embedded_svg.template.svg`
 - Host CSS for `raw_svg` and `component_ready`: `templates/host_css.template.css`
 - Repair output: `prompts/validator_repair.md`, `validators/svg_validation_checklist.md`, `validators/repair_rules.md`
-- Production checklist: `docs/production-checklist.md`
-- Verify release readiness: `python3 scripts/validate_svg.py --release-check .`
-- Verify a production pipeline fixture: `python3 scripts/run_pipeline_fixture.py --root . --case production_freeform_growth`
-- Verify an HTML production pipeline fixture: `python3 scripts/run_pipeline_fixture.py --root . --case production_walkthrough_html`
-- Production pipeline fixtures must run DSL plus SVG or HTML artifact validators. SVG cases must run visual-quality, readability, text-fit, escaping-safety, and interaction-accessibility validators. HTML cases must run production HTML contract, render surface, and escaping-safety validators.
-- Verify a repair signal fixture: `python3 scripts/run_repair_signal_fixture.py --root . --case repair_long_text`
-- Verify package: `python3 scripts/validate_svg.py --package .`
-- Verify coverage: `python3 scripts/validate_svg.py --coverage .`
-- Verify i18n: `python3 scripts/validate_svg.py --i18n .`
-- Verify input quality: `python3 scripts/validate_svg.py --input-quality .`
-- Verify unknown infographic fallback: `python3 scripts/validate_svg.py --unknown-infographic .`
-- Verify template selection: `python3 scripts/validate_svg.py --template-selection .`
-- Verify readability score: `python3 scripts/validate_svg.py --readability-score .`
-- Verify multilingual text fit: `python3 scripts/validate_svg.py --text-fit .`
-- Verify XML/HTML escaping safety: `python3 scripts/validate_svg.py --escaping-safety .`
-- Verify interaction accessibility: `python3 scripts/validate_svg.py --interaction-accessibility .`
-- Verify renderer contract: `python3 scripts/validate_svg.py --renderer-contract .`
-- Verify production SVG contract: `python3 scripts/validate_svg.py --production-svg-contract .`
-- Verify production HTML contract: `python3 scripts/validate_svg.py --production-html-contract .`
-- Verify render surface contract: `python3 scripts/validate_svg.py --render-surface .`
-- Verify browser render metrics when Chrome or Chromium is available: `node scripts/check_browser_render_metrics.mjs --root . --cases tests/browser_render_metric_cases.json`
-- Verify knowledge maps: `python3 scripts/validate_svg.py --knowledge-map .`
-- Verify architecture maps: `python3 scripts/validate_svg.py --architecture-map .`
-- Verify walkthroughs: `python3 scripts/validate_svg.py --walkthrough .`
-- Verify universal infographics: `python3 scripts/validate_svg.py --infographic .`
 
 ## Suitability
 

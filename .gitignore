@@ -6,5 +6,8 @@ coverage/
 renders/
 .agents/
 .codex/
+.install-test/
+.install-test-node/
+.npm-cache*/
 *.log
 *.tmp

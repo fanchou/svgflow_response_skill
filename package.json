@@ -1,0 +1,35 @@
+{
+  "name": "svgflow-response-skill",
+  "version": "1.36.0",
+  "description": "Install the SVGFlow response-to-infographic skill for Codex or any folder-based agent skills directory.",
+  "homepage": "https://github.com/fanchou/svgflow_response_skill#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fanchou/svgflow_response_skill.git"
+  },
+  "type": "module",
+  "bin": {
+    "svgflow-response-skill": "scripts/install-skill.mjs",
+    "svgflow-response-install": "scripts/install-skill.mjs"
+  },
+  "files": [
+    "SKILL.md",
+    "agents/",
+    "locales/",
+    "prompts/",
+    "schemas/",
+    "templates/",
+    "validators/",
+    "scripts/install-skill.mjs",
+    "README.md",
+    "README.zh-CN.md",
+    "skill.json"
+  ],
+  "keywords": [
+    "codex",
+    "skill",
+    "svg",
+    "infographic",
+    "agent"
+  ]
+}
