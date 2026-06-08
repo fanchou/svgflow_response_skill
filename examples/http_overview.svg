@@ -1,0 +1,119 @@
+<svg class="svgflow" data-svgflow-id="http-overview" width="100%" viewBox="0 0 680 760" xmlns="http://www.w3.org/2000/svg" role="img" xml:lang="zh-CN" lang="zh-CN" dir="ltr">
+  <title>图解 HTTP</title>
+  <desc>HTTP 是客户端和服务器之间的请求-响应协议：客户端发送请求报文，服务器解释目标资源和方法后返回响应报文。</desc>
+  <defs>
+    <marker id="svgflow-http-overview-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <polygon points="1,1 9,5 1,9" fill="#8EA4C8"/>
+    </marker>
+    <filter id="soft-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0B1220" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <style>
+    .bg{fill:#F7F9FC}.panel{fill:#FFFFFF;stroke:#D8E1EF;stroke-width:1;filter:url(#soft-shadow)}.rail{fill:none;stroke:#8EA4C8;stroke-width:2;marker-end:url(#svgflow-http-overview-arrow)}.railBack{fill:none;stroke:#D6A64E;stroke-width:2;marker-end:url(#svgflow-http-overview-arrow)}.thin{fill:none;stroke:#C8D3E3;stroke-width:1.2;stroke-dasharray:5 5}.title{font:700 24px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#172033}.sub{font:400 13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#5B6B82}.th{font:700 14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#172033}.t{font:400 13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#334155}.ts{font:400 12px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#64748B}.chipBlue{fill:#EAF2FF;stroke:#8DB7F5}.chipTeal{fill:#E9FBF7;stroke:#74D5C0}.chipAmber{fill:#FFF5DC;stroke:#E7BE65}.chipGray{fill:#F2F5F9;stroke:#D4DCE8}.blue{fill:#2F73D8}.teal{fill:#109980}.amber{fill:#B7791F}.muted{fill:#667085}.code{font:600 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#243044}.num{font:700 15px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#FFFFFF}.badge{fill:#172033}.small{font:600 11px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#FFFFFF}
+  </style>
+  <rect class="bg" x="0" y="0" width="680" height="760"/>
+  <text class="title" x="340" y="44" text-anchor="middle">图解 HTTP</text>
+  <text class="sub" x="340" y="70" text-anchor="middle">应用层协议，用“请求 → 响应”把客户端意图和服务器结果连接起来</text>
+  <g role="button" tabindex="0" aria-label="客户端" onclick="sendPrompt('HTTP 客户端在一次请求中负责什么？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('HTTP 客户端在一次请求中负责什么？')}">
+    <rect class="panel" x="34" y="112" width="142" height="88" rx="10"/>
+    <circle class="blue" cx="64" cy="142" r="14"/>
+    <text class="num" x="64" y="147" text-anchor="middle">1</text>
+    <text class="th" x="92" y="137">客户端</text>
+    <text class="ts" x="92" y="159">浏览器 / App / API 调用方</text>
+    <text class="ts" x="92" y="180">提出资源操作意图</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="连接准备" onclick="sendPrompt('HTTP 请求发送前通常要经历哪些连接准备？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('HTTP 请求发送前通常要经历哪些连接准备？')}">
+    <rect class="panel" x="198" y="112" width="132" height="88" rx="10"/>
+    <circle class="muted" cx="226" cy="142" r="14"/>
+    <text class="num" x="226" y="147" text-anchor="middle">2</text>
+    <text class="th" x="252" y="137">连接准备</text>
+    <text class="ts" x="252" y="159">DNS / TCP</text>
+    <text class="ts" x="252" y="180">HTTPS 还会 TLS</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="服务器" onclick="sendPrompt('HTTP 服务器如何解释请求并生成响应？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('HTTP 服务器如何解释请求并生成响应？')}">
+    <rect class="panel" x="504" y="112" width="142" height="88" rx="10"/>
+    <circle class="teal" cx="534" cy="142" r="14"/>
+    <text class="num" x="534" y="147" text-anchor="middle">3</text>
+    <text class="th" x="562" y="137">服务器</text>
+    <text class="ts" x="562" y="159">解析目标资源</text>
+    <text class="ts" x="562" y="180">执行业务并返回结果</text>
+  </g>
+  <path class="rail" d="M176 156 H198" fill="none"/>
+  <path class="rail" d="M330 156 H504" fill="none"/>
+  <text class="ts" x="417" y="142" text-anchor="middle">发送请求报文</text>
+  <path class="railBack" d="M504 192 C430 238,254 238,176 192" fill="none"/>
+  <text class="ts" x="340" y="238" text-anchor="middle">返回响应报文</text>
+  <g role="button" tabindex="0" aria-label="请求报文结构" onclick="sendPrompt('HTTP 请求报文由哪些部分组成？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('HTTP 请求报文由哪些部分组成？')}">
+    <rect class="panel" x="40" y="280" width="290" height="190" rx="12"/>
+    <text class="th" x="64" y="310">请求 Request</text>
+    <text class="ts" x="64" y="332">客户端告诉服务器：我要对哪个资源做什么</text>
+    <rect class="chipBlue" x="64" y="354" width="238" height="30" rx="7"/>
+    <text class="code" x="80" y="374">GET /articles/1 HTTP/1.1</text>
+    <text class="ts" x="64" y="402">请求行：方法 + 路径 + 版本</text>
+    <rect class="chipGray" x="64" y="416" width="112" height="28" rx="7"/>
+    <text class="t" x="120" y="434" text-anchor="middle">Headers</text>
+    <rect class="chipGray" x="190" y="416" width="112" height="28" rx="7"/>
+    <text class="t" x="246" y="434" text-anchor="middle">Body 可选</text>
+    <text class="ts" x="64" y="458">Headers 扩展语义：格式、认证、缓存、协商等</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="服务器处理链路" onclick="sendPrompt('一次 HTTP 请求在服务器内部通常如何被处理？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('一次 HTTP 请求在服务器内部通常如何被处理？')}">
+    <rect class="panel" x="360" y="280" width="280" height="190" rx="12"/>
+    <text class="th" x="384" y="310">服务器处理</text>
+    <text class="ts" x="384" y="332">按方法、路径、头部和正文解释请求</text>
+    <rect class="chipTeal" x="384" y="354" width="92" height="34" rx="8"/>
+    <text class="t" x="430" y="376" text-anchor="middle">路由</text>
+    <rect class="chipTeal" x="494" y="354" width="92" height="34" rx="8"/>
+    <text class="t" x="540" y="376" text-anchor="middle">业务逻辑</text>
+    <path class="rail" d="M476 371 H494" fill="none"/>
+    <rect class="chipTeal" x="384" y="408" width="92" height="34" rx="8"/>
+    <text class="t" x="430" y="430" text-anchor="middle">资源访问</text>
+    <rect class="chipTeal" x="494" y="408" width="92" height="34" rx="8"/>
+    <text class="t" x="540" y="430" text-anchor="middle">生成响应</text>
+    <path class="rail" d="M476 425 H494" fill="none"/>
+  </g>
+  <g role="button" tabindex="0" aria-label="响应报文结构" onclick="sendPrompt('HTTP 响应报文由哪些部分组成？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('HTTP 响应报文由哪些部分组成？')}">
+    <rect class="panel" x="40" y="506" width="290" height="176" rx="12"/>
+    <text class="th" x="64" y="536">响应 Response</text>
+    <text class="ts" x="64" y="558">服务器告诉客户端：请求结果是什么</text>
+    <rect class="chipAmber" x="64" y="580" width="238" height="30" rx="7"/>
+    <text class="code" x="80" y="600">HTTP/1.1 200 OK</text>
+    <text class="ts" x="64" y="626">状态行：版本 + 状态码 + 原因短语</text>
+    <rect class="chipGray" x="64" y="640" width="112" height="28" rx="7"/>
+    <text class="t" x="120" y="658" text-anchor="middle">Headers</text>
+    <rect class="chipGray" x="190" y="640" width="112" height="28" rx="7"/>
+    <text class="t" x="246" y="658" text-anchor="middle">Body</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="状态码分类" onclick="sendPrompt('HTTP 状态码 1xx 到 5xx 分别代表什么？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('HTTP 状态码 1xx 到 5xx 分别代表什么？')}">
+    <rect class="panel" x="360" y="506" width="280" height="176" rx="12"/>
+    <text class="th" x="384" y="536">状态码读法</text>
+    <text class="ts" x="384" y="558">三位数字概括响应类别</text>
+    <rect class="badge" x="384" y="578" width="38" height="24" rx="12"/>
+    <text class="small" x="403" y="594" text-anchor="middle">1xx</text>
+    <text class="t" x="432" y="595">信息</text>
+    <rect class="badge" x="384" y="610" width="38" height="24" rx="12"/>
+    <text class="small" x="403" y="626" text-anchor="middle">2xx</text>
+    <text class="t" x="432" y="627">成功</text>
+    <rect class="badge" x="384" y="642" width="38" height="24" rx="12"/>
+    <text class="small" x="403" y="658" text-anchor="middle">3xx</text>
+    <text class="t" x="432" y="659">重定向</text>
+    <rect class="badge" x="500" y="610" width="38" height="24" rx="12"/>
+    <text class="small" x="519" y="626" text-anchor="middle">4xx</text>
+    <text class="t" x="548" y="627">客户端错误</text>
+    <rect class="badge" x="500" y="642" width="38" height="24" rx="12"/>
+    <text class="small" x="519" y="658" text-anchor="middle">5xx</text>
+    <text class="t" x="548" y="659">服务器错误</text>
+  </g>
+  <path class="thin" d="M330 375 H360" fill="none"/>
+  <path class="thin" d="M500 470 V506" fill="none"/>
+  <path class="thin" d="M360 594 H330" fill="none"/>
+  <g>
+    <rect class="chipBlue" x="70" y="710" width="86" height="26" rx="13"/>
+    <text class="ts" x="113" y="727" text-anchor="middle">请求意图</text>
+    <rect class="chipTeal" x="176" y="710" width="96" height="26" rx="13"/>
+    <text class="ts" x="224" y="727" text-anchor="middle">服务器解释</text>
+    <rect class="chipAmber" x="292" y="710" width="86" height="26" rx="13"/>
+    <text class="ts" x="335" y="727" text-anchor="middle">响应结果</text>
+    <text class="ts" x="610" y="728" text-anchor="end">核心：方法定义意图，状态码表达结果，头部补充语义</text>
+  </g>
+</svg>

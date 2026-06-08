@@ -51,6 +51,8 @@ examples/universal_reliability_feedback_infographic.interactive.svg
 examples/universal_product_growth_freeform_infographic.dsl.json
 examples/universal_product_growth_freeform_infographic.interactive.svg
 examples/universal_primitive_coverage_infographic.dsl.json
+examples/http-overview.preview.html
+examples/http_overview.svg
 examples/iot-data-lake-architecture.preview.html
 examples/iot_data_lake_architecture.svg
 examples/arabic_text_fit.svg
