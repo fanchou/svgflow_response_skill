@@ -40,7 +40,7 @@ def line_text(text: str, limit: int = 15) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     if len(text) <= limit:
         return text
-    return text[: max(1, limit - 1)].rstrip() + "…"
+    return text[: max(1, limit - 3)].rstrip() + "..."
 
 
 def index_by_id(items: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -56,15 +56,16 @@ def render_text(lines: list[str], x: int, y: int, class_name: str, anchor: str =
 
 def clickable_group_open(node: dict[str, Any], interactions: dict[str, str]) -> str:
     target = str(node.get("id"))
-    prompt = interactions.get(target)
+    title = str(node.get("title", target))
+    prompt = interactions.get(target) or f"请解释{title}在AI时代物联网系统中的设计要点。"
     if not prompt:
         return ""
-    label = esc(node.get("title", target))
+    label = esc(title)
     safe_prompt = esc(js_prompt(prompt))
     return (
         f'  <g role="button" tabindex="0" aria-label="{label}" '
         f'onclick="sendPrompt(\'{safe_prompt}\')" '
-        f'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){{sendPrompt(\'{safe_prompt}\')}}">'
+        "onkeydown=\"if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))\">"
     )
 
 
@@ -72,6 +73,7 @@ def render_chip(node: dict[str, Any], x: int, y: int, width: int, height: int, t
     colors = LAYER_TONES.get(tone, LAYER_TONES["gray"])
     title = line_text(str(node.get("title", "")), 14)
     subtitle = line_text(str(node.get("subtitle", "")), 18)
+    details = [line_text(str(item), 24) for item in node.get("items", [])[:1] if str(item).strip()]
     out: list[str] = []
     group_open = clickable_group_open(node, interactions)
     if group_open:
@@ -79,10 +81,18 @@ def render_chip(node: dict[str, Any], x: int, y: int, width: int, height: int, t
         prefix = "    "
     else:
         prefix = "  "
-    out.append(f'{prefix}<rect x="{x}" y="{y}" width="{width}" height="{height}" rx="8" fill="{colors["fill"]}" stroke="{colors["stroke"]}" stroke-width="0.5"/>')
-    out.append(f'{prefix}<text class="chip-title" x="{x + width // 2}" y="{y + 20}" text-anchor="middle">{esc(title)}</text>')
+    radius = 6 if height <= 38 else 8
+    out.append(f'{prefix}<rect x="{x}" y="{y}" width="{width}" height="{height}" rx="{radius}" fill="{colors["fill"]}" stroke="{colors["stroke"]}" stroke-width="0.5"/>')
+    title_y = y + (19 if height <= 30 else 15 if height <= 38 else 20)
+    out.append(f'{prefix}<text class="chip-title" x="{x + width // 2}" y="{title_y}" text-anchor="middle">{esc(title)}</text>')
     if subtitle and height >= 40:
-        out.append(f'{prefix}<text class="chip-sub" x="{x + width // 2}" y="{y + 38}" text-anchor="middle">{esc(subtitle)}</text>')
+        sub_y = y + (30 if height <= 38 else 36)
+        out.append(f'{prefix}<text class="chip-sub" x="{x + width // 2}" y="{sub_y}" text-anchor="middle">{esc(subtitle)}</text>')
+    elif subtitle and height >= 38:
+        out.append(f'{prefix}<text class="chip-sub" x="{x + width // 2}" y="{y + 30}" text-anchor="middle">{esc(subtitle)}</text>')
+    for detail in details:
+        if height >= 56:
+            out.append(f'{prefix}<text class="chip-sub" x="{x + width // 2}" y="{y + 50}" text-anchor="middle">{esc(detail)}</text>')
     if group_open:
         out.append("  </g>")
     return out
@@ -104,8 +114,42 @@ def render_dark_layered_architecture(data: dict[str, Any]) -> str:
     height = 720
     layer_x = 40
     layer_w = 600
-    layer_h = [104, 112, 130, 130]
+    layer_h = [100, 110, 130, 130]
     layer_y = [30, 160, 300, 460]
+    layer_specs = [
+        {
+            "title_y": 60,
+            "subtitle_y": 78,
+            "chip_y": 90,
+            "chip_h": 30,
+            "chip_x": [64, 210, 356, 502],
+            "chip_w": [130, 130, 130, 118],
+        },
+        {
+            "title_y": 190,
+            "subtitle_y": 208,
+            "chip_y": 222,
+            "chip_h": 38,
+            "chip_x": [64, 192, 320, 448],
+            "chip_w": [110, 110, 110, 110],
+        },
+        {
+            "title_y": 328,
+            "subtitle_y": 346,
+            "chip_y": 360,
+            "chip_h": 58,
+            "chip_x": [60, 232, 404],
+            "chip_w": [155, 155, 218],
+        },
+        {
+            "title_y": 490,
+            "subtitle_y": 508,
+            "chip_y": 520,
+            "chip_h": 58,
+            "chip_x": [60, 198, 336, 474],
+            "chip_w": [120, 120, 120, 146],
+        },
+    ]
     layer_subtitles = [
         "AI决策中枢 · 大模型推理 · 业务编排",
         "云端AI训练 · 数据湖 · 服务编排 · 安全管理",
@@ -133,27 +177,19 @@ def render_dark_layered_architecture(data: dict[str, Any]) -> str:
         colors = LAYER_TONES.get(tone, LAYER_TONES["gray"])
         y = layer_y[index]
         h = layer_h[index]
+        spec = layer_specs[index]
         out.append(f'  <rect x="{layer_x}" y="{y}" width="{layer_w}" height="{h}" rx="14" fill="{colors["fill"]}" stroke="{colors["stroke"]}" stroke-width="0.5"/>')
-        out.extend(render_text([str(group.get("title", ""))], 340, y + 30, "layer-title"))
+        out.append(f'  <text class="layer-title" x="340" y="{spec["title_y"]}" text-anchor="middle" style="fill:{colors["accent"]}">{esc(group.get("title", ""))}</text>')
         subtitle = str(group.get("subtitle") or (layer_subtitles[index] if index < len(layer_subtitles) else ""))
-        out.extend(render_text([line_text(subtitle, 34)], 340, y + 50, "layer-sub"))
+        out.append(f'  <text class="layer-sub" x="340" y="{spec["subtitle_y"]}" text-anchor="middle" style="fill:{colors["stroke"]}">{esc(line_text(subtitle, 34))}</text>')
 
         members = [nodes[item] for item in group.get("members", []) if item in nodes]
-        chip_y = y + (64 if h <= 112 else 66)
-        gap = 16
-        if len(members) <= 3:
-            chip_w = [156, 156, 214][: len(members)]
-            total = sum(chip_w) + gap * (len(members) - 1)
-            cursor = layer_x + (layer_w - total) // 2
-        else:
-            chip_w = [132, 124, 132, 122][: len(members)]
-            total = sum(chip_w) + gap * (len(members) - 1)
-            cursor = layer_x + (layer_w - total) // 2
-        chip_h = 28 if h <= 112 else 50
         for member_index, node in enumerate(members):
-            current_w = chip_w[member_index] if member_index < len(chip_w) else 120
-            out.extend(render_chip(node, cursor, chip_y, current_w, chip_h, tone, interactions))
-            cursor += current_w + gap
+            chip_xs = spec["chip_x"]
+            chip_ws = spec["chip_w"]
+            if member_index >= len(chip_xs):
+                break
+            out.extend(render_chip(node, chip_xs[member_index], spec["chip_y"], chip_ws[member_index], spec["chip_h"], tone, interactions))
         if index < min(3, len(groups) - 1):
             out.append(f'  <path class="flow" d="M340 {y + h}L340 {layer_y[index + 1] - 2}" marker-end="url(#svgflow-{esc(svg_id)}-arrow)"/>')
 
@@ -198,3 +234,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

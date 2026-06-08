@@ -22,19 +22,19 @@
       { "id": "model_training", "title": "模型训练", "subtitle": "联邦 / 持续学习", "kind": "process", "tone": "teal", "parent": "platform" },
       { "id": "device_management", "title": "设备管理", "subtitle": "OTA / 影子设备", "kind": "process", "tone": "teal", "parent": "platform" },
       { "id": "security_center", "title": "安全中台", "subtitle": "零信任 / 加密", "kind": "risk", "tone": "teal", "parent": "platform" },
-      { "id": "edge_inference", "title": "边缘推理节点", "subtitle": "TinyML · ONNX", "kind": "process", "tone": "amber", "parent": "edge" },
-      { "id": "edge_gateway", "title": "边缘网关", "subtitle": "协议转换 · 数据融合", "kind": "container", "tone": "amber", "parent": "edge" },
-      { "id": "offline_compute", "title": "离线缓存与弹性计算", "subtitle": "断网续传 · 本地存储", "kind": "process", "tone": "amber", "parent": "edge" },
-      { "id": "multimodal_sensors", "title": "多模态传感器", "subtitle": "温/压/视觉/声音", "kind": "entity", "tone": "coral", "parent": "perception" },
-      { "id": "ai_chip", "title": "AI 端侧芯片", "subtitle": "NPU · MCU", "kind": "entity", "tone": "coral", "parent": "perception" },
-      { "id": "actuators", "title": "执行器", "subtitle": "闭环反馈控制", "kind": "entity", "tone": "coral", "parent": "perception" },
-      { "id": "device_identity", "title": "安全身份标识", "subtitle": "证书 / 密钥管理", "kind": "risk", "tone": "coral", "parent": "perception" }
+      { "id": "edge_inference", "title": "边缘推理节点", "subtitle": "TinyML · ONNX", "items": ["本地决策 <50ms"], "kind": "process", "tone": "amber", "parent": "edge" },
+      { "id": "edge_gateway", "title": "边缘网关", "subtitle": "协议转换 · 数据融合", "items": ["MQTT / CoAP / OPC-UA"], "kind": "container", "tone": "amber", "parent": "edge" },
+      { "id": "offline_compute", "title": "离线缓存与弹性计算", "subtitle": "断网续传 · 本地存储", "items": ["边云协同调度"], "kind": "process", "tone": "amber", "parent": "edge" },
+      { "id": "multimodal_sensors", "title": "多模态传感器", "subtitle": "温/压/视觉/声音", "items": ["数据融合"], "kind": "entity", "tone": "coral", "parent": "perception" },
+      { "id": "ai_chip", "title": "AI 端侧芯片", "subtitle": "NPU · MCU", "items": ["模型量化压缩"], "kind": "entity", "tone": "coral", "parent": "perception" },
+      { "id": "actuators", "title": "执行器", "subtitle": "电机 / 阀门 / 继电器", "items": ["闭环反馈控制"], "kind": "entity", "tone": "coral", "parent": "perception" },
+      { "id": "device_identity", "title": "安全身份标识", "subtitle": "硬件根信任 / TEE", "items": ["证书 / 密钥管理"], "kind": "risk", "tone": "coral", "parent": "perception" }
     ],
     "groups": [
-      { "id": "application", "title": "应用层", "members": ["llm_engine", "digital_twin", "autonomous_dispatch", "predictive_alerts"], "tone": "purple" },
-      { "id": "platform", "title": "平台层", "members": ["data_lake", "model_training", "device_management", "security_center"], "tone": "teal" },
-      { "id": "edge", "title": "边缘层", "members": ["edge_inference", "edge_gateway", "offline_compute"], "tone": "amber" },
-      { "id": "perception", "title": "感知层", "members": ["multimodal_sensors", "ai_chip", "actuators", "device_identity"], "tone": "coral" }
+      { "id": "application", "title": "应用层", "subtitle": "AI决策中枢 · 大模型推理 · 业务编排", "members": ["llm_engine", "digital_twin", "autonomous_dispatch", "predictive_alerts"], "tone": "purple" },
+      { "id": "platform", "title": "平台层", "subtitle": "云端AI训练 · 数据湖 · 服务编排 · 安全管理", "members": ["data_lake", "model_training", "device_management", "security_center"], "tone": "teal" },
+      { "id": "edge", "title": "边缘层", "subtitle": "本地AI推理 · 实时响应 · 数据预处理 · 协议转换", "members": ["edge_inference", "edge_gateway", "offline_compute"], "tone": "amber" },
+      { "id": "perception", "title": "感知层", "subtitle": "传感器 · 执行器 · 智能终端 · AI芯片端侧推理", "members": ["multimodal_sensors", "ai_chip", "actuators", "device_identity"], "tone": "coral" }
     ],
     "edges": [
       { "from": "multimodal_sensors", "to": "edge_gateway", "label": "数据上行", "kind": "data", "route": "orthogonal" },

@@ -12,7 +12,8 @@ Global rules:
 4. `H = max(bottom of all elements) + 40` for SVG outputs.
 5. Avoid overlaps between text, connectors, and cards.
 6. Keep repeated cards aligned to a visible grid.
-7. When the selected template is `dark_layered_architecture`, use a 690 x 720 canvas, a dark background, four full-width horizontal layer bands, compact chips inside each layer, a left data-flow rail, a right AI/control-flow rail, and legend swatches near the bottom.
+7. Layout follows semantic structure. Do not choose geometry first and then force content into it. Use groups as actual semantic containers, nodes as peer modules, node subtitles/items as card details, and edges/labels as relationship evidence.
+8. When the selected template is `dark_layered_architecture`, use a 690 x 720 canvas, a dark background, four full-width horizontal layer bands when the source supports four layers, compact chips inside each layer, a left data-flow rail, a right AI/control-flow rail, and legend swatches near the bottom.
 
 Universal infographic layout:
 
@@ -28,8 +29,10 @@ Universal infographic layout:
 10. `hierarchy`: use parent-child trees or nested bands; avoid diagonal clutter when more than three levels exist.
 11. `dashboard`: use metric cards, compact status groups, and a small legend; emphasize scan order over edge density.
 12. `freeform`: preserve official-style custom composition while keeping all bounds and label gaps valid.
-13. Render groups before nodes; render edges below labels; render legends near the bottom or side.
-14. Use masks or label backgrounds when labels sit on top of connectors.
+13. Derive visual hierarchy from semantic hierarchy: larger containers for groups, repeated card/chip scale for peer nodes, smaller text rows for `subtitle` and `items`.
+14. Place connectors only where an edge expresses a real relationship; avoid decorative arrows that imply nonexistent causality or sequence.
+15. Render groups before nodes; render edges below labels; render legends near the bottom or side.
+16. Use masks or label backgrounds when labels sit on top of connectors.
 
 Flowchart layout:
 

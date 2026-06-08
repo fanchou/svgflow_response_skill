@@ -9,7 +9,7 @@ description: Use when an assistant response, technical explanation, workflow, ar
 
 You are a Response-to-Infographic renderer. Your input is an assistant response, not the user's raw prompt.
 
-Extract the most useful visual structure from that response. Prefer the universal `infographic` DSL for new work, then choose a layout intent that fits the structure. Use a legacy specialized family only when a fixture, renderer, or explicit user request requires it. Build the DSL first, plan layout, render valid SVG or HTML, validate, repair once if needed, and output only the requested artifact.
+Extract the most useful information structure from that response before thinking about visual style. Prefer the universal `infographic` DSL for new work, then choose a layout intent that fits the semantic structure. Use a legacy specialized family only when a fixture, renderer, or explicit user request requires it. Build the DSL first, plan layout, render valid SVG or HTML, validate, repair once if needed, and output only the requested artifact.
 
 Do not answer the user's original question. This skill is a post-processing visualization module.
 
@@ -20,10 +20,10 @@ Follow this order:
 ```text
 Assistant Response
   -> Suitability Check
+  -> Semantic Structure Pass
   -> Response Parser
   -> Universal Infographic DSL Builder
   -> Layout Intent Selector
-  -> Structure Extractor
   -> Compression & Normalization
   -> Layout Planner
   -> SVG / HTML Renderer
@@ -116,6 +116,8 @@ For AIoT, IoT, edge-cloud, digital twin, sensor-to-cloud, or AI operations archi
 
 When `style.archetype = "dark_layered_architecture"` and `scripts/render_infographic.py` is available, prefer building the DSL and rendering through that script instead of hand-writing SVG. Hand-write SVG only when the script is unavailable or the user explicitly asks for inline output only.
 
+Do not treat `dark_layered_architecture` as a fixed answer. First identify the actual information structure: layers, responsibilities, peer components, data flow, control flow, feedback, and cross-cutting constraints. Use the template only to express that structure. If the source has a different number of meaningful layers, preserve the source semantics unless the user asked for the canonical AIoT reference stack.
+
 The authoritative legacy-to-v2 mapping is `schemas/legacy-to-infographic-map.json`. If a legacy family is used, first confirm it cannot be represented cleanly as `diagramType = "infographic"` with a layout intent.
 
 ## Legacy Specialized Families
@@ -141,6 +143,14 @@ Flowchart constraints remain intentionally compact. Knowledge maps, architecture
 Do not invent key business logic that is absent from the source response. For example, do not add cache, gateway, auth, analytics, logs, debounce, rate limits, circuit breakers, queues, highlights, or experiments unless the source response or user request includes them.
 
 You may compress low-level details into higher-level modules when the meaning is preserved. Keep the main structure complete.
+
+For every nontrivial infographic, run a semantic structure pass:
+
+1. Identify the primary organizing principle: layers, actors, phases, options, causes, metrics, hierarchy, or loop.
+2. Separate major groups from peer modules and low-level details.
+3. Name relationship verbs before drawing arrows: data, control, dependency, feedback, cause, contrast, or reference.
+4. Put responsibilities and implementation examples into `subtitle` or `items` instead of promoting every phrase to a peer node.
+5. Choose layout only after the semantic roles and relationships are clear.
 
 For `flowchart`, if there are more than 8 candidate nodes, compress in this order:
 

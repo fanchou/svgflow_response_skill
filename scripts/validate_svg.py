@@ -305,6 +305,47 @@ def validate_visual_quality_svg(path: Path) -> None:
     ok(f"Visual quality checks passed: {path}")
 
 
+def validate_dark_layered_architecture_svg(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    require(not contains_forbidden_control_chars(text), f"{path} contains forbidden control characters")
+    try:
+        root = ET.fromstring(text)
+    except ET.ParseError as exc:
+        fail(f"{path} XML parse error: {exc}")
+    require(root.attrib.get("viewBox") == "0 0 690 720", f"{path} dark layered architecture must use viewBox 0 0 690 720")
+    require('data-svgflow-id="dark-layered-architecture"' in text, f"{path} missing stable dark layered architecture id")
+    require("数据上行流" in text and "AI 决策流" in text, f"{path} must include side data/control rails")
+    require("style=\"fill:rgb(206, 203, 246)\"" in text, f"{path} application layer title must use accent color")
+    require("style=\"fill:rgb(159, 225, 203)\"" in text, f"{path} platform layer title must use accent color")
+    require("style=\"fill:rgb(250, 199, 117)\"" in text, f"{path} edge layer title must use accent color")
+    require("style=\"fill:rgb(245, 196, 179)\"" in text, f"{path} perception layer title must use accent color")
+
+    required_rects = [
+        'x="40" y="30" width="600" height="100"',
+        'x="40" y="160" width="600" height="110"',
+        'x="40" y="300" width="600" height="130"',
+        'x="40" y="460" width="600" height="130"',
+        'x="64" y="90" width="130" height="30"',
+        'x="64" y="222" width="110" height="38"',
+        'x="60" y="360" width="155" height="58"',
+        'x="60" y="520" width="120" height="58"',
+    ]
+    for rect_fragment in required_rects:
+        require(rect_fragment in text, f"{path} missing expected archetype geometry: {rect_fragment}")
+    required_details = [
+        "本地决策 &lt;50ms",
+        "MQTT / CoAP / OPC-UA",
+        "模型量化压缩",
+        "硬件根信任 / TEE",
+    ]
+    for detail in required_details:
+        require(detail in text, f"{path} missing dense architecture detail: {detail}")
+    require(text.count('width="12" height="12"') >= 4, f"{path} must include four legend swatches")
+    require(text.count("onclick=") >= 12, f"{path} must expose clickable architecture modules")
+    require(text.count('class="chip-sub"') >= 10, f"{path} must keep reference-like multi-line chip density")
+    ok(f"Dark layered architecture checks passed: {path}")
+
+
 RTL_RE = re.compile(r"[\u0590-\u05ff\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]")
 CJK_RE = re.compile(r"[\u3400-\u9fff\uf900-\ufaff]")
 
@@ -1865,10 +1906,10 @@ def load_pipeline_helper(root: Path) -> object:
 
 def validate_prompt_guidance(root: Path) -> None:
     required = {
-        "prompts/response_parser.md": ["universal infographic", "layout intent", "comparison", "input quality gate", "overview"],
-        "prompts/flow_dsl_builder.md": ["diagramType: infographic", "layout.intent", "dashboard"],
-        "prompts/layout_planner.md": ["Universal infographic layout", "hub_spoke", "hierarchy"],
-        "prompts/svg_renderer.md": ["Universal infographic SVG", "layout.intent", "Escape prompt text"],
+        "prompts/response_parser.md": ["universal infographic", "layout intent", "comparison", "input quality gate", "overview", "semantic pass", "relationship verbs"],
+        "prompts/flow_dsl_builder.md": ["diagramType: infographic", "layout.intent", "dashboard", "semantic model", "Preserve hierarchy"],
+        "prompts/layout_planner.md": ["Universal infographic layout", "hub_spoke", "hierarchy", "semantic structure", "semantic hierarchy"],
+        "prompts/svg_renderer.md": ["Universal infographic SVG", "layout.intent", "Escape prompt text", "semantic hierarchy", "information structure"],
         "prompts/validator_repair.md": [
             "Universal infographic checklist",
             "layout intent",
@@ -2374,7 +2415,10 @@ def validate_production_pipeline_cases(path: Path, root: Path) -> None:
         require(dsl_path.exists(), f"{path} {case_id} missing DSL fixture: {dsl_path}")
         if diagram_type == "infographic":
             require(isinstance(case.get("expectedLayoutIntent"), str) and case["expectedLayoutIntent"].strip(), f"{path} {case_id} expectedLayoutIntent is required")
-            require(set(validators) == svg_required_validators, f"{path} {case_id} validators must cover DSL, SVG, and visual quality")
+            validator_set = set(validators)
+            require(svg_required_validators.issubset(validator_set), f"{path} {case_id} validators must cover DSL, SVG, and visual quality")
+            allowed_extra_validators = {"dark_layered_architecture"}
+            require(validator_set <= svg_required_validators | allowed_extra_validators, f"{path} {case_id} has unknown SVG validators: {sorted(validator_set - svg_required_validators - allowed_extra_validators)}")
             svg_path = root / str(case.get("svg"))
             require(svg_path.exists(), f"{path} {case_id} missing SVG fixture: {svg_path}")
             run_pipeline_validators(validators, dsl_path, svg_path=svg_path)
@@ -3073,6 +3117,7 @@ PIPELINE_VALIDATORS = {
     "infographic_dsl": {"artifact": "dsl", "run": validate_infographic_dsl},
     "infographic_svg": {"artifact": "svg", "run": validate_infographic_svg},
     "visual_quality": {"artifact": "svg", "run": validate_visual_quality_svg},
+    "dark_layered_architecture": {"artifact": "svg", "run": validate_dark_layered_architecture_svg},
     "readability_score": {"artifact": "svg", "run": validate_pipeline_readability_score},
     "text_fit": {"artifact": "svg", "run": validate_text_fit_svg},
     "escaping_safety": {"artifact": "rendered", "run": validate_escaping_safety_asset},

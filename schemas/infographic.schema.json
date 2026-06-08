@@ -110,8 +110,10 @@
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
         "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
         "members": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-        "tone": { "type": "string" }
+        "tone": { "type": "string" },
+        "items": { "type": "array", "items": { "type": "string" } }
       },
       "additionalProperties": false
     },

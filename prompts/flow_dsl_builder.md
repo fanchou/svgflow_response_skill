@@ -15,6 +15,9 @@ Rules:
 5. Use `ltr`, `rtl`, or `auto` for `textDirection`; use `rtl` for Arabic, Hebrew, Persian, and Urdu.
 6. Do not invent core business logic or domain-specific components absent from the source response.
 7. Keep titles concise; move extra detail into subtitles, details arrays, module items, or action prompts.
+8. Treat the DSL as the semantic model, not a drawing sketch. A node exists because the response names a meaningful entity, capability, state, metric, risk, or output. A group exists because the response implies a real layer, actor, phase, category, zone, or option set. An edge exists because the response states or strongly implies a relationship verb.
+9. Preserve hierarchy: groups hold major semantic containers, nodes hold peer modules inside those containers, and `items` hold implementation details or examples that should not become peer nodes.
+10. Preserve directionality: use `kind = "data"`, `"control"`, `"feedback"`, or `"dependency"` to distinguish flow meaning instead of drawing every connector as a generic arrow.
 
 Universal infographic rules:
 
@@ -34,6 +37,9 @@ Universal infographic rules:
 14. Use `kind = "category"` for taxonomy or hierarchy nodes.
 15. Use `kind = "media"` for image, icon, screenshot, or document placeholders that should be represented visually.
 16. Use `layout.intent = "dashboard"` when metric cards are the main reading path.
+17. For layered architectures, put layer responsibilities in group titles/subtitles or labels, put components in nodes, put examples/technologies in node `subtitle` or `items`, and put cross-layer movement in edges and labels.
+18. For AIoT, IoT, edge-cloud, or AI operations systems, model at least these semantic categories when present in the source: sensing/device layer, edge execution, platform/data/model layer, application/decision layer, upstream data flow, downstream AI/control flow, and cross-cutting security/identity/governance.
+19. Do not add architecture parts just because a template usually has them. If a common component is absent from the response, omit it or keep it as a generic label only when the user explicitly requested a complete reference architecture.
 
 Flowchart-specific rules:
 

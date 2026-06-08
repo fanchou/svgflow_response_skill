@@ -108,6 +108,7 @@
       "nodeKinds": ["container", "entity", "process", "output", "risk"],
       "edgeKinds": ["data", "control", "feedback", "dependency"],
       "rendererNotes": [
+        "Use the source response's semantic layers and flows first; the template is a visual carrier, not the source of truth.",
         "Use a dark canvas with four or more full-width rounded layer bands.",
         "Put compact component chips inside each layer rather than prose cards.",
         "Add side rails for upstream data flow and downstream AI/control flow when both are present.",

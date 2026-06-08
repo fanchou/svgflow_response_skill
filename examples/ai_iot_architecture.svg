@@ -10,65 +10,98 @@
     .bg{fill:rgb(20,20,18)}.layer-title{font:600 14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:rgb(250,249,245)}.layer-sub{font:400 12px system-ui,-apple-system,"Segoe UI",sans-serif;fill:rgb(194,192,182)}.chip-title{font:600 13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:rgb(250,249,245)}.chip-sub{font:400 11px system-ui,-apple-system,"Segoe UI",sans-serif;fill:rgb(194,192,182)}.rail{font:400 12px system-ui,-apple-system,"Segoe UI",sans-serif;fill:rgb(194,192,182)}.legend{font:500 11px system-ui,-apple-system,"Segoe UI",sans-serif;fill:rgb(194,192,182)}.flow{fill:none;stroke:#9c9a92;stroke-width:1.2;opacity:.45}.soft{fill:none;stroke:rgba(222, 220, 209, 0.3);stroke-width:1;stroke-dasharray:4 3}
   </style>
   <rect class="bg" x="0" y="0" width="690" height="720"/>
-  <rect x="40" y="30" width="600" height="104" rx="14" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
-  <text class="layer-title" x="340" y="60" text-anchor="middle">应用层</text>
-  <text class="layer-sub" x="340" y="80" text-anchor="middle">AI决策中枢 · 大模型推理 · 业务编排</text>
-  <g role="button" tabindex="0" aria-label="LLM 推理引擎" onclick="sendPrompt('AI时代IoT应用层如何集成大语言模型？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('AI时代IoT应用层如何集成大语言模型？')}">
-    <rect x="61" y="94" width="132" height="28" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
-    <text class="chip-title" x="127" y="114" text-anchor="middle">LLM 推理引擎</text>
+  <rect x="40" y="30" width="600" height="100" rx="14" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+  <text class="layer-title" x="340" y="60" text-anchor="middle" style="fill:rgb(206, 203, 246)">应用层</text>
+  <text class="layer-sub" x="340" y="78" text-anchor="middle" style="fill:rgb(175, 169, 236)">AI决策中枢 · 大模型推理 · 业务编排</text>
+  <g role="button" tabindex="0" aria-label="LLM 推理引擎" onclick="sendPrompt('AI时代IoT应用层如何集成大语言模型？')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="64" y="90" width="130" height="30" rx="6" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+    <text class="chip-title" x="129" y="109" text-anchor="middle">LLM 推理引擎</text>
   </g>
-  <g role="button" tabindex="0" aria-label="数字孪生" onclick="sendPrompt('IoT数字孪生技术如何实现？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('IoT数字孪生技术如何实现？')}">
-    <rect x="209" y="94" width="124" height="28" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
-    <text class="chip-title" x="271" y="114" text-anchor="middle">数字孪生</text>
+  <g role="button" tabindex="0" aria-label="数字孪生" onclick="sendPrompt('IoT数字孪生技术如何实现？')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="210" y="90" width="130" height="30" rx="6" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+    <text class="chip-title" x="275" y="109" text-anchor="middle">数字孪生</text>
   </g>
-  <rect x="349" y="94" width="132" height="28" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
-  <text class="chip-title" x="415" y="114" text-anchor="middle">自主决策调度</text>
-  <rect x="497" y="94" width="122" height="28" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
-  <text class="chip-title" x="558" y="114" text-anchor="middle">预测性维护告警</text>
-  <path class="flow" d="M340 134L340 158" marker-end="url(#svgflow-dark-layered-architecture-arrow)"/>
-  <rect x="40" y="160" width="600" height="112" rx="14" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
-  <text class="layer-title" x="340" y="190" text-anchor="middle">平台层</text>
-  <text class="layer-sub" x="340" y="210" text-anchor="middle">云端AI训练 · 数据湖 · 服务编排 · 安全管理</text>
-  <rect x="61" y="224" width="132" height="28" rx="8" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
-  <text class="chip-title" x="127" y="244" text-anchor="middle">数据湖</text>
-  <rect x="209" y="224" width="124" height="28" rx="8" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
-  <text class="chip-title" x="271" y="244" text-anchor="middle">模型训练</text>
-  <rect x="349" y="224" width="132" height="28" rx="8" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
-  <text class="chip-title" x="415" y="244" text-anchor="middle">设备管理</text>
-  <rect x="497" y="224" width="122" height="28" rx="8" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
-  <text class="chip-title" x="558" y="244" text-anchor="middle">安全中台</text>
-  <path class="flow" d="M340 272L340 298" marker-end="url(#svgflow-dark-layered-architecture-arrow)"/>
+  <g role="button" tabindex="0" aria-label="自主决策调度" onclick="sendPrompt('请解释自主决策调度在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="356" y="90" width="130" height="30" rx="6" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+    <text class="chip-title" x="421" y="109" text-anchor="middle">自主决策调度</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="预测性维护告警" onclick="sendPrompt('请解释预测性维护告警在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="502" y="90" width="118" height="30" rx="6" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+    <text class="chip-title" x="561" y="109" text-anchor="middle">预测性维护告警</text>
+  </g>
+  <path class="flow" d="M340 130L340 158" marker-end="url(#svgflow-dark-layered-architecture-arrow)"/>
+  <rect x="40" y="160" width="600" height="110" rx="14" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+  <text class="layer-title" x="340" y="190" text-anchor="middle" style="fill:rgb(159, 225, 203)">平台层</text>
+  <text class="layer-sub" x="340" y="208" text-anchor="middle" style="fill:rgb(93, 202, 165)">云端AI训练 · 数据湖 · 服务编排 · 安全管理</text>
+  <g role="button" tabindex="0" aria-label="数据湖" onclick="sendPrompt('请解释数据湖在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="64" y="222" width="110" height="38" rx="6" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+    <text class="chip-title" x="119" y="237" text-anchor="middle">数据湖</text>
+    <text class="chip-sub" x="119" y="252" text-anchor="middle">时序 / 流式</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="模型训练" onclick="sendPrompt('请解释模型训练在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="192" y="222" width="110" height="38" rx="6" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+    <text class="chip-title" x="247" y="237" text-anchor="middle">模型训练</text>
+    <text class="chip-sub" x="247" y="252" text-anchor="middle">联邦 / 持续学习</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="设备管理" onclick="sendPrompt('请解释设备管理在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="320" y="222" width="110" height="38" rx="6" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+    <text class="chip-title" x="375" y="237" text-anchor="middle">设备管理</text>
+    <text class="chip-sub" x="375" y="252" text-anchor="middle">OTA / 影子设备</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="安全中台" onclick="sendPrompt('请解释安全中台在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="448" y="222" width="110" height="38" rx="6" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+    <text class="chip-title" x="503" y="237" text-anchor="middle">安全中台</text>
+    <text class="chip-sub" x="503" y="252" text-anchor="middle">零信任 / 加密</text>
+  </g>
+  <path class="flow" d="M340 270L340 298" marker-end="url(#svgflow-dark-layered-architecture-arrow)"/>
   <rect x="40" y="300" width="600" height="130" rx="14" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
-  <text class="layer-title" x="340" y="330" text-anchor="middle">边缘层</text>
-  <text class="layer-sub" x="340" y="350" text-anchor="middle">本地AI推理 · 实时响应 · 数据预处理 · 协议转换</text>
-  <g role="button" tabindex="0" aria-label="边缘推理节点" onclick="sendPrompt('边缘AI推理引擎如何部署到IoT设备？')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('边缘AI推理引擎如何部署到IoT设备？')}">
-    <rect x="61" y="366" width="156" height="50" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
-    <text class="chip-title" x="139" y="386" text-anchor="middle">边缘推理节点</text>
-    <text class="chip-sub" x="139" y="404" text-anchor="middle">TinyML · ONNX</text>
+  <text class="layer-title" x="340" y="328" text-anchor="middle" style="fill:rgb(250, 199, 117)">边缘层</text>
+  <text class="layer-sub" x="340" y="346" text-anchor="middle" style="fill:rgb(239, 159, 39)">本地AI推理 · 实时响应 · 数据预处理 · 协议转换</text>
+  <g role="button" tabindex="0" aria-label="边缘推理节点" onclick="sendPrompt('边缘AI推理引擎如何部署到IoT设备？')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="60" y="360" width="155" height="58" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
+    <text class="chip-title" x="137" y="380" text-anchor="middle">边缘推理节点</text>
+    <text class="chip-sub" x="137" y="396" text-anchor="middle">TinyML · ONNX</text>
+    <text class="chip-sub" x="137" y="410" text-anchor="middle">本地决策 &lt;50ms</text>
   </g>
-  <rect x="233" y="366" width="156" height="50" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
-  <text class="chip-title" x="311" y="386" text-anchor="middle">边缘网关</text>
-  <text class="chip-sub" x="311" y="404" text-anchor="middle">协议转换 · 数据融合</text>
-  <rect x="405" y="366" width="214" height="50" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
-  <text class="chip-title" x="512" y="386" text-anchor="middle">离线缓存与弹性计算</text>
-  <text class="chip-sub" x="512" y="404" text-anchor="middle">断网续传 · 本地存储</text>
+  <g role="button" tabindex="0" aria-label="边缘网关" onclick="sendPrompt('请解释边缘网关在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="232" y="360" width="155" height="58" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
+    <text class="chip-title" x="309" y="380" text-anchor="middle">边缘网关</text>
+    <text class="chip-sub" x="309" y="396" text-anchor="middle">协议转换 · 数据融合</text>
+    <text class="chip-sub" x="309" y="410" text-anchor="middle">MQTT / CoAP / OPC-UA</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="离线缓存与弹性计算" onclick="sendPrompt('请解释离线缓存与弹性计算在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="404" y="360" width="218" height="58" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
+    <text class="chip-title" x="513" y="380" text-anchor="middle">离线缓存与弹性计算</text>
+    <text class="chip-sub" x="513" y="396" text-anchor="middle">断网续传 · 本地存储</text>
+    <text class="chip-sub" x="513" y="410" text-anchor="middle">边云协同调度</text>
+  </g>
   <path class="flow" d="M340 430L340 458" marker-end="url(#svgflow-dark-layered-architecture-arrow)"/>
   <rect x="40" y="460" width="600" height="130" rx="14" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
-  <text class="layer-title" x="340" y="490" text-anchor="middle">感知层</text>
-  <text class="layer-sub" x="340" y="510" text-anchor="middle">传感器 · 执行器 · 智能终端 · AI芯片端侧推理</text>
-  <rect x="61" y="526" width="132" height="50" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
-  <text class="chip-title" x="127" y="546" text-anchor="middle">多模态传感器</text>
-  <text class="chip-sub" x="127" y="564" text-anchor="middle">温/压/视觉/声音</text>
-  <rect x="209" y="526" width="124" height="50" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
-  <text class="chip-title" x="271" y="546" text-anchor="middle">AI 端侧芯片</text>
-  <text class="chip-sub" x="271" y="564" text-anchor="middle">NPU · MCU</text>
-  <rect x="349" y="526" width="132" height="50" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
-  <text class="chip-title" x="415" y="546" text-anchor="middle">执行器</text>
-  <text class="chip-sub" x="415" y="564" text-anchor="middle">闭环反馈控制</text>
-  <g role="button" tabindex="0" aria-label="安全身份标识" onclick="sendPrompt('IoT设备身份认证与安全通信设计')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('IoT设备身份认证与安全通信设计')}">
-    <rect x="497" y="526" width="122" height="50" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
-    <text class="chip-title" x="558" y="546" text-anchor="middle">安全身份标识</text>
-    <text class="chip-sub" x="558" y="564" text-anchor="middle">证书 / 密钥管理</text>
+  <text class="layer-title" x="340" y="490" text-anchor="middle" style="fill:rgb(245, 196, 179)">感知层</text>
+  <text class="layer-sub" x="340" y="508" text-anchor="middle" style="fill:rgb(240, 153, 123)">传感器 · 执行器 · 智能终端 · AI芯片端侧推理</text>
+  <g role="button" tabindex="0" aria-label="多模态传感器" onclick="sendPrompt('请解释多模态传感器在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="60" y="520" width="120" height="58" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
+    <text class="chip-title" x="120" y="540" text-anchor="middle">多模态传感器</text>
+    <text class="chip-sub" x="120" y="556" text-anchor="middle">温/压/视觉/声音</text>
+    <text class="chip-sub" x="120" y="570" text-anchor="middle">数据融合</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="AI 端侧芯片" onclick="sendPrompt('请解释AI 端侧芯片在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="198" y="520" width="120" height="58" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
+    <text class="chip-title" x="258" y="540" text-anchor="middle">AI 端侧芯片</text>
+    <text class="chip-sub" x="258" y="556" text-anchor="middle">NPU · MCU</text>
+    <text class="chip-sub" x="258" y="570" text-anchor="middle">模型量化压缩</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="执行器" onclick="sendPrompt('请解释执行器在AI时代物联网系统中的设计要点。')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="336" y="520" width="120" height="58" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
+    <text class="chip-title" x="396" y="540" text-anchor="middle">执行器</text>
+    <text class="chip-sub" x="396" y="556" text-anchor="middle">电机 / 阀门 / 继电器</text>
+    <text class="chip-sub" x="396" y="570" text-anchor="middle">闭环反馈控制</text>
+  </g>
+  <g role="button" tabindex="0" aria-label="安全身份标识" onclick="sendPrompt('IoT设备身份认证与安全通信设计')" onkeydown="if(event.key==='Enter'||event.key===' ')this.dispatchEvent(new MouseEvent('click'))">
+    <rect x="474" y="520" width="146" height="58" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
+    <text class="chip-title" x="547" y="540" text-anchor="middle">安全身份标识</text>
+    <text class="chip-sub" x="547" y="556" text-anchor="middle">硬件根信任 / TEE</text>
+    <text class="chip-sub" x="547" y="570" text-anchor="middle">证书 / 密钥管理</text>
   </g>
   <path class="soft" d="M24 460L24 130" stroke="rgba(222, 220, 209, 0.3)" marker-end="url(#svgflow-dark-layered-architecture-arrow)"/>
   <text class="rail" x="22" y="280" text-anchor="middle" transform="rotate(-90 22 280)">数据上行流</text>

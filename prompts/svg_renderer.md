@@ -28,6 +28,9 @@ Universal infographic SVG rules:
 12. Escape prompt text before embedding it in `onclick` or `onkeydown`; apostrophes, quotes, and XML-sensitive characters must not break the attribute or JavaScript string.
 12. Long unbreakable labels must be shortened, split with `<tspan>`, or rendered with explicit `data-fit` and `textLength` metadata.
 13. Do not use negative letter spacing; it is brittle for CJK, Arabic, Hebrew, and mixed-language labels.
+14. Render semantic hierarchy visibly: groups must look like containers, peer nodes must have consistent card/chip treatment, and `subtitle`/`items` must appear as subordinate details rather than competing headings.
+15. Do not add visual connectors unless the DSL has an edge or label that gives the relationship meaning.
+16. If the DSL contains rich node `items`, render them as compact detail rows when space allows; do not discard them unless text-fit would fail.
 
 Dark layered architecture SVG rules:
 
@@ -38,6 +41,9 @@ Dark layered architecture SVG rules:
 5. Add side rails when useful: left side for data flowing upward from devices to cloud, right side for AI/control decisions flowing downward.
 6. Do not render this template as numbered prose cards. The primary visual objects are layer bands, chips, side rails, connector arrows, and legend swatches.
 7. Keep chip labels short, center aligned, and clickable as whole groups when `sendPrompt` interactions exist.
+8. Let information structure drive the layer map: layer bands represent groups, chips represent nodes, chip subtitles/items represent responsibilities or implementation examples, and side rails represent explicit data/control edges or labels.
+9. If the response has fewer or more than four real layers, preserve the actual semantic layers unless the user asked for the canonical four-layer AIoT reference architecture.
+10. Avoid visually dense but semantically flat output. Dense architecture diagrams should show differentiated layer responsibilities, component roles, and directional flows.
 
 Strict flowchart SVG rules:
 

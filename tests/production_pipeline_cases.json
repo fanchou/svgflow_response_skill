@@ -61,6 +61,7 @@
         "infographic_dsl",
         "infographic_svg",
         "visual_quality",
+        "dark_layered_architecture",
         "readability_score",
         "text_fit",
         "escaping_safety",
