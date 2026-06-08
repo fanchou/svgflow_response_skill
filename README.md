@@ -1,5 +1,7 @@
 # SVGFlow Response Infographic Skill
 
+[中文文档](README.zh-CN.md)
+
 A skill package for turning an assistant response into a compact SVG or HTML infographic.
 
 ## Purpose
