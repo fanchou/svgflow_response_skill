@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "title": "Strategy Comparison Infographic",
+    "description": "A universal infographic for comparing three product strategies by cost, speed, risk, and operating model.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 460,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      {
+        "id": "build",
+        "title": "Build",
+        "subtitle": "Full control, highest effort",
+        "kind": "recommendation",
+        "tone": "blue",
+        "items": ["High ownership", "Slow start", "Long-term fit"]
+      },
+      {
+        "id": "buy",
+        "title": "Buy",
+        "subtitle": "Fastest path, vendor risk",
+        "kind": "recommendation",
+        "tone": "green",
+        "items": ["Fast launch", "Recurring cost", "Integration limits"]
+      },
+      {
+        "id": "partner",
+        "title": "Partner",
+        "subtitle": "Shared capability, shared risk",
+        "kind": "recommendation",
+        "tone": "amber",
+        "items": ["Shared delivery", "Contract overhead", "Flexible scale"]
+      },
+      {
+        "id": "risk",
+        "title": "Decision risk",
+        "subtitle": "Switching cost rises after rollout",
+        "kind": "risk",
+        "tone": "coral"
+      }
+    ],
+    "groups": [
+      {
+        "id": "options",
+        "title": "Options",
+        "members": ["build", "buy", "partner"],
+        "tone": "blue"
+      }
+    ],
+    "edges": [
+      {
+        "from": "build",
+        "to": "buy",
+        "label": "Trade control for speed",
+        "kind": "contrast",
+        "route": "straight"
+      },
+      {
+        "from": "buy",
+        "to": "partner",
+        "label": "Trade simplicity for flexibility",
+        "kind": "contrast",
+        "route": "straight"
+      },
+      {
+        "from": "partner",
+        "to": "risk",
+        "label": "Review before rollout",
+        "kind": "causal",
+        "route": "orthogonal"
+      }
+    ],
+    "labels": [
+      {
+        "text": "Use comparison when options share the same evaluation dimensions.",
+        "for": "options",
+        "tone": "neutral"
+      }
+    ],
+    "legends": [
+      {
+        "label": "Recommended path",
+        "tone": "green"
+      },
+      {
+        "label": "Tradeoff",
+        "tone": "amber"
+      },
+      {
+        "label": "Risk",
+        "tone": "coral"
+      }
+    ]
+  },
+  "layout": {
+    "intent": "comparison",
+    "direction": "LR",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["blue", "green", "amber", "coral"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "risk",
+      "action": "sendPrompt",
+      "prompt": "How should we reduce decision risk before rollout?"
+    }
+  ]
+}

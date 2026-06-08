@@ -1,0 +1,27 @@
+<h2 class="sr-only">Walkthrough without reduced motion guard</h2>
+<style>
+.fl-step { display:none; }
+.fl-step.active { display:block; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+@keyframes travel { from{stroke-dashoffset:120} to{stroke-dashoffset:0} }
+.anim-pulse { animation: pulse 1.2s ease-in-out infinite; }
+.anim-travel { stroke-dasharray:8 4; animation: travel .8s linear infinite; }
+</style>
+<div id="dots"></div>
+<button id="btn-prev" aria-label="Previous">Prev</button>
+<button id="btn-next" aria-label="Next">Next</button>
+<div class="fl-step active">
+<svg width="100%" viewBox="0 0 680 180" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Step one</title>
+<desc>First state</desc>
+<rect x="80" y="50" width="200" height="70" rx="8"/>
+</svg>
+</div>
+<div class="fl-step">
+<svg width="100%" viewBox="0 0 680 180" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Step two</title>
+<desc>Second state</desc>
+<rect x="300" y="50" width="200" height="70" rx="8"/>
+</svg>
+</div>
+<div data-controller="var labels = ['1 / 2', '2 / 2']; var total = 2; function render() {} function move() {}"></div>

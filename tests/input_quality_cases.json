@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "id": "structured_pipeline_accepted",
+      "inputType": "assistant_response",
+      "input": "The system receives an event, validates the payload, writes valid data to storage, sends invalid data to a quarantine queue, and publishes a status notification after processing.",
+      "expectedDecision": "visualize",
+      "expectedReason": "has entities and relationships",
+      "expectedMinimumSignals": {
+        "entities": 3,
+        "relationships": 3
+      }
+    },
+    {
+      "id": "tradeoff_overview_accepted",
+      "inputType": "assistant_response",
+      "input": "The proposal is cheap and quick to launch, but it creates maintenance risk and limited extensibility. A useful visual should summarize cost, speed, risk, and long-term fit instead of inventing a step-by-step workflow.",
+      "expectedDecision": "overview",
+      "expectedReason": "has comparison dimensions but no process",
+      "expectedMinimumSignals": {
+        "entities": 3,
+        "relationships": 1
+      }
+    },
+    {
+      "id": "thin_opinion_rejected",
+      "inputType": "assistant_response",
+      "input": "This is a good idea. It feels simple, clean, and probably useful.",
+      "expectedDecision": "reject",
+      "expectedReason": "too thin to visualize",
+      "expectedMinimumSignals": {
+        "entities": 0,
+        "relationships": 0
+      }
+    },
+    {
+      "id": "source_language_preserved",
+      "inputType": "assistant_response",
+      "input": "\u652f\u4ed8\u7cfb\u7edf\u63a5\u6536\u8ba2\u5355\u540e\u6821\u9a8c\u5e93\u5b58\uff0c\u5e93\u5b58\u5145\u8db3\u65f6\u521b\u5efa\u652f\u4ed8\u8bf7\u6c42\uff0c\u652f\u4ed8\u6210\u529f\u540e\u6263\u51cf\u5e93\u5b58\u5e76\u901a\u77e5\u53d1\u8d27\uff0c\u5931\u8d25\u65f6\u53d6\u6d88\u8ba2\u5355\u5e76\u63d0\u793a\u7528\u6237\u91cd\u8bd5\u3002",
+      "expectedDecision": "visualize",
+      "expectedReason": "has localized entities and relationships",
+      "expectedLocale": "zh-CN",
+      "expectedTextDirection": "ltr",
+      "expectedMinimumSignals": {
+        "entities": 3,
+        "relationships": 3
+      }
+    },
+    {
+      "id": "rtl_language_preserved",
+      "inputType": "assistant_response",
+      "input": "\u064a\u0633\u062a\u0642\u0628\u0644 \u0627\u0644\u0646\u0638\u0627\u0645 \u0627\u0644\u0637\u0644\u0628 \u062b\u0645 \u064a\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u062f\u0641\u0639. \u0625\u0630\u0627 \u0646\u062c\u062d \u0627\u0644\u062f\u0641\u0639 \u064a\u0631\u0633\u0644 \u062a\u0623\u0643\u064a\u062f \u0627\u0644\u0634\u062d\u0646\u060c \u0648\u0625\u0630\u0627 \u0641\u0634\u0644 \u064a\u0639\u0631\u0636 \u0631\u0633\u0627\u0644\u0629 \u062e\u0637\u0623 \u0648\u064a\u0637\u0644\u0628 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.",
+      "expectedDecision": "visualize",
+      "expectedReason": "has rtl sequence and decision signals",
+      "expectedLocale": "ar",
+      "expectedTextDirection": "rtl",
+      "expectedMinimumSignals": {
+        "entities": 2,
+        "relationships": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Platform Architecture Stack",
+    "description": "A universal layered architecture stack with channels, API, services, data, and observability.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 620,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "channels", "title": "Channels", "subtitle": "Web, mobile, partners", "kind": "container", "tone": "gray" },
+      { "id": "api", "title": "API layer", "subtitle": "Auth, routing, contracts", "kind": "process", "tone": "purple" },
+      { "id": "services", "title": "Service capabilities", "subtitle": "Orders, billing, support", "kind": "container", "tone": "blue" },
+      { "id": "data", "title": "Data layer", "subtitle": "Operational and analytical stores", "kind": "container", "tone": "green" },
+      { "id": "observability", "title": "Observability", "subtitle": "Metrics, traces, alerts", "kind": "evidence", "tone": "amber" }
+    ],
+    "groups": [
+      { "id": "runtime", "title": "Runtime stack", "members": ["channels", "api", "services", "data"], "tone": "blue" },
+      { "id": "operations", "title": "Operations", "members": ["observability"], "tone": "amber" }
+    ],
+    "edges": [
+      { "from": "channels", "to": "api", "label": "Request", "kind": "control" },
+      { "from": "api", "to": "services", "label": "Route", "kind": "control" },
+      { "from": "services", "to": "data", "label": "Read/write", "kind": "data" },
+      { "from": "observability", "to": "services", "label": "Monitor", "kind": "reference", "dashed": true }
+    ],
+    "labels": [
+      { "text": "Layered intent keeps dependencies readable.", "for": "runtime", "tone": "neutral" }
+    ],
+    "legends": [
+      { "label": "Runtime", "tone": "blue" },
+      { "label": "Data", "tone": "green" },
+      { "label": "Ops", "tone": "amber" }
+    ]
+  },
+  "layout": {
+    "intent": "layered",
+    "direction": "TB",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["gray", "purple", "blue", "green", "amber"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "api",
+      "action": "sendPrompt",
+      "prompt": "Explain the API layer responsibilities."
+    }
+  ]
+}

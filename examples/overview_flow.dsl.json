@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Tradeoff Overview",
+    "description": "Create a high-level overview when the response has no clear sequence",
+    "diagramType": "flowchart",
+    "direction": "TB",
+    "mode": "html_preview",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "purple",
+      "teal"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Overview",
+      "color": "gray"
+    },
+    {
+      "id": "cost",
+      "type": "action",
+      "label": "Assess cost",
+      "color": "purple"
+    },
+    {
+      "id": "stability",
+      "type": "action",
+      "label": "Assess stability",
+      "color": "teal"
+    },
+    {
+      "id": "maintain",
+      "type": "action",
+      "label": "Assess upkeep",
+      "color": "purple"
+    },
+    {
+      "id": "done",
+      "type": "end",
+      "label": "Choose tradeoff",
+      "color": "gray"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "cost"
+    },
+    {
+      "from": "cost",
+      "to": "stability"
+    },
+    {
+      "from": "stability",
+      "to": "maintain"
+    },
+    {
+      "from": "maintain",
+      "to": "done"
+    }
+  ]
+}

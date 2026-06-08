@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Reliability Feedback Loop",
+    "description": "A universal feedback-loop infographic for incident observation, prioritization, mitigation, measurement, and planning.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 560,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "observe", "title": "Observe incidents", "subtitle": "Alerts, tickets, traces", "kind": "evidence", "tone": "blue" },
+      { "id": "prioritize", "title": "Prioritize fixes", "subtitle": "Severity and blast radius", "kind": "decision", "tone": "purple" },
+      { "id": "mitigate", "title": "Deploy mitigation", "subtitle": "Patch, scale, isolate", "kind": "process", "tone": "green" },
+      { "id": "measure", "title": "Measure health", "subtitle": "SLOs and regressions", "kind": "metric", "tone": "amber" },
+      { "id": "learn", "title": "Feed lessons back", "subtitle": "Planning and prevention", "kind": "recommendation", "tone": "gray" }
+    ],
+    "groups": [
+      { "id": "loop", "title": "Reliability operating loop", "members": ["observe", "prioritize", "mitigate", "measure", "learn"], "tone": "blue" }
+    ],
+    "edges": [
+      { "from": "observe", "to": "prioritize", "label": "Triage", "kind": "data" },
+      { "from": "prioritize", "to": "mitigate", "label": "Action", "kind": "control" },
+      { "from": "mitigate", "to": "measure", "label": "Verify", "kind": "primary" },
+      { "from": "measure", "to": "learn", "label": "Insight", "kind": "feedback" },
+      { "from": "learn", "to": "observe", "label": "Improve", "kind": "feedback", "route": "loop", "dashed": true }
+    ],
+    "labels": [
+      { "text": "Feedback intent makes continuous improvement visible.", "for": "loop", "tone": "neutral" }
+    ],
+    "legends": [
+      { "label": "Data", "tone": "blue" },
+      { "label": "Control", "tone": "purple" },
+      { "label": "Feedback", "tone": "amber" }
+    ]
+  },
+  "layout": {
+    "intent": "loop",
+    "direction": "radial",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["blue", "purple", "green", "amber", "gray"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "measure",
+      "action": "sendPrompt",
+      "prompt": "Explain reliability health measurement."
+    }
+  ]
+}

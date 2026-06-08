@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "Signup Validation Flow",
+    "description": "A user submits a signup form, validation decides whether to retry or create the account",
+    "diagramType": "flowchart",
+    "direction": "TB",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "blue",
+      "amber"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Start",
+      "color": "gray"
+    },
+    {
+      "id": "submit",
+      "type": "action",
+      "label": "Submit form",
+      "color": "blue"
+    },
+    {
+      "id": "valid",
+      "type": "decision",
+      "label": "Valid?",
+      "color": "amber"
+    },
+    {
+      "id": "retry",
+      "type": "action",
+      "label": "Show errors",
+      "color": "amber"
+    },
+    {
+      "id": "create",
+      "type": "action",
+      "label": "Create account",
+      "color": "blue"
+    },
+    {
+      "id": "done",
+      "type": "end",
+      "label": "Signup done",
+      "color": "gray"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "submit"
+    },
+    {
+      "from": "submit",
+      "to": "valid"
+    },
+    {
+      "from": "valid",
+      "to": "create",
+      "label": "Yes",
+      "branch": "main"
+    },
+    {
+      "from": "valid",
+      "to": "retry",
+      "label": "No",
+      "branch": "left"
+    },
+    {
+      "from": "retry",
+      "to": "submit",
+      "label": "Retry",
+      "route": "loop-left"
+    },
+    {
+      "from": "create",
+      "to": "done"
+    }
+  ]
+}

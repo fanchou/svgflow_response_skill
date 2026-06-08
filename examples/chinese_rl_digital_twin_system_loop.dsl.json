@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "强化学习智能体与数字孪生环境的交互闭环",
+    "description": "智能体观察状态、选择动作、孪生环境执行并返回奖励和新状态，形成训练闭环",
+    "diagramType": "system_loop",
+    "mode": "html_preview",
+    "locale": "zh-CN",
+    "textDirection": "ltr",
+    "viewBox": {
+      "width": 680,
+      "height": 380
+    }
+  },
+  "theme": {
+    "palette": [
+      { "id": "purple", "fill": "#3C3489", "stroke": "#AFA9EC", "title": "#CECBF6", "text": "#AFA9EC" },
+      { "id": "teal", "fill": "#085041", "stroke": "#5DCAA5", "title": "#9FE1CB", "text": "#5DCAA5" },
+      { "id": "coral", "fill": "#712B13", "stroke": "#F0997B", "title": "#F5C4B3", "text": "#F0997B" },
+      { "id": "gray", "fill": "#262624", "stroke": "#B4B2A9", "title": "#D3D1C7", "text": "#C2C0B6" }
+    ]
+  },
+  "actors": [
+    {
+      "id": "agent",
+      "title": "RL 智能体",
+      "role": "agent",
+      "palette": "purple",
+      "details": ["策略网络 π(a|s)", "价值网络 V(s)", "经验回放缓冲"],
+      "actionPrompt": "强化学习策略网络的神经网络结构如何设计？"
+    },
+    {
+      "id": "twin",
+      "title": "数字孪生环境",
+      "role": "environment",
+      "palette": "teal",
+      "details": ["物理/行为模型", "状态转移函数", "约束检验器", "奖励计算器", "并行仿真 ×N", "时间加速 ×1000", "OpenAI Gym 接口"],
+      "actionPrompt": "数字孪生作为 RL 训练环境需要满足哪些接口规范？"
+    },
+    {
+      "id": "device",
+      "title": "真实物理设备",
+      "role": "device",
+      "palette": "coral",
+      "details": ["策略部署", "安全边界校验"],
+      "actionPrompt": "训练好的 RL 策略如何安全部署到真实 IoT 设备？"
+    }
+  ],
+  "signals": [
+    { "id": "action", "from": "agent", "to": "twin", "label": "动作 a_t", "kind": "action", "route": "straight" },
+    { "id": "state", "from": "twin", "to": "agent", "label": "状态 s_t", "kind": "state", "route": "return" },
+    { "id": "reward", "from": "twin", "to": "agent", "label": "奖励 r_t", "kind": "reward", "route": "return" },
+    { "id": "deploy", "from": "twin", "to": "device", "label": "部署", "kind": "deploy", "route": "dashed", "dashed": true },
+    { "id": "calibrate", "from": "device", "to": "agent", "label": "实测校准", "kind": "feedback", "route": "dashed", "dashed": true }
+  ],
+  "guards": [
+    {
+      "id": "safety",
+      "title": "安全约束过滤层",
+      "palette": "gray"
+    }
+  ]
+}

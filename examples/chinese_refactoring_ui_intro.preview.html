@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Refactoring UI 全书知识体系</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #191918;
+      --text: #e8e5df;
+      --muted: #b9b4ac;
+      --line: rgba(232, 229, 223, 0.18);
+      --violet-bg: #40348f;
+      --violet-stroke: #8d82e6;
+      --violet-text: #d7d0ff;
+      --rust-bg: #7e2c14;
+      --rust-stroke: #db7c55;
+      --rust-text: #ffc0a7;
+      --blue-bg: #0d4e86;
+      --blue-stroke: #58a7e6;
+      --blue-text: #b9dcff;
+      --teal-bg: #075b48;
+      --teal-stroke: #28b998;
+      --teal-text: #9de9d7;
+      --amber-bg: #704200;
+      --amber-stroke: #d99416;
+      --amber-text: #ffd487;
+      --green-bg: #225c05;
+      --green-stroke: #75b928;
+      --green-text: #bfe88b;
+      --slate-bg: #434440;
+      --slate-stroke: #8e918b;
+      --slate-text: #d8d8d2;
+      --rose-bg: #7e2447;
+      --rose-stroke: #d4638c;
+      --rose-text: #ffc1d6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.06), transparent 34%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    .board {
+      width: min(100%, 1180px);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 36px);
+      line-height: 1.18;
+      letter-spacing: 0;
+      font-weight: 760;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.9vw, 23px);
+      font-weight: 650;
+      line-height: 1.35;
+    }
+
+    .flow {
+      position: relative;
+      display: grid;
+      gap: 28px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 74px;
+      align-items: stretch;
+    }
+
+    .row.single {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .card {
+      min-height: 112px;
+      border: 1.5px solid var(--stroke);
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01)),
+        var(--fill);
+      color: var(--card-text);
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      padding: 20px 24px;
+      text-align: center;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 18px 42px rgba(0, 0, 0, 0.18);
+    }
+
+    .wide {
+      min-height: 126px;
+    }
+
+    .title {
+      font-size: clamp(20px, 2.4vw, 29px);
+      line-height: 1.15;
+      font-weight: 780;
+      color: var(--title);
+    }
+
+    .desc {
+      margin-top: 8px;
+      font-size: clamp(15px, 1.75vw, 21px);
+      line-height: 1.35;
+      font-weight: 650;
+      color: var(--card-text);
+      opacity: 0.9;
+    }
+
+    .violet { --fill: var(--violet-bg); --stroke: var(--violet-stroke); --title: #ece9ff; --card-text: var(--violet-text); }
+    .rust { --fill: var(--rust-bg); --stroke: var(--rust-stroke); --title: #ffe0d3; --card-text: var(--rust-text); }
+    .blue { --fill: var(--blue-bg); --stroke: var(--blue-stroke); --title: #d7ebff; --card-text: var(--blue-text); }
+    .teal { --fill: var(--teal-bg); --stroke: var(--teal-stroke); --title: #c9fff1; --card-text: var(--teal-text); }
+    .amber { --fill: var(--amber-bg); --stroke: var(--amber-stroke); --title: #ffe6aa; --card-text: var(--amber-text); }
+    .green { --fill: var(--green-bg); --stroke: var(--green-stroke); --title: #e1ffc0; --card-text: var(--green-text); }
+    .slate { --fill: var(--slate-bg); --stroke: var(--slate-stroke); --title: #f1f1ec; --card-text: var(--slate-text); }
+    .rose { --fill: var(--rose-bg); --stroke: var(--rose-stroke); --title: #ffe0eb; --card-text: var(--rose-text); }
+
+    .arrow {
+      width: 42px;
+      height: 42px;
+      justify-self: center;
+      margin: -18px 0;
+      color: rgba(232, 229, 223, 0.22);
+    }
+
+    .arrow svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .down-badge {
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      border: 1px solid rgba(232, 229, 223, 0.22);
+      background: rgba(255, 255, 255, 0.05);
+      display: grid;
+      place-items: center;
+      justify-self: center;
+      margin: -8px 0 -10px;
+      color: #f3f0ea;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+    }
+
+    .down-badge svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 18px;
+      }
+
+      .flow {
+        gap: 18px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .card,
+      .wide {
+        min-height: 104px;
+      }
+
+      .arrow {
+        margin: -10px 0;
+      }
+
+      .down-badge {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="board" aria-label="Refactoring UI knowledge map">
+    <header>
+      <h1>Refactoring UI - 全书知识体系</h1>
+      <p class="subtitle">Adam Wathan &amp; Steve Schoger · 面向开发者的 UI 设计实战指南</p>
+    </header>
+
+    <section class="flow">
+      <div class="row">
+        <article class="card violet">
+          <div class="title">1 · 从零开始</div>
+          <div class="desc">先设计功能，而非布局框架</div>
+        </article>
+        <article class="card rust">
+          <div class="title">2 · 设计风格</div>
+          <div class="desc">字体 · 颜色 · 圆角 · 语气基调</div>
+        </article>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg viewBox="0 0 42 42" fill="none">
+          <path d="M21 3v34m0 0 10-10M21 37 11 27" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="row single">
+        <article class="card wide blue">
+          <div class="title">3 · 视觉层级（Visual Hierarchy）</div>
+          <div class="desc">用字重与颜色而非尺寸建立主次 · 限制 2-3 种字号和颜色 · 弱化次要信息</div>
+        </article>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg viewBox="0 0 42 42" fill="none">
+          <path d="M21 3v34m0 0 10-10M21 37 11 27" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="row single">
+        <article class="card wide teal">
+          <div class="title">4 · 布局与间距（Layout &amp; Spacing）</div>
+          <div class="desc">先留足白空间再裁剪 · 建立间距系统（基础单位 16px）· 避免网格依赖</div>
+        </article>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg viewBox="0 0 42 42" fill="none">
+          <path d="M21 3v34m0 0 10-10M21 37 11 27" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="row single">
+        <article class="card wide amber">
+          <div class="title">5 · 文字排版（Typography）</div>
+          <div class="desc">建立字号刻度 · 行长 45-75 字符 · 基线对齐 · 合理行高</div>
+        </article>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg viewBox="0 0 42 42" fill="none">
+          <path d="M21 3v34m0 0 10-10M21 37 11 27" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="row single">
+        <article class="card wide green">
+          <div class="title">6 · 颜色系统（Colors）</div>
+          <div class="desc">用 HSL 替代 HEX · 灰色 8-10 阶 · 主色 5-10 阶 · 感知亮度公式</div>
+        </article>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg viewBox="0 0 42 42" fill="none">
+          <path d="M21 3v34m0 0 10-10M21 37 11 27" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="row">
+        <article class="card slate">
+          <div class="title">7 · 深度与阴影</div>
+          <div class="desc">模拟顶部光源 · 5 级阴影系统</div>
+        </article>
+        <article class="card rose">
+          <div class="title">8 · 精修细节</div>
+          <div class="desc">空状态 · 强调色 · 图标与图片</div>
+        </article>
+      </div>
+
+      <div class="down-badge" aria-hidden="true">
+        <svg viewBox="0 0 42 42" fill="none">
+          <path d="M21 7v25m0 0 10-10M21 32 11 22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

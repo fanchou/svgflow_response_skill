@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Support Workflow Swimlane",
+    "description": "A universal swimlane workflow across customer, support, engineering, and operations lanes.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 560,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "report", "title": "Report issue", "subtitle": "Customer", "kind": "entity", "tone": "gray" },
+      { "id": "triage", "title": "Triage", "subtitle": "Support", "kind": "process", "tone": "blue" },
+      { "id": "fix", "title": "Fix defect", "subtitle": "Engineering", "kind": "process", "tone": "purple" },
+      { "id": "deploy", "title": "Deploy fix", "subtitle": "Operations", "kind": "process", "tone": "green" },
+      { "id": "close", "title": "Close loop", "subtitle": "Support updates customer", "kind": "output", "tone": "amber" }
+    ],
+    "groups": [
+      { "id": "customer_lane", "title": "Customer", "members": ["report"], "tone": "gray" },
+      { "id": "support_lane", "title": "Support", "members": ["triage", "close"], "tone": "blue" },
+      { "id": "engineering_lane", "title": "Engineering", "members": ["fix"], "tone": "purple" },
+      { "id": "operations_lane", "title": "Operations", "members": ["deploy"], "tone": "green" }
+    ],
+    "edges": [
+      { "from": "report", "to": "triage", "label": "Ticket", "kind": "control" },
+      { "from": "triage", "to": "fix", "label": "Escalate", "kind": "dependency" },
+      { "from": "fix", "to": "deploy", "label": "Release", "kind": "control" },
+      { "from": "deploy", "to": "close", "label": "Verify", "kind": "data" }
+    ],
+    "labels": [
+      { "text": "One lane per responsibility.", "for": "support_lane", "tone": "neutral" }
+    ],
+    "legends": [
+      { "label": "Owner", "tone": "blue" },
+      { "label": "Build", "tone": "purple" },
+      { "label": "Run", "tone": "green" }
+    ]
+  },
+  "layout": {
+    "intent": "swimlane",
+    "direction": "LR",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["gray", "blue", "purple", "green", "amber"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "triage",
+      "action": "sendPrompt",
+      "prompt": "Explain support triage criteria."
+    }
+  ]
+}

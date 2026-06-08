@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/svgflow/system-loop.schema.json",
+  "title": "System Loop DSL",
+  "type": "object",
+  "required": ["meta", "theme", "actors", "signals"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "description", "diagramType", "mode", "locale", "textDirection", "viewBox"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "diagramType": { "const": "system_loop" },
+        "mode": { "enum": ["preview_svg", "html_preview", "component_ready"] },
+        "locale": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "textDirection": { "enum": ["ltr", "rtl", "auto"] },
+        "viewBox": {
+          "type": "object",
+          "required": ["width", "height"],
+          "properties": {
+            "width": { "const": 680 },
+            "height": { "type": "integer", "minimum": 300, "maximum": 620 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "theme": {
+      "type": "object",
+      "required": ["palette"],
+      "properties": {
+        "palette": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 12,
+          "items": { "$ref": "#/$defs/paletteEntry" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "actors": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/actor" }
+    },
+    "signals": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/signal" }
+    },
+    "guards": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/guard" }
+    }
+  },
+  "$defs": {
+    "paletteEntry": {
+      "type": "object",
+      "required": ["id", "fill", "stroke", "title", "text"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "fill": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "stroke": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "title": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "text": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+      },
+      "additionalProperties": false
+    },
+    "actor": {
+      "type": "object",
+      "required": ["id", "title", "palette", "role"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "role": { "enum": ["agent", "environment", "device", "service", "human", "system"] },
+        "details": { "type": "array", "items": { "type": "string" } },
+        "palette": { "type": "string" },
+        "actionPrompt": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "signal": {
+      "type": "object",
+      "required": ["id", "from", "to", "label"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "label": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["action", "state", "reward", "deploy", "feedback", "guarded", "other"] },
+        "route": { "enum": ["straight", "return", "dashed", "loop"] },
+        "dashed": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "guard": {
+      "type": "object",
+      "required": ["id", "title"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "palette": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

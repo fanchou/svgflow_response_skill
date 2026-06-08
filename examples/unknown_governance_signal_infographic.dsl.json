@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "Governance Signal Map",
+    "description": "A universal fallback infographic for mixed review signals that should not be forced into a process flow.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 520,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      {"id": "recommendation", "title": "Recommendation", "subtitle": "Proceed with guardrails", "kind": "recommendation", "tone": "purple"},
+      {"id": "legal", "title": "Legal risk", "subtitle": "Rising review load", "kind": "risk", "tone": "coral"},
+      {"id": "trust", "title": "Customer trust", "subtitle": "Confidence improving", "kind": "metric", "tone": "green"},
+      {"id": "operations", "title": "Ops load", "subtitle": "Moderation unstable", "kind": "risk", "tone": "amber"},
+      {"id": "leadership", "title": "Leadership", "subtitle": "Cautious appetite", "kind": "stakeholder", "tone": "blue"},
+      {"id": "guardrails", "title": "Guardrails", "subtitle": "Review before scale", "kind": "control", "tone": "gray"}
+    ],
+    "groups": [
+      {"id": "signals", "title": "Review signals", "members": ["legal", "trust", "operations", "leadership"], "tone": "blue"}
+    ],
+    "edges": [
+      {"from": "legal", "to": "recommendation", "label": "Constrain", "kind": "risk", "route": "straight"},
+      {"from": "trust", "to": "recommendation", "label": "Support", "kind": "evidence", "route": "straight"},
+      {"from": "operations", "to": "guardrails", "label": "Requires", "kind": "control", "route": "straight"},
+      {"from": "leadership", "to": "guardrails", "label": "Approves", "kind": "dependency", "route": "straight"},
+      {"from": "guardrails", "to": "recommendation", "label": "Enable", "kind": "support", "route": "straight"}
+    ],
+    "labels": [
+      {"text": "Use freeform fallback when signals are related but not sequential.", "for": "signals", "tone": "neutral"}
+    ],
+    "legends": [
+      {"label": "Positive", "tone": "green"},
+      {"label": "Risk", "tone": "coral"},
+      {"label": "Control", "tone": "gray"}
+    ]
+  },
+  "layout": {
+    "intent": "freeform",
+    "direction": "TB",
+    "density": "standard",
+    "nodeLimit": 16
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["purple", "coral", "green", "amber", "blue", "gray"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "guardrails",
+      "action": "sendPrompt",
+      "prompt": "What guardrails should be in place before scale?"
+    }
+  ]
+}

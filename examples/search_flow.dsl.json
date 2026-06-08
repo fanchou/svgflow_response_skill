@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "title": "Search Submit Flow",
+    "description": "Main frontend, backend, and rendering flow after a user submits a search term",
+    "diagramType": "flowchart",
+    "direction": "TB",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "blue",
+      "amber"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Start",
+      "color": "gray",
+      "lane": "system"
+    },
+    {
+      "id": "input",
+      "type": "action",
+      "label": "Enter keyword",
+      "subtitle": "Submit",
+      "color": "blue",
+      "lane": "user"
+    },
+    {
+      "id": "capture",
+      "type": "action",
+      "label": "Capture event",
+      "subtitle": "Read input",
+      "color": "blue",
+      "lane": "frontend"
+    },
+    {
+      "id": "valid",
+      "type": "decision",
+      "label": "Valid?",
+      "color": "amber",
+      "lane": "frontend"
+    },
+    {
+      "id": "retry",
+      "type": "action",
+      "label": "Show prompt",
+      "subtitle": "Empty input",
+      "color": "amber",
+      "lane": "frontend"
+    },
+    {
+      "id": "request",
+      "type": "action",
+      "label": "Build request",
+      "subtitle": "URL params",
+      "color": "blue",
+      "lane": "frontend"
+    },
+    {
+      "id": "search",
+      "type": "action",
+      "label": "Search and rank",
+      "subtitle": "Rank results",
+      "color": "blue",
+      "lane": "backend"
+    },
+    {
+      "id": "render",
+      "type": "end",
+      "label": "Render results",
+      "color": "gray",
+      "lane": "frontend"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "input"
+    },
+    {
+      "from": "input",
+      "to": "capture"
+    },
+    {
+      "from": "capture",
+      "to": "valid"
+    },
+    {
+      "from": "valid",
+      "to": "request",
+      "label": "Yes",
+      "branch": "main"
+    },
+    {
+      "from": "valid",
+      "to": "retry",
+      "label": "No",
+      "branch": "left"
+    },
+    {
+      "from": "retry",
+      "to": "input",
+      "label": "Back",
+      "route": "loop-left"
+    },
+    {
+      "from": "request",
+      "to": "search"
+    },
+    {
+      "from": "search",
+      "to": "render"
+    }
+  ]
+}

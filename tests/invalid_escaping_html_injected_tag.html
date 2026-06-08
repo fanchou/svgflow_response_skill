@@ -1,0 +1,33 @@
+<h2 class="sr-only">Unsafe module grid fixture</h2>
+<style>
+.mod-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.mod-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem; }
+.mod-title { font-size:14px; }
+.mod-sub { font-size:12px; }
+.mod-btn { font-size:12px; }
+.mod-item { font-size:12px; }
+.mod-label { color:var(--color-text-info); }
+.tone-info {}
+.tone-warn {}
+.tone-ok {}
+.tone-neutral {}
+@media (max-width:640px){.mod-grid{grid-template-columns:1fr}}
+</style>
+<div class="mod-grid">
+  <div class="mod-card">
+    <div class="mod-title">Safe title <img src=x onerror=alert(1)></div>
+    <div class="mod-sub">Injected tag should have been escaped</div>
+    <div class="mod-item"><span class="mod-label tone-info">One</span> Alpha</div>
+    <div class="mod-item"><span class="mod-label tone-warn">Two</span> Beta</div>
+    <div class="mod-item"><span class="mod-label tone-ok">Three</span> Gamma</div>
+    <button class="mod-btn" onclick="sendPrompt('Explain injected tag risk.')">Details</button>
+  </div>
+  <div class="mod-card">
+    <div class="mod-title">Safe peer</div>
+    <div class="mod-sub">Baseline card</div>
+    <div class="mod-item"><span class="mod-label tone-neutral">One</span> Alpha</div>
+    <div class="mod-item"><span class="mod-label tone-info">Two</span> Beta</div>
+    <div class="mod-item"><span class="mod-label tone-warn">Three</span> Gamma</div>
+    <button class="mod-btn" onclick="sendPrompt('Explain safe peer.')">Details</button>
+  </div>
+</div>

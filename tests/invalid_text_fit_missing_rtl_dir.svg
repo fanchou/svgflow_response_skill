@@ -1,0 +1,7 @@
+<svg width="100%" viewBox="0 0 680 240" role="img" lang="ar" dir="ltr" xmlns="http://www.w3.org/2000/svg">
+<title>Invalid RTL direction</title>
+<desc>Arabic content is present but the root direction is left to right.</desc>
+<defs></defs>
+<rect x="40" y="40" width="360" height="80" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/>
+<text x="220" y="82" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(250, 199, 117)">مرحلة التخطيط</text>
+</svg>

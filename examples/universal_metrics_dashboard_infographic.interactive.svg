@@ -1,0 +1,24 @@
+<svg width="100%" viewBox="0 0 680 480" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Operational Metrics Dashboard Infographic</title>
+<desc>A universal dashboard infographic with KPI cards, incident state, recommendation, annotations, legend, and clickable triage details.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<mask id="dashboard-label-gaps" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="680" height="480" fill="white"/><rect x="294" y="250" width="92" height="22" fill="black" rx="3"/></mask>
+</defs>
+<rect x="40" y="46" width="600" height="180" rx="12" fill="none" stroke="rgb(151, 196, 89)" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="56" y="70" fill="rgb(194, 192, 182)" font-size="12" font-weight="500">Service KPIs</text>
+<g><rect x="70" y="100" width="150" height="82" rx="8" fill="rgb(39, 80, 10)" stroke="rgb(151, 196, 89)" stroke-width="0.5"/><text x="145" y="128" text-anchor="middle" dominant-baseline="central" fill="rgb(192, 221, 151)" font-size="20" font-weight="500">99.95%</text><text x="145" y="154" text-anchor="middle" dominant-baseline="central" fill="rgb(151, 196, 89)" font-size="12">Uptime</text></g>
+<g><rect x="265" y="100" width="150" height="82" rx="8" fill="rgb(12, 68, 124)" stroke="rgb(133, 183, 235)" stroke-width="0.5"/><text x="340" y="128" text-anchor="middle" dominant-baseline="central" fill="rgb(181, 212, 244)" font-size="20" font-weight="500">128 ms</text><text x="340" y="154" text-anchor="middle" dominant-baseline="central" fill="rgb(133, 183, 235)" font-size="12">P95 latency</text></g>
+<g><rect x="460" y="100" width="150" height="82" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/><text x="535" y="128" text-anchor="middle" dominant-baseline="central" fill="rgb(250, 199, 117)" font-size="20" font-weight="500">0.18%</text><text x="535" y="154" text-anchor="middle" dominant-baseline="central" fill="rgb(239, 159, 39)" font-size="12">Error rate</text></g>
+<g role="button" tabindex="0" aria-label="Explain how to triage this active incident." onclick="sendPrompt('Explain how to triage this active incident.')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('Explain how to triage this active incident.')}"><rect x="120" y="304" width="190" height="74" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/><text x="215" y="332" text-anchor="middle" dominant-baseline="central" fill="rgb(245, 196, 179)" font-size="14" font-weight="500">Active incident</text><text x="215" y="354" text-anchor="middle" dominant-baseline="central" fill="rgb(240, 153, 123)" font-size="12">Queue pressure rising</text></g>
+<g><rect x="370" y="304" width="190" height="74" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/><text x="465" y="332" text-anchor="middle" dominant-baseline="central" fill="rgb(206, 203, 246)" font-size="14" font-weight="500">Scale workers</text><text x="465" y="354" text-anchor="middle" dominant-baseline="central" fill="rgb(175, 169, 236)" font-size="12">Recommended next step</text></g>
+<path d="M535 182 L535 244 L215 244 L215 302" fill="none" stroke="rgb(216, 90, 48)" stroke-width="1.5" marker-end="url(#arrow)" mask="url(#dashboard-label-gaps)"/>
+<path d="M310 341 L368 341" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M145 182 L145 220 L215 220" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1" stroke-dasharray="5 4"/>
+<path d="M340 182 L340 220 L215 220" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="294" y="250" width="92" height="22" rx="5" fill="rgb(38, 38, 36)" stroke="rgba(222, 220, 209, 0.3)" stroke-width="0.5"/><text x="340" y="264" text-anchor="middle" dominant-baseline="central" fill="rgb(194, 192, 182)" font-size="12">Threshold</text>
+<text x="340" y="410" text-anchor="middle" fill="rgb(194, 192, 182)" font-size="12">Scan first, route second.</text>
+<rect x="160" y="438" width="12" height="12" rx="2" fill="rgb(151, 196, 89)"/><text x="178" y="448" fill="rgb(194, 192, 182)" font-size="12">Healthy</text>
+<rect x="300" y="438" width="12" height="12" rx="2" fill="rgb(239, 159, 39)"/><text x="318" y="448" fill="rgb(194, 192, 182)" font-size="12">Watch</text>
+<rect x="420" y="438" width="12" height="12" rx="2" fill="rgb(240, 153, 123)"/><text x="438" y="448" fill="rgb(194, 192, 182)" font-size="12">Risk</text>
+</svg>

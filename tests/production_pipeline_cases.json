@@ -1,0 +1,128 @@
+{
+  "pipeline": [
+    "response_parser",
+    "dsl_builder",
+    "layout_planner",
+    "svg_renderer",
+    "validator",
+    "repair"
+  ],
+  "cases": [
+    {
+      "id": "production_freeform_growth",
+      "inputType": "assistant_response",
+      "inputFile": "tests/real_response_product_growth.md",
+      "expectedTemplate": "freeform_insight_map",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "freeform",
+      "dsl": "examples/universal_product_growth_freeform_infographic.dsl.json",
+      "svg": "examples/universal_product_growth_freeform_infographic.interactive.svg",
+      "validators": [
+        "infographic_dsl",
+        "infographic_svg",
+        "visual_quality",
+        "readability_score",
+        "text_fit",
+        "escaping_safety",
+        "interaction_accessibility"
+      ],
+      "repairPolicy": "single_pass"
+    },
+    {
+      "id": "production_architecture_stack",
+      "inputType": "assistant_response",
+      "input": "The platform is organized as a layered stack: channels send requests to an API layer, the API calls service capabilities, services read and write the data layer, and observability monitors every layer.",
+      "expectedTemplate": "architecture_stack",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "layered",
+      "dsl": "examples/universal_architecture_stack_infographic.dsl.json",
+      "svg": "examples/universal_architecture_stack_infographic.interactive.svg",
+      "validators": [
+        "infographic_dsl",
+        "infographic_svg",
+        "visual_quality",
+        "readability_score",
+        "text_fit",
+        "escaping_safety",
+        "interaction_accessibility"
+      ],
+      "repairPolicy": "single_pass"
+    },
+    {
+      "id": "production_unknown_experiment_priority",
+      "inputType": "assistant_response",
+      "input": "The growth team has nine experiments. Score each by user impact and implementation effort, then call out quick wins, strategic bets, and low-priority work. The response is not a process; it needs a prioritization map with a legend and drill-down prompts.",
+      "expectedTemplate": "universal_fallback",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "matrix",
+      "dsl": "examples/unknown_experiment_priority_infographic.dsl.json",
+      "svg": "examples/unknown_experiment_priority_infographic.interactive.svg",
+      "validators": [
+        "infographic_dsl",
+        "infographic_svg",
+        "visual_quality",
+        "readability_score",
+        "text_fit",
+        "escaping_safety",
+        "interaction_accessibility"
+      ],
+      "repairPolicy": "single_pass"
+    },
+    {
+      "id": "production_unknown_governance_signal",
+      "inputType": "assistant_response",
+      "input": "The trust review produces mixed signals: legal risk is rising, customer confidence is improving, moderation load is unstable, and executive appetite is cautious. Show the signals around a central recommendation without inventing a sequence.",
+      "expectedTemplate": "universal_fallback",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "freeform",
+      "dsl": "examples/unknown_governance_signal_infographic.dsl.json",
+      "svg": "examples/unknown_governance_signal_infographic.interactive.svg",
+      "validators": [
+        "infographic_dsl",
+        "infographic_svg",
+        "visual_quality",
+        "readability_score",
+        "text_fit",
+        "escaping_safety",
+        "interaction_accessibility"
+      ],
+      "repairPolicy": "single_pass"
+    },
+    {
+      "id": "production_walkthrough_html",
+      "inputType": "assistant_response",
+      "input": "Federated learning starts with a global model on a server, broadcasts weights to devices, trains locally without moving private data, uploads gradients, aggregates with FedAvg, and repeats the next round. The visual should be an interactive walkthrough with step controls and motion states.",
+      "expectedTemplate": "interactive_walkthrough",
+      "expectedDiagramType": "interactive_walkthrough",
+      "dsl": "examples/chinese_federated_learning_walkthrough.dsl.json",
+      "html": "examples/chinese_federated_learning.walkthrough.html",
+      "htmlType": "walkthrough",
+      "validators": [
+        "walkthrough_dsl",
+        "walkthrough_html",
+        "production_html_contract",
+        "render_surface",
+        "escaping_safety"
+      ],
+      "repairPolicy": "single_pass"
+    },
+    {
+      "id": "production_module_grid_html",
+      "inputType": "assistant_response",
+      "input": "Digital twin reinforcement learning has four engineering modules: reward function design, algorithm selection, Sim2Real migration, and safety constraints. Each module needs a card with labeled details and a prompt button for deeper explanation.",
+      "expectedTemplate": "module_grid",
+      "expectedDiagramType": "module_grid",
+      "dsl": "examples/chinese_rl_engineering_module_grid.dsl.json",
+      "html": "examples/chinese_rl_engineering.module_grid.html",
+      "htmlType": "module_grid",
+      "validators": [
+        "module_grid_dsl",
+        "module_grid_html",
+        "production_html_contract",
+        "render_surface",
+        "escaping_safety"
+      ],
+      "repairPolicy": "single_pass"
+    }
+  ]
+}

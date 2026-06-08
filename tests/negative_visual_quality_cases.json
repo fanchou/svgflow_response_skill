@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "id": "long_text_rejected",
+      "validator": "visual_quality",
+      "fixture": "tests/invalid_infographic_long_text.svg",
+      "expectedFailure": "text is too long"
+    },
+    {
+      "id": "missing_legend_rejected",
+      "validator": "infographic_svg",
+      "fixture": "tests/invalid_infographic_missing_legend.svg",
+      "expectedFailure": "compact legend"
+    },
+    {
+      "id": "missing_label_protection_rejected",
+      "validator": "infographic_svg",
+      "fixture": "tests/invalid_infographic_unprotected_labels.svg",
+      "expectedFailure": "protect labels"
+    },
+    {
+      "id": "narrow_palette_rejected",
+      "validator": "visual_quality",
+      "fixture": "tests/invalid_infographic_narrow_palette.svg",
+      "expectedFailure": "palette is too narrow"
+    },
+    {
+      "id": "missing_clickable_group_rejected",
+      "validator": "visual_quality",
+      "fixture": "tests/invalid_infographic_missing_clickable.svg",
+      "expectedFailure": "clickable groups"
+    }
+  ]
+}

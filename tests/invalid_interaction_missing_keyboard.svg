@@ -1,0 +1,9 @@
+<svg width="100%" viewBox="0 0 680 260" role="img" lang="en" dir="ltr" xmlns="http://www.w3.org/2000/svg">
+<title>Invalid missing keyboard handler</title>
+<desc>Clickable group has role and name but cannot be activated from the keyboard.</desc>
+<defs></defs>
+<g role="button" tabindex="0" aria-label="Explain readiness" onclick="sendPrompt('Explain readiness.')">
+<rect x="80" y="60" width="220" height="88" rx="8" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+<text x="190" y="104" text-anchor="middle" dominant-baseline="central" fill="rgb(159, 225, 203)" font-size="14">Readiness</text>
+</g>
+</svg>

@@ -1,0 +1,36 @@
+{
+  "valid": [
+    {
+      "id": "production_walkthrough_html",
+      "fixture": "examples/chinese_federated_learning.walkthrough.html",
+      "type": "walkthrough",
+      "signals": ["accessibleHeading", "reducedMotion", "responsiveControls", "safeHtml", "embeddedSvgA11y"]
+    },
+    {
+      "id": "production_module_grid_html",
+      "fixture": "examples/chinese_rl_engineering.module_grid.html",
+      "type": "module_grid",
+      "signals": ["accessibleHeading", "responsiveGrid", "hostTokens", "safeHtml", "actionButtons"]
+    }
+  ],
+  "invalid": [
+    {
+      "id": "module_grid_missing_responsive_fallback",
+      "fixture": "tests/invalid_html_contract_missing_responsive.html",
+      "type": "module_grid",
+      "expectedFailure": "responsive one-column fallback"
+    },
+    {
+      "id": "walkthrough_missing_reduced_motion",
+      "fixture": "tests/invalid_html_contract_missing_reduced_motion.html",
+      "type": "walkthrough",
+      "expectedFailure": "reduced-motion"
+    },
+    {
+      "id": "module_grid_unsafe_html",
+      "fixture": "tests/invalid_escaping_html_javascript_uri.html",
+      "type": "module_grid",
+      "expectedFailure": "unsafe javascript URI"
+    }
+  ]
+}

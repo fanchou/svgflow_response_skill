@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "联邦学习工作流程交互演示",
+    "description": "展示从全局模型分发到聚合的完整迭代过程",
+    "diagramType": "interactive_walkthrough",
+    "mode": "html_preview",
+    "locale": "zh-CN",
+    "textDirection": "ltr"
+  },
+  "theme": {
+    "palette": [
+      { "id": "purple", "fill": "#3C3489", "stroke": "#AFA9EC", "title": "#CECBF6", "text": "#AFA9EC" },
+      { "id": "teal", "fill": "#085041", "stroke": "#5DCAA5", "title": "#9FE1CB", "text": "#5DCAA5" },
+      { "id": "amber", "fill": "#633806", "stroke": "#EF9F27", "title": "#FAC775", "text": "#EF9F27" },
+      { "id": "gray", "fill": "#444441", "stroke": "#B4B2A9", "title": "#D3D1C7", "text": "#B4B2A9" }
+    ]
+  },
+  "steps": [
+    {
+      "id": "s0",
+      "title": "步骤 1：云端服务器持有全局初始模型",
+      "label": "1 / 4 - 初始状态：各设备持有孤立本地数据",
+      "animation": "none",
+      "nodes": [
+        { "id": "server", "title": "全局模型服务器", "subtitle": "初始权重 W0", "palette": "purple" },
+        { "id": "device_a", "title": "工厂设备 A", "subtitle": "本地数据 DA", "palette": "teal" },
+        { "id": "device_b", "title": "车辆 B", "subtitle": "本地数据 DB", "palette": "teal" }
+      ],
+      "connectors": []
+    },
+    {
+      "id": "s1",
+      "title": "步骤 2：服务器下发全局模型",
+      "label": "2 / 4 - 模型下发：服务器广播全局初始权重",
+      "animation": "travel",
+      "nodes": [
+        { "id": "server", "title": "全局模型服务器", "subtitle": "广播 W0", "palette": "purple" },
+        { "id": "device_a", "title": "设备 A", "subtitle": "接收 W0", "palette": "teal" },
+        { "id": "device_b", "title": "设备 B", "subtitle": "接收 W0", "palette": "teal" }
+      ],
+      "connectors": [
+        { "from": "server", "to": "device_a", "label": "下发", "animated": true },
+        { "from": "server", "to": "device_b", "label": "下发", "animated": true }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": "步骤 3：各设备本地训练",
+      "label": "3 / 4 - 本地训练：私有数据不离开设备",
+      "animation": "pulse",
+      "nodes": [
+        { "id": "server", "title": "全局模型服务器", "subtitle": "等待更新", "palette": "purple" },
+        { "id": "device_a", "title": "设备 A", "subtitle": "梯度计算中", "palette": "amber" },
+        { "id": "device_b", "title": "设备 B", "subtitle": "梯度计算中", "palette": "amber" }
+      ],
+      "connectors": []
+    },
+    {
+      "id": "s3",
+      "title": "步骤 4：上传梯度并聚合",
+      "label": "4 / 4 - 联邦聚合：服务器合成新全局模型",
+      "animation": "pulse_travel",
+      "nodes": [
+        { "id": "server", "title": "聚合服务器", "subtitle": "生成 W1", "palette": "purple" },
+        { "id": "device_a", "title": "设备 A", "subtitle": "仅上传梯度", "palette": "teal" },
+        { "id": "device_b", "title": "设备 B", "subtitle": "仅上传梯度", "palette": "teal" }
+      ],
+      "connectors": [
+        { "from": "device_a", "to": "server", "label": "上传", "animated": true },
+        { "from": "device_b", "to": "server", "label": "上传", "animated": true }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "mappings": [
+    {
+      "legacyDiagramType": "flowchart",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["linear"],
+      "contentPrimitives": ["nodes", "edges", "labels"],
+      "compatibilityNote": "Use legacy flowchart only when strict 8-node compact SVG compatibility is required."
+    },
+    {
+      "legacyDiagramType": "knowledge_map",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["hub_spoke", "matrix"],
+      "contentPrimitives": ["nodes", "groups", "labels", "legends", "interactions"],
+      "compatibilityNote": "Use legacy knowledge_map only for existing official-style chapter-grid fixtures."
+    },
+    {
+      "legacyDiagramType": "architecture_map",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["layered"],
+      "contentPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "compatibilityNote": "Use legacy architecture_map only for existing layered SVG fixtures with nested zone grids."
+    },
+    {
+      "legacyDiagramType": "interactive_walkthrough",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["linear", "timeline"],
+      "contentPrimitives": ["nodes", "edges", "labels", "steps", "interactions"],
+      "compatibilityNote": "Use legacy interactive_walkthrough only when HTML step controls and per-step SVG states are required."
+    },
+    {
+      "legacyDiagramType": "system_loop",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["loop"],
+      "contentPrimitives": ["nodes", "edges", "labels", "legends", "interactions"],
+      "compatibilityNote": "Use legacy system_loop only for existing compact actor-signal feedback fixtures."
+    },
+    {
+      "legacyDiagramType": "module_grid",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["matrix", "dashboard"],
+      "contentPrimitives": ["nodes", "groups", "labels", "legends", "interactions"],
+      "compatibilityNote": "Use legacy module_grid only when the output must be the existing HTML card-grid component."
+    },
+    {
+      "legacyDiagramType": "agentic_pipeline",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["hub_spoke", "layered"],
+      "contentPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "compatibilityNote": "Use legacy agentic_pipeline only for existing fan-out/fan-in agent/source SVG fixtures."
+    },
+    {
+      "legacyDiagramType": "phased_pipeline",
+      "v2DiagramType": "infographic",
+      "layoutIntents": ["linear", "timeline"],
+      "contentPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "compatibilityNote": "Use legacy phased_pipeline only for existing long vertical lifecycle fixtures with phase containers."
+    }
+  ]
+}

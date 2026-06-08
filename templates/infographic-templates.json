@@ -1,0 +1,144 @@
+{
+  "templates": [
+    {
+      "id": "decision_matrix",
+      "name": "Decision Matrix",
+      "diagramType": "infographic",
+      "layoutIntent": "comparison",
+      "whenToUse": "Use for choosing between options with shared evaluation dimensions, tradeoffs, risks, or recommendations.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["recommendation", "risk", "evidence"],
+      "edgeKinds": ["contrast", "causal"],
+      "rendererNotes": [
+        "Use aligned option cards with matching internal rows.",
+        "Use a compact legend when tones distinguish recommendation, tradeoff, and risk."
+      ]
+    },
+    {
+      "id": "kpi_dashboard",
+      "name": "KPI Dashboard",
+      "diagramType": "infographic",
+      "layoutIntent": "dashboard",
+      "whenToUse": "Use for operational snapshots, metrics, status cards, active alerts, and recommended next actions.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["metric", "risk", "recommendation"],
+      "edgeKinds": ["causal", "primary"],
+      "rendererNotes": [
+        "Prioritize scan order over dense routing.",
+        "Use larger metric text and short labels."
+      ]
+    },
+    {
+      "id": "org_hierarchy",
+      "name": "Organization Hierarchy",
+      "diagramType": "infographic",
+      "layoutIntent": "hierarchy",
+      "whenToUse": "Use for org charts, ownership trees, taxonomies, responsibility maps, or nested parent-child structures.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["category", "entity", "risk"],
+      "edgeKinds": ["dependency", "causal"],
+      "rendererNotes": [
+        "Use a clear root node and aligned child rows.",
+        "Use dashed edges for escalation or optional ownership paths."
+      ]
+    },
+    {
+      "id": "cause_effect_map",
+      "name": "Cause Effect Map",
+      "diagramType": "infographic",
+      "layoutIntent": "loop",
+      "whenToUse": "Use for causal chains, contributing factors, feedback causes, symptoms, outcomes, and mitigation paths.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends"],
+      "nodeKinds": ["process", "risk", "evidence", "recommendation"],
+      "edgeKinds": ["causal", "feedback"],
+      "rendererNotes": [
+        "Keep causes on one side and effects on the other when possible.",
+        "Use label backgrounds for causal connector labels."
+      ]
+    },
+    {
+      "id": "swimlane_workflow",
+      "name": "Swimlane Workflow",
+      "diagramType": "infographic",
+      "layoutIntent": "swimlane",
+      "whenToUse": "Use when a process spans multiple actors, systems, departments, or responsibility lanes.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels"],
+      "nodeKinds": ["process", "decision", "entity", "output"],
+      "edgeKinds": ["control", "data", "dependency"],
+      "rendererNotes": [
+        "Use one group per lane.",
+        "Keep cross-lane connectors orthogonal."
+      ]
+    },
+    {
+      "id": "roadmap_timeline",
+      "name": "Roadmap Timeline",
+      "diagramType": "infographic",
+      "layoutIntent": "timeline",
+      "whenToUse": "Use for milestones, roadmap phases, release plans, maturity stages, and time-based transitions.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "steps"],
+      "nodeKinds": ["process", "output", "risk", "recommendation"],
+      "edgeKinds": ["primary", "dependency"],
+      "rendererNotes": [
+        "Use stable intervals and phase groups.",
+        "Keep dates or phase labels short."
+      ]
+    },
+    {
+      "id": "architecture_stack",
+      "name": "Architecture Stack",
+      "diagramType": "infographic",
+      "layoutIntent": "layered",
+      "whenToUse": "Use for platform layers, data stacks, service tiers, capability layers, and zone-based architecture.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["container", "entity", "process", "output"],
+      "edgeKinds": ["data", "control", "dependency"],
+      "rendererNotes": [
+        "Use full-width layer groups.",
+        "Use chips or small cards for peer components inside layers."
+      ]
+    },
+    {
+      "id": "feedback_loop",
+      "name": "Feedback Loop",
+      "diagramType": "infographic",
+      "layoutIntent": "loop",
+      "whenToUse": "Use for observe-act-learn systems, control loops, RL loops, calibration, deployment feedback, and monitoring loops.",
+      "requiredPrimitives": ["nodes", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["entity", "process", "output", "risk"],
+      "edgeKinds": ["feedback", "control", "data"],
+      "rendererNotes": [
+        "Use opposing arrows for action and feedback.",
+        "Use dashed secondary paths for optional calibration or deployment."
+      ]
+    },
+    {
+      "id": "concept_map",
+      "name": "Concept Map",
+      "diagramType": "infographic",
+      "layoutIntent": "hub_spoke",
+      "whenToUse": "Use for topic maps, knowledge systems, chapter maps, principle clusters, or a central idea with related concepts.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["category", "note", "evidence", "recommendation"],
+      "edgeKinds": ["reference", "dependency"],
+      "rendererNotes": [
+        "Place the central concept near the center or top center.",
+        "Use groups for related clusters."
+      ]
+    },
+    {
+      "id": "freeform_insight_map",
+      "name": "Freeform Insight Map",
+      "diagramType": "infographic",
+      "layoutIntent": "freeform",
+      "whenToUse": "Use for assistant responses that contain mixed signals, recommendations, risks, and evidence that do not fit a strict sequence, hierarchy, or matrix.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["evidence", "risk", "recommendation", "metric", "note"],
+      "edgeKinds": ["causal", "reference", "feedback"],
+      "rendererNotes": [
+        "Cluster related signals without forcing a symmetric layout.",
+        "Keep connector labels short and use label backgrounds or masks."
+      ]
+    }
+  ]
+}

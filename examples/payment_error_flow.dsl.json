@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "title": "Payment Error Flow",
+    "description": "Successful payment follows the main path; failed payment goes to error handling",
+    "diagramType": "flowchart",
+    "direction": "TB",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "blue",
+      "coral"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Start",
+      "color": "gray",
+      "lane": "system"
+    },
+    {
+      "id": "create",
+      "type": "action",
+      "label": "Create order",
+      "color": "blue",
+      "lane": "order"
+    },
+    {
+      "id": "pay",
+      "type": "decision",
+      "label": "Paid?",
+      "color": "blue",
+      "lane": "payment"
+    },
+    {
+      "id": "stock",
+      "type": "action",
+      "label": "Deduct stock",
+      "color": "blue",
+      "lane": "inventory"
+    },
+    {
+      "id": "notify",
+      "type": "end",
+      "label": "Notify shipment",
+      "color": "gray",
+      "lane": "warehouse"
+    },
+    {
+      "id": "cancel",
+      "type": "error",
+      "label": "Cancel order",
+      "subtitle": "Failed",
+      "color": "coral",
+      "lane": "order"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "create"
+    },
+    {
+      "from": "create",
+      "to": "pay"
+    },
+    {
+      "from": "pay",
+      "to": "stock",
+      "label": "Yes",
+      "branch": "main"
+    },
+    {
+      "from": "stock",
+      "to": "notify"
+    },
+    {
+      "from": "pay",
+      "to": "cancel",
+      "label": "Failed",
+      "branch": "right",
+      "route": "l-shape"
+    }
+  ]
+}

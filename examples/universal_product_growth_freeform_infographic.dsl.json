@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "Product Growth Insight Map",
+    "description": "A freeform infographic generated from a realistic assistant response with mixed growth signals, risks, recommendations, and evidence.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 620,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "setup_friction", "title": "Setup friction", "subtitle": "First screen asks too much", "kind": "risk", "tone": "coral" },
+      { "id": "guided_activation", "title": "Guided activation", "subtitle": "Improves completion quality", "kind": "evidence", "tone": "blue" },
+      { "id": "collaboration", "title": "Collaboration signal", "subtitle": "Three invites drive expansion", "kind": "evidence", "tone": "green" },
+      { "id": "permission_tickets", "title": "Permission tickets", "subtitle": "Admin model is unclear", "kind": "risk", "tone": "amber" },
+      { "id": "recommendation", "title": "Recommended move", "subtitle": "Simplify, invite earlier, preset permissions", "kind": "recommendation", "tone": "purple" },
+      { "id": "watch_metrics", "title": "Metrics to watch", "subtitle": "Time to shared workspace", "kind": "metric", "tone": "gray" }
+    ],
+    "groups": [
+      { "id": "signals", "title": "Mixed growth signals", "members": ["setup_friction", "guided_activation", "collaboration", "permission_tickets"], "tone": "blue" },
+      { "id": "action", "title": "Action and evidence", "members": ["recommendation", "watch_metrics"], "tone": "purple" }
+    ],
+    "edges": [
+      { "from": "setup_friction", "to": "guided_activation", "label": "Blocks", "kind": "causal" },
+      { "from": "guided_activation", "to": "recommendation", "label": "Supports", "kind": "reference" },
+      { "from": "collaboration", "to": "recommendation", "label": "Pulls earlier", "kind": "causal" },
+      { "from": "permission_tickets", "to": "recommendation", "label": "Constrains", "kind": "causal" },
+      { "from": "watch_metrics", "to": "recommendation", "label": "Validate", "kind": "feedback", "dashed": true }
+    ],
+    "labels": [
+      { "text": "Freeform intent preserves mixed insight structure.", "for": "recommendation", "tone": "neutral" }
+    ],
+    "legends": [
+      { "label": "Signal", "tone": "blue" },
+      { "label": "Risk", "tone": "coral" },
+      { "label": "Action", "tone": "purple" }
+    ]
+  },
+  "layout": {
+    "intent": "freeform",
+    "direction": "radial",
+    "density": "detailed",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["coral", "blue", "green", "amber", "purple", "gray"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "recommendation",
+      "action": "sendPrompt",
+      "prompt": "Explain the recommended product growth move."
+    },
+    {
+      "target": "watch_metrics",
+      "action": "sendPrompt",
+      "prompt": "Explain the metrics that validate this insight map."
+    }
+  ]
+}

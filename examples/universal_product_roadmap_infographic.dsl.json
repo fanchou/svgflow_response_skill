@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "title": "Product Rollout Roadmap",
+    "description": "A universal timeline infographic for phased rollout planning with milestones, risks, gates, and clickable inspection.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 560,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "discovery", "title": "Discovery", "subtitle": "Q1: map users and gaps", "kind": "process", "tone": "purple" },
+      { "id": "pilot", "title": "Pilot", "subtitle": "Q2: validate with one cohort", "kind": "process", "tone": "blue" },
+      { "id": "rollout", "title": "Controlled rollout", "subtitle": "Q3: expand with guardrails", "kind": "process", "tone": "green" },
+      { "id": "adoption", "title": "Full adoption", "subtitle": "Q4: operate at scale", "kind": "output", "tone": "amber" },
+      { "id": "risk", "title": "Readiness risk", "subtitle": "Gate failure delays next phase", "kind": "risk", "tone": "coral" }
+    ],
+    "groups": [
+      { "id": "roadmap", "title": "2026 rollout phases", "members": ["discovery", "pilot", "rollout", "adoption"], "tone": "blue" },
+      { "id": "governance", "title": "Readiness governance", "members": ["risk"], "tone": "coral" }
+    ],
+    "edges": [
+      { "from": "discovery", "to": "pilot", "label": "Gate 1", "kind": "dependency" },
+      { "from": "pilot", "to": "rollout", "label": "Gate 2", "kind": "dependency" },
+      { "from": "rollout", "to": "adoption", "label": "Gate 3", "kind": "dependency" },
+      { "from": "risk", "to": "pilot", "label": "Blocks", "kind": "causal", "dashed": true }
+    ],
+    "labels": [
+      { "text": "Timeline intent keeps time order explicit.", "for": "roadmap", "tone": "neutral" }
+    ],
+    "legends": [
+      { "label": "Phase", "tone": "blue" },
+      { "label": "Gate", "tone": "green" },
+      { "label": "Risk", "tone": "coral" }
+    ],
+    "steps": [
+      { "id": "q1", "title": "Discovery", "visibleNodes": ["discovery"] },
+      { "id": "q2", "title": "Pilot", "visibleNodes": ["pilot"] },
+      { "id": "q3", "title": "Rollout", "visibleNodes": ["rollout"] },
+      { "id": "q4", "title": "Adoption", "visibleNodes": ["adoption"] }
+    ]
+  },
+  "layout": {
+    "intent": "timeline",
+    "direction": "LR",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["purple", "blue", "green", "amber", "coral"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "pilot",
+      "action": "sendPrompt",
+      "prompt": "Explain the pilot readiness gate."
+    }
+  ]
+}

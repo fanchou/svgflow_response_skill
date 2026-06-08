@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "تدفق الدفع",
+    "description": "يدفع المستخدم الطلب، ثم يقرر النظام بين إكمال الطلب أو إظهار الخطأ",
+    "diagramType": "flowchart",
+    "direction": "TB",
+    "mode": "preview_svg",
+    "locale": "ar",
+    "textDirection": "rtl"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "blue",
+      "coral"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "بدء",
+      "color": "gray"
+    },
+    {
+      "id": "pay",
+      "type": "action",
+      "label": "إرسال الدفع",
+      "color": "blue"
+    },
+    {
+      "id": "ok",
+      "type": "decision",
+      "label": "تم الدفع؟",
+      "color": "blue"
+    },
+    {
+      "id": "done",
+      "type": "end",
+      "label": "اكتمل الطلب",
+      "color": "gray"
+    },
+    {
+      "id": "error",
+      "type": "error",
+      "label": "إظهار الخطأ",
+      "color": "coral"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "pay"
+    },
+    {
+      "from": "pay",
+      "to": "ok"
+    },
+    {
+      "from": "ok",
+      "to": "done",
+      "label": "نعم",
+      "branch": "main"
+    },
+    {
+      "from": "ok",
+      "to": "error",
+      "label": "لا",
+      "branch": "right",
+      "route": "l-shape"
+    }
+  ]
+}

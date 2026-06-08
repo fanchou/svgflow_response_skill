@@ -1,0 +1,36 @@
+{
+  "valid": [
+    {
+      "id": "long_word_explicit_fit",
+      "fixture": "tests/valid_text_fit_long_word.svg",
+      "signals": ["explicitFit", "stableLetterSpacing"]
+    },
+    {
+      "id": "cjk_locale_fit",
+      "fixture": "examples/chinese_text_fit.svg",
+      "signals": ["cjkLocale", "stableLetterSpacing"]
+    },
+    {
+      "id": "rtl_locale_fit",
+      "fixture": "examples/arabic_text_fit.svg",
+      "signals": ["rtlLocale", "stableLetterSpacing"]
+    }
+  ],
+  "invalid": [
+    {
+      "id": "unbreakable_long_word",
+      "fixture": "tests/invalid_text_fit_long_word.svg",
+      "expectedFailure": "unbreakable text"
+    },
+    {
+      "id": "negative_letter_spacing",
+      "fixture": "tests/invalid_text_fit_negative_spacing.svg",
+      "expectedFailure": "negative letter-spacing"
+    },
+    {
+      "id": "rtl_missing_direction",
+      "fixture": "tests/invalid_text_fit_missing_rtl_dir.svg",
+      "expectedFailure": "RTL"
+    }
+  ]
+}

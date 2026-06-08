@@ -1,0 +1,92 @@
+{
+  "cases": [
+    {
+      "id": "select_decision_matrix",
+      "inputType": "assistant_response",
+      "input": "Compare build, buy, and partner options across cost, speed, control, vendor risk, and maintenance effort. Recommend one option and show tradeoffs.",
+      "expectedTemplate": "decision_matrix",
+      "expectedLayoutIntent": "comparison",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_kpi_dashboard",
+      "inputType": "assistant_response",
+      "input": "Show an operational snapshot with uptime, latency, error rate, active incident count, alert severity, and a recommended mitigation action.",
+      "expectedTemplate": "kpi_dashboard",
+      "expectedLayoutIntent": "dashboard",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_org_hierarchy",
+      "inputType": "assistant_response",
+      "input": "Map the product organization hierarchy: VP owns platform, growth, and support. Each group has team leads, responsibility areas, and escalation ownership.",
+      "expectedTemplate": "org_hierarchy",
+      "expectedLayoutIntent": "hierarchy",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_cause_effect_map",
+      "inputType": "assistant_response",
+      "input": "Churn increased because onboarding is slow, activation emails are inconsistent, and support handoffs lose context. Connect causes, symptoms, impact, and mitigations.",
+      "expectedTemplate": "cause_effect_map",
+      "expectedLayoutIntent": "loop",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_swimlane_workflow",
+      "inputType": "assistant_response",
+      "input": "A support workflow crosses customer, support, engineering, and operations lanes. Customer reports, support triages, engineering fixes, operations deploys, and support closes the loop.",
+      "expectedTemplate": "swimlane_workflow",
+      "expectedLayoutIntent": "swimlane",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_roadmap_timeline",
+      "inputType": "assistant_response",
+      "input": "The rollout plan has phases in Q1, Q2, Q3, and Q4: discovery, pilot, controlled rollout, and full adoption. Each phase has milestones, gates, and risks.",
+      "expectedTemplate": "roadmap_timeline",
+      "expectedLayoutIntent": "timeline",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_architecture_stack",
+      "inputType": "assistant_response",
+      "input": "The platform is a layered architecture: channels call the API layer, API routes to services, services read and write the data layer, and observability monitors each layer.",
+      "expectedTemplate": "architecture_stack",
+      "expectedLayoutIntent": "layered",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_feedback_loop",
+      "inputType": "assistant_response",
+      "input": "A reliability loop observes incidents, prioritizes fixes, deploys mitigations, measures health, and feeds lessons back into planning using feedback paths.",
+      "expectedTemplate": "feedback_loop",
+      "expectedLayoutIntent": "loop",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_concept_map",
+      "inputType": "assistant_response",
+      "input": "Explain the central concept of product-led growth with clusters for activation, collaboration, monetization, retention, and evidence. Show related principles around the central idea.",
+      "expectedTemplate": "concept_map",
+      "expectedLayoutIntent": "hub_spoke",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_unknown_matrix_fallback",
+      "inputType": "assistant_response",
+      "input": "Prioritize experiments by impact and effort. Rank onboarding preset, invite nudges, pricing page rewrite, and admin approval changes. Use a two-axis view without creating a new diagram family.",
+      "expectedTemplate": "universal_fallback",
+      "expectedLayoutIntent": "matrix",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_unknown_freeform_fallback",
+      "inputType": "assistant_response",
+      "input": "The review contains mixed signals: stronger search intent, weak onboarding confidence, unclear admin ownership, two risks, one recommendation, and three pieces of evidence. The items are related but not sequential.",
+      "expectedTemplate": "universal_fallback",
+      "expectedLayoutIntent": "freeform",
+      "expectedDecision": "visualize"
+    }
+  ]
+}

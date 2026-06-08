@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Universal Primitive Coverage",
+    "description": "A universal infographic DSL fixture that proves reusable visual primitives: containers, nested membership, fan-out, fan-in, labeled connectors, groups, legends, steps, and interactions.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 640,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "source", "title": "Source signal", "subtitle": "One input", "kind": "entity", "tone": "gray", "parent": "intake" },
+      { "id": "parser", "title": "Parse", "subtitle": "Extract structure", "kind": "process", "tone": "purple", "parent": "intake" },
+      { "id": "layout", "title": "Layout", "subtitle": "Choose intent", "kind": "decision", "tone": "blue", "parent": "planning" },
+      { "id": "cards", "title": "Cards", "subtitle": "Grid modules", "kind": "container", "tone": "green", "parent": "rendering" },
+      { "id": "metrics", "title": "Metrics", "subtitle": "KPI blocks", "kind": "metric", "tone": "amber", "parent": "rendering" },
+      { "id": "repair", "title": "Repair", "subtitle": "Single pass fix", "kind": "recommendation", "tone": "coral", "parent": "quality" },
+      { "id": "publish", "title": "Publish", "subtitle": "Validated artifact", "kind": "output", "tone": "green", "parent": "quality" }
+    ],
+    "groups": [
+      { "id": "intake", "title": "Intake container", "members": ["source", "parser"], "tone": "gray" },
+      { "id": "planning", "title": "Planning container", "members": ["layout"], "tone": "blue" },
+      { "id": "rendering", "title": "Rendering container", "members": ["cards", "metrics"], "tone": "green" },
+      { "id": "quality", "title": "Quality container", "members": ["repair", "publish"], "tone": "coral" }
+    ],
+    "edges": [
+      { "from": "source", "to": "parser", "label": "Normalize", "kind": "data", "route": "orthogonal" },
+      { "from": "parser", "to": "layout", "label": "Intent", "kind": "control", "route": "straight" },
+      { "from": "layout", "to": "cards", "label": "Card grid", "kind": "primary", "route": "orthogonal" },
+      { "from": "layout", "to": "metrics", "label": "Metric blocks", "kind": "primary", "route": "orthogonal" },
+      { "from": "cards", "to": "publish", "label": "Rendered modules", "kind": "dependency", "route": "curved" },
+      { "from": "metrics", "to": "publish", "label": "Rendered KPIs", "kind": "dependency", "route": "curved" },
+      { "from": "repair", "to": "layout", "label": "Fix overlap", "kind": "feedback", "route": "loop", "dashed": true }
+    ],
+    "labels": [
+      { "text": "Fan-out starts at layout; fan-in ends at publish.", "for": "layout", "tone": "neutral" }
+    ],
+    "legends": [
+      { "label": "Container", "tone": "blue" },
+      { "label": "Card", "tone": "green" },
+      { "label": "Metric", "tone": "amber" },
+      { "label": "Repair", "tone": "coral" }
+    ],
+    "steps": [
+      { "id": "step_intake", "title": "Intake", "visibleNodes": ["source", "parser"] },
+      { "id": "step_plan", "title": "Plan", "visibleNodes": ["layout"] },
+      { "id": "step_render", "title": "Render", "visibleNodes": ["cards", "metrics"] },
+      { "id": "step_publish", "title": "Publish", "visibleNodes": ["publish"] }
+    ]
+  },
+  "layout": {
+    "intent": "freeform",
+    "direction": "LR",
+    "density": "detailed",
+    "nodeLimit": 16
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["gray", "purple", "blue", "green", "amber", "coral"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "layout",
+      "action": "sendPrompt",
+      "prompt": "Explain how layout intent chooses primitives."
+    },
+    {
+      "target": "publish",
+      "action": "sendPrompt",
+      "prompt": "Explain the release validation path."
+    }
+  ]
+}

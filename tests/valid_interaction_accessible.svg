@@ -1,0 +1,10 @@
+<svg width="100%" viewBox="0 0 680 260" role="img" lang="en" dir="ltr" xmlns="http://www.w3.org/2000/svg">
+<title>Accessible interaction fixture</title>
+<desc>Clickable SVG modules expose button role, keyboard access, and an accessible name.</desc>
+<defs></defs>
+<g role="button" tabindex="0" aria-label="Explain platform readiness" onclick="sendPrompt('Explain platform readiness.')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('Explain platform readiness.')}">
+<rect x="80" y="60" width="220" height="88" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+<text x="190" y="96" text-anchor="middle" dominant-baseline="central" fill="rgb(206, 203, 246)" font-size="14" font-weight="500">Readiness</text>
+<text x="190" y="120" text-anchor="middle" dominant-baseline="central" fill="rgb(175, 169, 236)" font-size="12">Named and keyboard reachable</text>
+</g>
+</svg>

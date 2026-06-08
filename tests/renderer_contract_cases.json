@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "id": "renderer_interaction_contract",
+      "file": "prompts/svg_renderer.md",
+      "requiredFragments": [
+        "role=\"button\"",
+        "tabindex=\"0\"",
+        "aria-label",
+        "onkeydown",
+        "Do not call `sendPrompt` from `<script>`"
+      ]
+    },
+    {
+      "id": "renderer_text_fit_contract",
+      "file": "prompts/svg_renderer.md",
+      "requiredFragments": [
+        "data-fit",
+        "textLength",
+        "Do not use negative letter spacing",
+        "Long unbreakable labels"
+      ]
+    },
+    {
+      "id": "renderer_browser_metrics_contract",
+      "file": "prompts/svg_renderer.md",
+      "requiredFragments": [
+        "browser render metrics",
+        "no horizontal overflow",
+        "32px click target",
+        "single active step",
+        "width=\"100%\""
+      ]
+    },
+    {
+      "id": "repair_interaction_contract",
+      "file": "validators/repair_rules.md",
+      "requiredFragments": [
+        "role=\"button\"",
+        "tabindex=\"0\"",
+        "aria-label",
+        "Enter or Space"
+      ]
+    },
+    {
+      "id": "repair_text_fit_contract",
+      "file": "validators/repair_rules.md",
+      "requiredFragments": [
+        "data-fit",
+        "textLength",
+        "negative letter spacing",
+        "locale and direction"
+      ]
+    },
+    {
+      "id": "repair_browser_metrics_contract",
+      "file": "validators/repair_rules.md",
+      "requiredFragments": [
+        "browser render metrics",
+        "horizontal overflow",
+        "32px",
+        "single active step"
+      ]
+    },
+    {
+      "id": "template_font_contract",
+      "file": "templates/preview_svg.template.svg",
+      "requiredFragments": [
+        "Noto Sans CJK SC",
+        "Noto Sans Arabic",
+        "Noto Sans Hebrew"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "title": "IoT 数据湖分层架构",
+    "description": "从设备接入到消费层的五层结构",
+    "diagramType": "architecture_map",
+    "mode": "html_preview",
+    "locale": "zh-CN",
+    "textDirection": "ltr",
+    "viewBox": {
+      "width": 680,
+      "height": 680
+    }
+  },
+  "theme": {
+    "palette": [
+      { "id": "coral", "fill": "#712B13", "stroke": "#F0997B", "title": "#F5C4B3", "text": "#F0997B" },
+      { "id": "amber", "fill": "#633806", "stroke": "#EF9F27", "title": "#FAC775", "text": "#EF9F27" },
+      { "id": "teal", "fill": "#085041", "stroke": "#5DCAA5", "title": "#9FE1CB", "text": "#5DCAA5" },
+      { "id": "purple", "fill": "#3C3489", "stroke": "#AFA9EC", "title": "#CECBF6", "text": "#AFA9EC" },
+      { "id": "gray", "fill": "#444441", "stroke": "#B4B2A9", "title": "#D3D1C7", "text": "#B4B2A9" }
+    ]
+  },
+  "layers": [
+    {
+      "id": "ingestion",
+      "title": "接入层",
+      "subtitle": "MQTT · Kafka · HTTP · CoAP · OPC-UA",
+      "palette": "coral",
+      "layout": "chip_row",
+      "items": [
+        { "id": "queue", "title": "消息队列缓冲", "actionPrompt": "IoT 数据接入层如何做协议适配和背压控制？" },
+        { "id": "device", "title": "设备连接管理", "actionPrompt": "IoT 接入层如何做设备认证和连接管理？" },
+        { "id": "schema", "title": "Schema 注册", "actionPrompt": "IoT 数据接入时如何做格式标准化和 Schema 注册？" }
+      ]
+    },
+    {
+      "id": "stream",
+      "title": "流处理层",
+      "subtitle": "实时计算 · 异常检测 · 数据清洗 · 特征提取",
+      "palette": "amber",
+      "layout": "chip_row",
+      "items": [
+        { "id": "window", "title": "窗口聚合 / CEP", "actionPrompt": "IoT 流处理中窗口聚合和 CEP 复杂事件处理如何实现？" },
+        { "id": "quality", "title": "质量校验 / 过滤", "actionPrompt": "IoT 流数据的实时质量校验和异常过滤策略？" },
+        { "id": "dedupe", "title": "去重 / 迟到处理", "actionPrompt": "IoT 实时流中如何做数据去重和迟到数据处理？" }
+      ]
+    },
+    {
+      "id": "storage",
+      "title": "存储层（三区架构）",
+      "palette": "teal",
+      "layout": "zone_grid",
+      "items": [
+        { "id": "bronze", "title": "Bronze 区", "subtitle": "原始 / 不可变", "details": ["Parquet · Avro", "全量保留 3-7 年", "按设备/日期分区"], "palette": "coral", "actionPrompt": "数据湖 Bronze 区原始数据存储格式和生命周期策略？" },
+        { "id": "silver", "title": "Silver 区", "subtitle": "清洗 / 标准化", "details": ["Delta Lake · Iceberg", "支持 ACID 事务", "时间旅行查询"], "palette": "amber", "actionPrompt": "数据湖 Silver 区清洗和标准化的具体处理步骤？" },
+        { "id": "gold", "title": "Gold 区", "subtitle": "聚合 / 业务指标", "details": ["列式 / 压缩", "物化视图", "低延迟查询"], "palette": "teal", "actionPrompt": "数据湖 Gold 区聚合指标如何设计和更新？" }
+      ]
+    },
+    {
+      "id": "serving",
+      "title": "服务层",
+      "subtitle": "统一查询 · 数据目录 · 访问控制 · 血缘追踪",
+      "palette": "purple",
+      "layout": "chip_row",
+      "items": [
+        { "id": "sql", "title": "Trino / Spark SQL", "actionPrompt": "IoT 数据湖统一查询引擎如何选型？" },
+        { "id": "catalog", "title": "数据目录 / 血缘", "actionPrompt": "IoT 数据湖数据目录和元数据管理如何实现？" },
+        { "id": "acl", "title": "行列级权限控制", "actionPrompt": "IoT 数据湖行列级别的细粒度访问控制设计？" }
+      ]
+    },
+    {
+      "id": "consumers",
+      "title": "消费层",
+      "palette": "gray",
+      "layout": "chip_row",
+      "items": [
+        { "id": "ml", "title": "AI / ML", "actionPrompt": "IoT 数据湖如何对接 AI/ML 训练平台？" },
+        { "id": "bi", "title": "BI 报表", "actionPrompt": "IoT 数据湖 BI 报表接入的最佳实践？" },
+        { "id": "twin", "title": "数字孪生", "actionPrompt": "IoT 数字孪生如何消费数据湖数据？" },
+        { "id": "monitor", "title": "实时监控", "actionPrompt": "IoT 平台实时监控大屏如何对接数据湖？" },
+        { "id": "api", "title": "开放 API", "actionPrompt": "IoT 数据湖开放 API 设计规范？" }
+      ]
+    }
+  ]
+}

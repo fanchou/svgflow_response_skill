@@ -1,0 +1,33 @@
+<h2 class="sr-only">Module grid fixture missing overflow protection</h2>
+<style>
+.mod-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.mod-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem; }
+.mod-title { font-size:14px; font-weight:500; color:var(--color-text-primary); }
+.mod-sub { font-size:12px; color:var(--color-text-secondary); }
+.mod-item { font-size:12px; color:var(--color-text-secondary); }
+.mod-label { display:inline-block; font-size:11px; }
+.tone-info { background:var(--color-background-info); color:var(--color-text-info); }
+.tone-warn { background:var(--color-background-warning); color:var(--color-text-warning); }
+.tone-ok { background:var(--color-background-success); color:var(--color-text-success); }
+.tone-neutral { background:var(--color-background-secondary); color:var(--color-text-secondary); }
+.mod-btn { font-size:12px; min-height:32px; padding:6px 12px; width:100%; }
+@media (max-width: 560px) { .mod-grid { grid-template-columns:1fr; } }
+</style>
+<div class="mod-grid">
+<div class="mod-card">
+<div class="mod-title">Module A</div>
+<div class="mod-sub">Missing overflow handling</div>
+<div class="mod-item"><span class="mod-label tone-info">A</span>LongUnbreakableIdentifierThatNeedsWrappingLongUnbreakableIdentifierThatNeedsWrappingLongUnbreakableIdentifierThatNeedsWrapping</div>
+<div class="mod-item"><span class="mod-label tone-warn">B</span>Detail</div>
+<div class="mod-item"><span class="mod-label tone-ok">C</span>Detail</div>
+<button class="mod-btn" onclick="sendPrompt('Explain module A')">Open</button>
+</div>
+<div class="mod-card">
+<div class="mod-title">Module B</div>
+<div class="mod-sub">Missing overflow handling</div>
+<div class="mod-item"><span class="mod-label tone-neutral">A</span>Detail</div>
+<div class="mod-item"><span class="mod-label tone-info">B</span>Detail</div>
+<div class="mod-item"><span class="mod-label tone-warn">C</span>Detail</div>
+<button class="mod-btn" onclick="sendPrompt('Explain module B')">Open</button>
+</div>
+</div>

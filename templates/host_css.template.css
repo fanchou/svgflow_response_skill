@@ -1,0 +1,103 @@
+.svgflow {
+  --text-tertiary: #667085;
+  --arr: #667085;
+  --gray-fill: #f3f4f6;
+  --gray-stroke: #9ca3af;
+  --gray-text: #374151;
+  --blue-fill: #eff6ff;
+  --blue-stroke: #60a5fa;
+  --blue-text: #1e3a8a;
+  --green-fill: #ecfdf5;
+  --green-stroke: #34d399;
+  --green-text: #065f46;
+  --amber-fill: #fffbeb;
+  --amber-stroke: #f59e0b;
+  --amber-text: #78350f;
+  --coral-fill: #fff1f2;
+  --coral-stroke: #fb7185;
+  --coral-text: #9f1239;
+  --purple-fill: #f5f3ff;
+  --purple-stroke: #a78bfa;
+  --purple-text: #4c1d95;
+  --teal-fill: #f0fdfa;
+  --teal-stroke: #2dd4bf;
+  --teal-text: #134e4a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .svgflow {
+    --text-tertiary: #9ca3af;
+    --arr: #94a3b8;
+    --gray-fill: #374151;
+    --gray-stroke: #9ca3af;
+    --gray-text: #f9fafb;
+    --blue-fill: #1e3a8a;
+    --blue-stroke: #93c5fd;
+    --blue-text: #eff6ff;
+    --green-fill: #064e3b;
+    --green-stroke: #6ee7b7;
+    --green-text: #ecfdf5;
+    --amber-fill: #78350f;
+    --amber-stroke: #fbbf24;
+    --amber-text: #fffbeb;
+    --coral-fill: #881337;
+    --coral-stroke: #fda4af;
+    --coral-text: #fff1f2;
+    --purple-fill: #4c1d95;
+    --purple-stroke: #c4b5fd;
+    --purple-text: #f5f3ff;
+    --teal-fill: #134e4a;
+    --teal-stroke: #5eead4;
+    --teal-text: #f0fdfa;
+  }
+}
+
+.svgflow .th {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", "Noto Sans CJK SC", "Noto Sans Arabic", "Noto Sans Hebrew", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+
+.svgflow .t {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", "Noto Sans CJK SC", "Noto Sans Arabic", "Noto Sans Hebrew", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+
+.svgflow .ts {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", "Noto Sans CJK SC", "Noto Sans Arabic", "Noto Sans Hebrew", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+
+.svgflow .arr {
+  stroke: var(--arr);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.svgflow .label {
+  fill: var(--text-tertiary);
+}
+
+.svgflow .node > rect,
+.svgflow .node > polygon {
+  stroke-width: 0.5;
+}
+
+.svgflow .c-gray > rect, .svgflow .c-gray > polygon { fill: var(--gray-fill); stroke: var(--gray-stroke); }
+.svgflow .c-gray > text { fill: var(--gray-text); }
+.svgflow .c-blue > rect, .svgflow .c-blue > polygon { fill: var(--blue-fill); stroke: var(--blue-stroke); }
+.svgflow .c-blue > text { fill: var(--blue-text); }
+.svgflow .c-green > rect, .svgflow .c-green > polygon { fill: var(--green-fill); stroke: var(--green-stroke); }
+.svgflow .c-green > text { fill: var(--green-text); }
+.svgflow .c-amber > rect, .svgflow .c-amber > polygon { fill: var(--amber-fill); stroke: var(--amber-stroke); }
+.svgflow .c-amber > text { fill: var(--amber-text); }
+.svgflow .c-coral > rect, .svgflow .c-coral > polygon { fill: var(--coral-fill); stroke: var(--coral-stroke); }
+.svgflow .c-coral > text { fill: var(--coral-text); }
+.svgflow .c-purple > rect, .svgflow .c-purple > polygon { fill: var(--purple-fill); stroke: var(--purple-stroke); }
+.svgflow .c-purple > text { fill: var(--purple-text); }
+.svgflow .c-teal > rect, .svgflow .c-teal > polygon { fill: var(--teal-fill); stroke: var(--teal-stroke); }
+.svgflow .c-teal > text { fill: var(--teal-text); }

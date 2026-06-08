@@ -1,0 +1,31 @@
+{
+  "valid": [
+    {
+      "id": "accessible_clickable_svg_group",
+      "fixture": "tests/valid_interaction_accessible.svg",
+      "signals": ["namedControls", "keyboardAccess", "safePromptPlacement", "safePromptEscaping"]
+    }
+  ],
+  "invalid": [
+    {
+      "id": "missing_button_role",
+      "fixture": "tests/invalid_interaction_missing_role.svg",
+      "expectedFailure": "role='button'"
+    },
+    {
+      "id": "missing_keyboard_handler",
+      "fixture": "tests/invalid_interaction_missing_keyboard.svg",
+      "expectedFailure": "keyboard handler"
+    },
+    {
+      "id": "detached_script_prompt",
+      "fixture": "tests/invalid_interaction_script_prompt.svg",
+      "expectedFailure": "script"
+    },
+    {
+      "id": "unescaped_prompt_quote",
+      "fixture": "tests/invalid_interaction_unescaped_prompt_quote.svg",
+      "expectedFailure": "escaped prompt string"
+    }
+  ]
+}

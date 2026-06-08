@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "数字孪生结合强化学习的四大工程模块",
+    "description": "奖励函数设计、算法选型、Sim2Real 迁移、安全约束",
+    "diagramType": "module_grid",
+    "mode": "html_preview",
+    "locale": "zh-CN",
+    "textDirection": "ltr"
+  },
+  "modules": [
+    {
+      "id": "reward",
+      "title": "奖励函数设计",
+      "subtitle": "最难、最影响结果的部分",
+      "icon": "ti-trophy",
+      "items": [
+        { "label": "目标项", "tone": "info", "text": "能耗最小 / 产量最大 / 寿命最长" },
+        { "label": "惩罚项", "tone": "warn", "text": "超温、振动超限、越安全边界" },
+        { "label": "塑形项", "tone": "neutral", "text": "中间奖励引导探索方向" },
+        { "label": "技巧", "tone": "ok", "text": "归一化奖励，避免量纲失衡" },
+        { "label": "陷阱", "tone": "warn", "text": "奖励欺骗导致高奖励但违背真实目标" }
+      ],
+      "action": {
+        "label": "奖励欺骗的解法 ↗",
+        "prompt": "RL 奖励函数设计中奖励欺骗问题如何避免？"
+      }
+    },
+    {
+      "id": "algorithm",
+      "title": "算法选型",
+      "subtitle": "连续动作空间是 IoT 控制的主战场",
+      "icon": "ti-cpu",
+      "items": [
+        { "label": "SAC", "tone": "info", "text": "优先选择，样本效率高，自动调熵" },
+        { "label": "TD3", "tone": "info", "text": "确定性策略，低方差，工业稳定性好" },
+        { "label": "PPO", "tone": "neutral", "text": "离散和连续均可，训练稳定，调参容易" },
+        { "label": "MBPO", "tone": "ok", "text": "模型辅助策略优化，样本效率最高" },
+        { "label": "避免", "tone": "warn", "text": "DQN 不适合连续控制" }
+      ],
+      "action": {
+        "label": "SAC 算法详解 ↗",
+        "prompt": "SAC 算法原理和在工业控制中的具体实现步骤"
+      }
+    },
+    {
+      "id": "sim2real",
+      "title": "Sim2Real 迁移",
+      "subtitle": "孪生体训练好，真机却不好用",
+      "icon": "ti-transfer",
+      "items": [
+        { "label": "根因", "tone": "warn", "text": "孪生体与真实设备存在建模误差" },
+        { "label": "域随机化", "tone": "info", "text": "训练时扰动摩擦系数、延迟、噪声" },
+        { "label": "域适应", "tone": "info", "text": "对齐孪生和真实环境的状态分布" },
+        { "label": "渐进部署", "tone": "ok", "text": "影子模式到小范围再到全量" },
+        { "label": "在线微调", "tone": "neutral", "text": "真实数据持续微调孪生体参数" }
+      ],
+      "action": {
+        "label": "域随机化实现 ↗",
+        "prompt": "Sim2Real 迁移的域随机化具体如何在 IoT 孪生体中实现？"
+      }
+    },
+    {
+      "id": "safety",
+      "title": "安全约束层",
+      "subtitle": "RL 不能直接接触真实设备",
+      "icon": "ti-shield",
+      "items": [
+        { "label": "硬约束", "tone": "warn", "text": "过热、过压、过载立即截停" },
+        { "label": "软约束", "tone": "info", "text": "CPO/CMDP 在训练中内嵌" },
+        { "label": "运行时守卫", "tone": "neutral", "text": "策略输出动作前经安全校验器过滤" },
+        { "label": "影子模式", "tone": "ok", "text": "新策略先并行运行，观察后切换" },
+        { "label": "回退机制", "tone": "info", "text": "性能下降自动回滚到上一版本" }
+      ],
+      "action": {
+        "label": "安全 RL 详解 ↗",
+        "prompt": "约束马尔可夫决策过程 CMDP 在安全强化学习中如何实现？"
+      }
+    }
+  ]
+}

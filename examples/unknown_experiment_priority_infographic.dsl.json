@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Experiment Priority Matrix",
+    "description": "A universal fallback infographic for prioritizing experiments by impact and effort without adding a new diagram family.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 520,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      {"id": "quick_wins", "title": "Quick wins", "subtitle": "High impact, low effort", "kind": "cluster", "tone": "green", "items": ["Trial reminder", "Setup checklist"]},
+      {"id": "strategic_bets", "title": "Strategic bets", "subtitle": "High impact, high effort", "kind": "cluster", "tone": "purple", "items": ["Team workspace", "Usage insights"]},
+      {"id": "fill_ins", "title": "Fill-ins", "subtitle": "Low impact, low effort", "kind": "cluster", "tone": "blue", "items": ["Copy polish", "Tooltip cleanup"]},
+      {"id": "defer", "title": "Defer", "subtitle": "Low impact, high effort", "kind": "cluster", "tone": "amber", "items": ["Custom theming", "Complex import"]},
+      {"id": "decision", "title": "Recommended move", "subtitle": "Ship quick wins first", "kind": "recommendation", "tone": "coral"}
+    ],
+    "groups": [
+      {"id": "matrix", "title": "Impact vs effort", "members": ["quick_wins", "strategic_bets", "fill_ins", "defer"], "tone": "blue"}
+    ],
+    "edges": [
+      {"from": "quick_wins", "to": "decision", "label": "Prioritize", "kind": "recommendation", "route": "orthogonal"},
+      {"from": "strategic_bets", "to": "decision", "label": "Sequence later", "kind": "dependency", "route": "orthogonal"},
+      {"from": "fill_ins", "to": "quick_wins", "label": "Bundle", "kind": "support", "route": "straight"},
+      {"from": "defer", "to": "strategic_bets", "label": "Revisit", "kind": "feedback", "route": "straight"}
+    ],
+    "labels": [
+      {"text": "Use matrix fallback when the response compares items on two axes.", "for": "matrix", "tone": "neutral"}
+    ],
+    "legends": [
+      {"label": "Ship now", "tone": "green"},
+      {"label": "Plan next", "tone": "purple"},
+      {"label": "Delay", "tone": "amber"}
+    ]
+  },
+  "layout": {
+    "intent": "matrix",
+    "direction": "TB",
+    "density": "standard",
+    "nodeLimit": 16
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["green", "purple", "blue", "amber", "coral"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "decision",
+      "action": "sendPrompt",
+      "prompt": "Which quick-win experiments should ship first?"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "Flutter 渲染全流程",
+    "description": "Flutter 从 Vsync 信号到 GPU 像素的完整渲染管线，包含 Build、Layout、Paint、Composite 各阶段",
+    "diagramType": "phased_pipeline",
+    "mode": "html_preview",
+    "locale": "zh-CN",
+    "textDirection": "ltr",
+    "viewBox": {
+      "width": 680,
+      "height": 1080
+    }
+  },
+  "spine": [
+    { "id": "vsync", "title": "① Vsync 信号", "subtitle": "平台每帧回调", "palette": "gray", "actionPrompt": "Flutter 中 Vsync 信号是什么，如何触发帧渲染？" },
+    { "id": "draw_frame", "title": "② WidgetsBinding.drawFrame()", "subtitle": "整个渲染管线的入口", "palette": "purple", "actionPrompt": "WidgetsBinding.drawFrame() 做了什么？" },
+    { "id": "compositing_bits", "title": "PipelineOwner.flushCompositingBits()", "subtitle": "更新合成位 / 确定哪些节点需要独立 Layer", "palette": "gray", "actionPrompt": "flushCompositingBits 有什么作用？什么是 compositing layer？" },
+    { "id": "composite", "title": "RenderView.compositeFrame()", "subtitle": "Scene → Engine → GPU 栅格化", "palette": "amber", "actionPrompt": "renderView.compositeFrame() 如何将 Layer Tree 发送给 GPU？" },
+    { "id": "semantics", "title": "PipelineOwner.flushSemantics()", "subtitle": "无障碍语义树 → 操作系统", "palette": "gray", "actionPrompt": "Flutter flushSemantics 是什么？和无障碍有什么关系？" },
+    { "id": "gpu", "title": "GPU / Skia / Impeller", "subtitle": "光栅化 → 屏幕像素", "palette": "amber", "actionPrompt": "Flutter GPU 线程和 UI 线程是如何协作的？" }
+  ],
+  "phases": [
+    {
+      "id": "build",
+      "title": "Build 阶段",
+      "palette": "purple",
+      "nodes": [
+        { "id": "widget_tree", "title": "Widget Tree", "subtitle": "不可变描述 / 轻量", "palette": "purple", "actionPrompt": "Flutter Widget Tree 是什么？它有什么特点？" },
+        { "id": "element_tree", "title": "Element Tree", "subtitle": "长生命周期 / 协调", "palette": "teal", "actionPrompt": "Flutter Element Tree 的作用是什么？" },
+        { "id": "render_object_tree", "title": "RenderObject Tree", "subtitle": "可变 / 真实渲染", "palette": "coral", "actionPrompt": "Flutter RenderObject Tree 负责哪些工作？" },
+        { "id": "build_scope", "title": "BuildOwner.buildScope() — 重建脏 Element", "palette": "purple", "actionPrompt": "BuildOwner.buildScope() 是如何工作的？" }
+      ],
+      "localFlows": [
+        { "from": "widget_tree", "to": "element_tree" },
+        { "from": "element_tree", "to": "render_object_tree" }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": "Layout 阶段",
+      "palette": "teal",
+      "nodes": [
+        { "id": "flush_layout", "title": "PipelineOwner.flushLayout()", "subtitle": "约束向下传 / 尺寸向上返", "palette": "teal", "actionPrompt": "Flutter flushLayout 是怎么进行约束传递和尺寸计算的？" }
+      ],
+      "localFlows": [
+        { "from": "flush_layout", "to": "flush_layout", "label": "constraints down / size up" }
+      ]
+    },
+    {
+      "id": "paint",
+      "title": "Paint 阶段",
+      "palette": "coral",
+      "nodes": [
+        { "id": "flush_paint", "title": "PipelineOwner.flushPaint()", "palette": "coral", "actionPrompt": "Flutter flushPaint 是如何把 RenderObject 绘制成 Layer Tree 的？" },
+        { "id": "painting_context", "title": "PaintingContext", "subtitle": "持有 Canvas", "palette": "coral", "actionPrompt": "PaintingContext 和 Canvas 有什么区别？" },
+        { "id": "layer_tree", "title": "Layer Tree", "subtitle": "Picture / Offset / Clip…", "palette": "coral", "actionPrompt": "Flutter 的 Layer Tree 结构是什么？有哪些 Layer 类型？" }
+      ],
+      "localFlows": [
+        { "from": "painting_context", "to": "layer_tree" },
+        { "from": "layer_tree", "to": "flush_paint" }
+      ]
+    }
+  ],
+  "sideNotes": [
+    { "id": "finalize_tree", "title": "finalizeTree()", "subtitle": "销毁失活 Element", "palette": "gray", "actionPrompt": "buildOwner.finalizeTree() 做了什么？" }
+  ],
+  "legend": [
+    { "label": "Widget / Element", "palette": "purple" },
+    { "label": "Layout", "palette": "teal" },
+    { "label": "Paint", "palette": "coral" },
+    { "label": "Composite / GPU", "palette": "amber" },
+    { "label": "辅助 / 无障碍", "palette": "gray" }
+  ],
+  "footer": "点击节点可提问"
+}

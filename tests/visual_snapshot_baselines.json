@@ -1,0 +1,70 @@
+{
+  "snapshots": [
+    {
+      "id": "platform_hub_spoke_snapshot",
+      "fixture": "examples/universal_platform_infographic.interactive.svg",
+      "minRects": 8,
+      "minPaths": 5,
+      "minTexts": 14,
+      "minLegendSwatches": 3,
+      "minClickable": 2,
+      "minDistinctFills": 4,
+      "requiredFragments": ["Grounded result", "Grounded answer", "Retrieval layer"]
+    },
+    {
+      "id": "architecture_stack_snapshot",
+      "fixture": "examples/universal_architecture_stack_infographic.interactive.svg",
+      "minRects": 10,
+      "minPaths": 4,
+      "minTexts": 17,
+      "minLegendSwatches": 3,
+      "minClickable": 1,
+      "minDistinctFills": 4,
+      "requiredFragments": ["Runtime stack", "Observability", "Read/write"]
+    },
+    {
+      "id": "freeform_growth_snapshot",
+      "fixture": "examples/universal_product_growth_freeform_infographic.interactive.svg",
+      "minRects": 12,
+      "minPaths": 5,
+      "minTexts": 18,
+      "minLegendSwatches": 3,
+      "minClickable": 2,
+      "minDistinctFills": 5,
+      "requiredFragments": ["Mixed growth signals", "Recommended move", "Metrics to watch"]
+    },
+    {
+      "id": "timeline_roadmap_snapshot",
+      "fixture": "examples/universal_product_roadmap_infographic.interactive.svg",
+      "minRects": 12,
+      "minPaths": 5,
+      "minTexts": 22,
+      "minLegendSwatches": 3,
+      "minClickable": 1,
+      "minDistinctFills": 5,
+      "requiredFragments": ["2026 rollout phases", "Readiness risk", "Gate 3"]
+    },
+    {
+      "id": "cause_effect_snapshot",
+      "fixture": "examples/universal_churn_cause_effect_infographic.interactive.svg",
+      "minRects": 12,
+      "minPaths": 5,
+      "minTexts": 20,
+      "minLegendSwatches": 3,
+      "minClickable": 1,
+      "minDistinctFills": 5,
+      "requiredFragments": ["Contributing causes", "Mitigation plan", "Predicts"]
+    },
+    {
+      "id": "feedback_loop_snapshot",
+      "fixture": "examples/universal_reliability_feedback_infographic.interactive.svg",
+      "minRects": 12,
+      "minPaths": 5,
+      "minTexts": 18,
+      "minLegendSwatches": 3,
+      "minClickable": 1,
+      "minDistinctFills": 5,
+      "requiredFragments": ["Reliability operating loop", "Feed lessons back", "Insight"]
+    }
+  ]
+}

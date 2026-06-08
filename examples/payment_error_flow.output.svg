@@ -1,0 +1,55 @@
+<svg class="svgflow" data-svgflow-id="payment-error-flow" width="100%" viewBox="0 0 680 444" xmlns="http://www.w3.org/2000/svg" role="img" xml:lang="en-US" lang="en-US" dir="ltr">
+  <title>Payment Error Flow</title>
+  <desc>Successful payment follows the main path; failed payment goes to error handling</desc>
+  <defs>
+    <marker id="svgflow-payment-error-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .svgflow { --text-tertiary: #667085; --arr: #667085; --gray-fill: #f3f4f6; --gray-stroke: #9ca3af; --gray-text: #374151; --blue-fill: #eff6ff; --blue-stroke: #60a5fa; --blue-text: #1e3a8a; --coral-fill: #fff1f2; --coral-stroke: #fb7185; --coral-text: #9f1239; }
+    .th { font-size: 14px; font-weight: 500; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
+    .ts { font-size: 12px; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
+    .arr { stroke: var(--arr); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .label { fill: var(--text-tertiary); }
+    .node > rect, .node > polygon { stroke-width: 0.5; }
+    .c-gray > rect, .c-gray > polygon { fill: var(--gray-fill); stroke: var(--gray-stroke); }
+    .c-gray > text { fill: var(--gray-text); }
+    .c-blue > rect, .c-blue > polygon { fill: var(--blue-fill); stroke: var(--blue-stroke); }
+    .c-blue > text { fill: var(--blue-text); }
+    .c-coral > rect, .c-coral > polygon { fill: var(--coral-fill); stroke: var(--coral-stroke); }
+    .c-coral > text { fill: var(--coral-text); }
+  </style>
+  <line x1="340" y1="84" x2="340" y2="114" class="arr" marker-end="url(#svgflow-payment-error-flow-arrow)"/>
+  <line x1="340" y1="158" x2="340" y2="188" class="arr" marker-end="url(#svgflow-payment-error-flow-arrow)"/>
+  <line x1="340" y1="272" x2="340" y2="302" class="arr" marker-end="url(#svgflow-payment-error-flow-arrow)"/>
+  <line x1="340" y1="346" x2="340" y2="376" class="arr" marker-end="url(#svgflow-payment-error-flow-arrow)"/>
+  <path d="M 450 230 L 560 230 L 560 202" fill="none" class="arr" marker-end="url(#svgflow-payment-error-flow-arrow)"/>
+  <g class="node c-gray">
+    <rect x="255" y="40" width="170" height="44" rx="22"/>
+    <text class="th" x="340" y="62" text-anchor="middle" dominant-baseline="central">Start</text>
+  </g>
+  <g class="node c-blue">
+    <rect x="190" y="116" width="300" height="44" rx="8"/>
+    <text class="th" x="340" y="138" text-anchor="middle" dominant-baseline="central">Create order</text>
+  </g>
+  <g class="node c-blue">
+    <polygon points="340,188 450,230 340,272 230,230"/>
+    <text class="th" x="340" y="230" text-anchor="middle" dominant-baseline="central">Paid?</text>
+  </g>
+  <g class="node c-blue">
+    <rect x="190" y="304" width="300" height="44" rx="8"/>
+    <text class="th" x="340" y="326" text-anchor="middle" dominant-baseline="central">Deduct stock</text>
+  </g>
+  <g class="node c-gray">
+    <rect x="255" y="378" width="170" height="44" rx="22"/>
+    <text class="th" x="340" y="400" text-anchor="middle" dominant-baseline="central">Notify shipment</text>
+  </g>
+  <g class="node c-coral">
+    <rect x="480" y="174" width="160" height="56" rx="8"/>
+    <text class="th" x="560" y="194" text-anchor="middle" dominant-baseline="central">Cancel order</text>
+    <text class="ts" x="560" y="214" text-anchor="middle" dominant-baseline="central">Payment failed</text>
+  </g>
+  <text class="ts label" x="354" y="292">Yes</text>
+  <text class="ts label" x="462" y="220">Failed</text>
+</svg>

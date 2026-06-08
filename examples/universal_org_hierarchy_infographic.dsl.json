@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "title": "Organization Hierarchy Infographic",
+    "description": "A universal infographic for a three-level ownership tree with categories, teams, and responsibilities.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 500,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      {
+        "id": "platform",
+        "title": "Platform Owner",
+        "subtitle": "Strategy and governance",
+        "kind": "category",
+        "tone": "purple"
+      },
+      {
+        "id": "product",
+        "title": "Product",
+        "subtitle": "Roadmap and outcomes",
+        "kind": "category",
+        "tone": "blue"
+      },
+      {
+        "id": "engineering",
+        "title": "Engineering",
+        "subtitle": "Delivery and reliability",
+        "kind": "category",
+        "tone": "green"
+      },
+      {
+        "id": "design",
+        "title": "Design",
+        "subtitle": "Experience quality",
+        "kind": "category",
+        "tone": "amber"
+      },
+      {
+        "id": "risk",
+        "title": "Risk review",
+        "subtitle": "Escalation path",
+        "kind": "risk",
+        "tone": "coral"
+      }
+    ],
+    "groups": [
+      {
+        "id": "teams",
+        "title": "Delivery teams",
+        "members": ["product", "engineering", "design"],
+        "tone": "blue"
+      }
+    ],
+    "edges": [
+      {
+        "from": "platform",
+        "to": "product",
+        "label": "Owns outcomes",
+        "kind": "dependency"
+      },
+      {
+        "from": "platform",
+        "to": "engineering",
+        "label": "Sets guardrails",
+        "kind": "dependency"
+      },
+      {
+        "from": "platform",
+        "to": "design",
+        "label": "Aligns quality",
+        "kind": "dependency"
+      },
+      {
+        "from": "engineering",
+        "to": "risk",
+        "label": "Escalate",
+        "kind": "causal",
+        "dashed": true
+      }
+    ],
+    "legends": [
+      {
+        "label": "Owner",
+        "tone": "purple"
+      },
+      {
+        "label": "Team",
+        "tone": "blue"
+      },
+      {
+        "label": "Risk",
+        "tone": "coral"
+      }
+    ]
+  },
+  "layout": {
+    "intent": "hierarchy",
+    "direction": "TB",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["purple", "blue", "green", "amber", "coral"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "platform",
+      "action": "sendPrompt",
+      "prompt": "Explain the governance responsibility of the platform owner."
+    }
+  ]
+}

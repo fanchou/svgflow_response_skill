@@ -1,0 +1,31 @@
+{
+  "name": "svgflow-response-skill",
+  "version": "1.36.0",
+  "description": "Convert assistant responses into compact, valid, previewable SVG or HTML infographics.",
+  "entry": "SKILL.md",
+  "type": "response-to-infographic",
+  "default_output_mode": "preview_svg",
+  "max_nodes": 8,
+  "supported_modes": [
+    "preview_svg",
+    "raw_svg",
+    "html_preview",
+    "component_ready"
+  ],
+  "supported_diagrams": [
+    "infographic",
+    "flowchart",
+    "knowledge_map",
+    "architecture_map",
+    "interactive_walkthrough",
+    "system_loop",
+    "module_grid",
+    "agentic_pipeline",
+    "phased_pipeline"
+  ],
+  "authoring_notes": [
+    "The input should be an assistant response, not the raw user prompt.",
+    "Always build the selected infographic DSL before rendering SVG or HTML.",
+    "Do not invent key business logic not present in the source response."
+  ]
+}

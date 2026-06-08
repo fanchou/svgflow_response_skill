@@ -1,0 +1,36 @@
+{
+  "valid": [
+    {
+      "id": "walkthrough_render_surface",
+      "fixture": "examples/chinese_federated_learning.walkthrough.html",
+      "type": "walkthrough",
+      "signals": ["scalableSvg", "controlTargetSize", "overflowProtection", "deterministicInitialState", "motionGuard"]
+    },
+    {
+      "id": "module_grid_render_surface",
+      "fixture": "examples/chinese_rl_engineering.module_grid.html",
+      "type": "module_grid",
+      "signals": ["responsiveGrid", "controlTargetSize", "overflowProtection", "stableCards", "hostTokenFallback"]
+    }
+  ],
+  "invalid": [
+    {
+      "id": "walkthrough_fixed_width_svg",
+      "fixture": "tests/invalid_render_surface_fixed_svg.html",
+      "type": "walkthrough",
+      "expectedFailure": "embedded SVGs must scale with width=\"100%\""
+    },
+    {
+      "id": "module_grid_tiny_buttons",
+      "fixture": "tests/invalid_render_surface_tiny_buttons.html",
+      "type": "module_grid",
+      "expectedFailure": "click targets need stable minimum sizing"
+    },
+    {
+      "id": "module_grid_missing_overflow_protection",
+      "fixture": "tests/invalid_render_surface_overflow.html",
+      "type": "module_grid",
+      "expectedFailure": "overflow protection"
+    }
+  ]
+}

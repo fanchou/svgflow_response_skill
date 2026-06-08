@@ -1,0 +1,60 @@
+{
+  "cases": [
+    {
+      "id": "unknown_validator_rejected",
+      "sourceCase": "production_unknown_experiment_priority",
+      "override": {
+        "validators": ["infographic_dsl", "not_a_real_validator"]
+      },
+      "expectedFailure": "unknown pipeline validator"
+    },
+    {
+      "id": "bad_svg_rejected_by_visual_quality",
+      "sourceCase": "production_unknown_experiment_priority",
+      "override": {
+        "svg": "tests/invalid_infographic_long_text.svg"
+      },
+      "expectedFailure": "text is too long"
+    },
+    {
+      "id": "wrong_layout_intent_rejected",
+      "sourceCase": "production_unknown_governance_signal",
+      "override": {
+        "expectedLayoutIntent": "timeline"
+      },
+      "expectedFailure": "layout intent does not match pipeline case"
+    },
+    {
+      "id": "bad_svg_rejected_by_text_fit",
+      "sourceCase": "production_unknown_experiment_priority",
+      "override": {
+        "svg": "tests/invalid_pipeline_text_fit.svg"
+      },
+      "expectedFailure": "unbreakable text"
+    },
+    {
+      "id": "bad_svg_rejected_by_interaction_accessibility",
+      "sourceCase": "production_unknown_experiment_priority",
+      "override": {
+        "svg": "tests/invalid_pipeline_interaction_accessibility.svg"
+      },
+      "expectedFailure": "keyboard handler"
+    },
+    {
+      "id": "bad_svg_rejected_by_prompt_escaping",
+      "sourceCase": "production_unknown_experiment_priority",
+      "override": {
+        "svg": "tests/invalid_pipeline_prompt_escaping.svg"
+      },
+      "expectedFailure": "escaped prompt string"
+    },
+    {
+      "id": "non_string_validator_rejected",
+      "sourceCase": "production_unknown_experiment_priority",
+      "override": {
+        "validators": ["infographic_dsl", 42]
+      },
+      "expectedFailure": "pipeline validator name must be a string"
+    }
+  ]
+}

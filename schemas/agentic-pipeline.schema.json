@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/svgflow/agentic-pipeline.schema.json",
+  "title": "Agentic Pipeline DSL",
+  "type": "object",
+  "required": ["meta", "entry", "orchestrator", "workers", "synthesizer", "output"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "description", "diagramType", "mode", "locale", "textDirection", "viewBox"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "diagramType": { "const": "agentic_pipeline" },
+        "mode": { "enum": ["preview_svg", "html_preview", "component_ready"] },
+        "locale": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "textDirection": { "enum": ["ltr", "rtl", "auto"] },
+        "viewBox": {
+          "type": "object",
+          "required": ["width", "height"],
+          "properties": {
+            "width": { "enum": [680, 690] },
+            "height": { "type": "integer", "minimum": 420, "maximum": 900 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "entry": { "$ref": "#/$defs/node" },
+    "orchestrator": { "$ref": "#/$defs/node" },
+    "workers": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/worker" }
+    },
+    "synthesizer": { "$ref": "#/$defs/node" },
+    "output": { "$ref": "#/$defs/node" },
+    "loops": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/loop" }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "title"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "actionPrompt": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "worker": {
+      "type": "object",
+      "required": ["id", "agent", "source"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "agent": { "$ref": "#/$defs/node" },
+        "source": { "$ref": "#/$defs/node" }
+      },
+      "additionalProperties": false
+    },
+    "loop": {
+      "type": "object",
+      "required": ["id", "from", "to", "label"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "label": { "type": "string", "minLength": 1 },
+        "dashed": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

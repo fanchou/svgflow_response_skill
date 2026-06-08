@@ -1,0 +1,19 @@
+<svg class="svgflow" data-svgflow-id="invalid-overflow" width="100%" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" role="img" xml:lang="en-US" lang="en-US" dir="ltr">
+  <title>Invalid Overflow</title>
+  <desc>Fixture that should fail because the node exceeds the viewBox width.</desc>
+  <defs>
+    <marker id="svgflow-test-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .arr { stroke: #667085; fill: none; }
+    .node > rect { fill: #eff6ff; stroke: #60a5fa; }
+    .node > text { fill: #1e3a8a; }
+    .th { font-size: 14px; font-weight: 500; }
+  </style>
+  <g class="node c-blue">
+    <rect x="560" y="40" width="180" height="44" rx="8"/>
+    <text class="th" x="650" y="62" text-anchor="middle" dominant-baseline="central">Overflow node</text>
+  </g>
+</svg>

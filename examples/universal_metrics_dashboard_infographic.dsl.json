@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "title": "Operational Metrics Dashboard Infographic",
+    "description": "A universal infographic for status, KPI, alert, and recommendation cards.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 480,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      {
+        "id": "uptime",
+        "title": "99.95%",
+        "subtitle": "Uptime",
+        "kind": "metric",
+        "tone": "green"
+      },
+      {
+        "id": "latency",
+        "title": "128 ms",
+        "subtitle": "P95 latency",
+        "kind": "metric",
+        "tone": "blue"
+      },
+      {
+        "id": "errors",
+        "title": "0.18%",
+        "subtitle": "Error rate",
+        "kind": "metric",
+        "tone": "amber"
+      },
+      {
+        "id": "incident",
+        "title": "Active incident",
+        "subtitle": "Queue pressure rising",
+        "kind": "risk",
+        "tone": "coral"
+      },
+      {
+        "id": "action",
+        "title": "Scale workers",
+        "subtitle": "Recommended next step",
+        "kind": "recommendation",
+        "tone": "purple"
+      }
+    ],
+    "groups": [
+      {
+        "id": "kpis",
+        "title": "Service KPIs",
+        "members": ["uptime", "latency", "errors"],
+        "tone": "green"
+      }
+    ],
+    "edges": [
+      {
+        "from": "errors",
+        "to": "incident",
+        "label": "Threshold breached",
+        "kind": "causal"
+      },
+      {
+        "from": "incident",
+        "to": "action",
+        "label": "Mitigate",
+        "kind": "primary"
+      }
+    ],
+    "labels": [
+      {
+        "text": "Dashboard intent favors scanning over dense routing.",
+        "for": "kpis",
+        "tone": "neutral"
+      }
+    ],
+    "legends": [
+      {
+        "label": "Healthy",
+        "tone": "green"
+      },
+      {
+        "label": "Watch",
+        "tone": "amber"
+      },
+      {
+        "label": "Risk",
+        "tone": "coral"
+      }
+    ]
+  },
+  "layout": {
+    "intent": "dashboard",
+    "direction": "TB",
+    "density": "compact",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["green", "blue", "amber", "coral", "purple"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "incident",
+      "action": "sendPrompt",
+      "prompt": "Explain how to triage this active incident."
+    }
+  ]
+}

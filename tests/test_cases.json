@@ -1,0 +1,238 @@
+{
+  "cases": [
+    {
+      "id": "search_flow",
+      "input_type": "assistant_response",
+      "input": "After the user enters a keyword and presses Enter, the frontend captures the submit event, reads the input value, and validates it. If the keyword is empty, it prompts the user to enter it again. If it is valid, it builds a search request and sends it to the backend. The backend searches and ranks results, then the frontend renders the results page.",
+      "expected": {
+        "diagramType": "flowchart",
+        "maxNodes": 8,
+        "must_include_nodes": [
+          "Enter keyword",
+          "Valid?",
+          "Build request",
+          "Render results"
+        ],
+        "must_include_edge_labels": [
+          "Yes",
+          "No",
+          "Back"
+        ]
+      }
+    },
+    {
+      "id": "payment_flow",
+      "input_type": "assistant_response",
+      "input": "After the user submits an order, the system creates the order and opens payment. If payment succeeds, it deducts stock and notifies shipment. If payment fails or times out, it cancels the order and asks the user to pay again.",
+      "expected": {
+        "diagramType": "flowchart",
+        "maxNodes": 8,
+        "must_include_nodes": [
+          "Create order",
+          "Paid?",
+          "Deduct stock",
+          "Cancel order"
+        ],
+        "must_include_edge_labels": [
+          "Yes",
+          "No"
+        ]
+      }
+    },
+    {
+      "id": "upload_flow",
+      "input_type": "assistant_response",
+      "input": "After the user selects a file, the frontend checks file type and size. If the format is invalid, it shows an error. If validation passes, it uploads the file, the backend saves the file and stores a record, then returns an upload complete state.",
+      "expected": {
+        "diagramType": "flowchart",
+        "maxNodes": 8,
+        "must_include_nodes": [
+          "Select file",
+          "Valid format?",
+          "Upload file",
+          "Save record"
+        ],
+        "must_include_edge_labels": [
+          "Yes",
+          "No"
+        ]
+      }
+    },
+    {
+      "id": "retry_timeout_flow",
+      "input_type": "assistant_response",
+      "input": "The client sends a request and waits for a response. If the request times out, it shows a network error and sends the request again. If the request succeeds, it parses the response and updates page state.",
+      "expected": {
+        "diagramType": "flowchart",
+        "maxNodes": 8,
+        "must_include_nodes": [
+          "Send request",
+          "Success?",
+          "Show error",
+          "Update page"
+        ],
+        "must_include_edge_labels": [
+          "Success",
+          "Failed",
+          "Retry"
+        ]
+      }
+    },
+    {
+      "id": "compression_flow",
+      "input_type": "assistant_response",
+      "input": "During deployment, the system pulls code, installs dependencies, runs unit tests, builds artifacts, uploads an image, updates the service, checks health, switches traffic, and notifies the result. If health checks fail, it rolls back the service and sends a failure notice.",
+      "expected": {
+        "diagramType": "flowchart",
+        "maxNodes": 8,
+        "must_include_nodes": [
+          "Pull code",
+          "Build artifact",
+          "Healthy?",
+          "Notify result"
+        ],
+        "must_include_edge_labels": [
+          "Yes",
+          "No"
+        ]
+      }
+    },
+    {
+      "id": "unsuitable_overview_flow",
+      "input_type": "assistant_response",
+      "input": "The approach is simple and fast to launch, but it has limited extensibility. It works for early validation, but not for high traffic. The decision depends on cost, stability, and maintenance tradeoffs.",
+      "expected": {
+        "diagramType": "flowchart",
+        "maxNodes": 8,
+        "must_include_nodes": [
+          "Overview",
+          "Cost",
+          "Stability",
+          "Maintenance"
+        ],
+        "must_include_edge_labels": []
+      }
+    },
+    {
+      "id": "knowledge_map_case",
+      "input_type": "assistant_response",
+      "input": "The book is organized around four learning modules: starting from product function, establishing visual hierarchy, building spacing and typography systems, and refining with color, depth, icons, and images. It also summarizes reusable principles such as limiting choices, building systems, and studying good references.",
+      "expected": {
+        "diagramType": "knowledge_map",
+        "must_include_sections": [
+          "header",
+          "chapter_grid",
+          "summary_grid",
+          "footer"
+        ],
+        "minInteractiveItems": 6
+      }
+    },
+    {
+      "id": "architecture_map_case",
+      "input_type": "assistant_response",
+      "input": "The platform has five layers: ingestion receives events through MQTT and HTTP, stream processing cleans and enriches events, storage separates raw, cleaned, and aggregate zones, serving exposes query and access control, and consumers include BI, monitoring, APIs, and machine learning.",
+      "expected": {
+        "diagramType": "architecture_map",
+        "must_include_layers": [
+          "ingestion",
+          "stream",
+          "storage",
+          "serving",
+          "consumers"
+        ],
+        "minInteractiveItems": 10
+      }
+    },
+    {
+      "id": "walkthrough_case",
+      "input_type": "assistant_response",
+      "input": "The demonstration has four states: the server starts with a global model, the model is distributed to clients, each client trains locally, and clients upload updates for aggregation. The user should be able to move forward and backward through the states.",
+      "expected": {
+        "diagramType": "interactive_walkthrough",
+        "minSteps": 4,
+        "requiresControls": true,
+        "requiresAnimation": true
+      }
+    },
+    {
+      "id": "system_loop_case",
+      "input_type": "assistant_response",
+      "input": "The reinforcement learning agent observes state from the digital twin, chooses an action, receives reward and next state, and repeats the training loop. After training, a guarded policy is deployed to the real device, and real measurements calibrate the twin.",
+      "expected": {
+        "diagramType": "system_loop",
+        "must_include_roles": [
+          "agent",
+          "environment",
+          "device"
+        ],
+        "minSignals": 4,
+        "requiresBidirectionalExchange": true,
+        "requiresDashedPath": true
+      }
+    },
+    {
+      "id": "module_grid_case",
+      "input_type": "assistant_response",
+      "input": "The engineering plan has four modules: reward design with objective, penalty, shaping, and reward hacking risks; algorithm choice with SAC, TD3, PPO, and MBPO; Sim2Real transfer with domain randomization and staged rollout; and safety constraints with hard limits, runtime guard, shadow mode, and rollback.",
+      "expected": {
+        "diagramType": "module_grid",
+        "minModules": 4,
+        "minItemsPerModule": 3,
+        "requiresSemanticTones": true,
+        "requiresCtaButtons": true
+      }
+    },
+    {
+      "id": "agentic_pipeline_case",
+      "input_type": "assistant_response",
+      "input": "The agentic RAG system receives a user question, an orchestrator decomposes and routes subtasks to vector, SQL, web, and tool agents. Each agent queries its matching source, the retrieved results flow back to a synthesizer, and the final answer includes citations and confidence. If results are insufficient, the system replans and routes again.",
+      "expected": {
+        "diagramType": "agentic_pipeline",
+        "minWorkers": 4,
+        "requiresWorkerSourcePairs": true,
+        "requiresFanOut": true,
+        "requiresFanIn": true,
+        "requiresReplanningLoop": true
+      }
+    },
+    {
+      "id": "phased_pipeline_case",
+      "input_type": "assistant_response",
+      "input": "The Flutter rendering lifecycle starts from Vsync, enters drawFrame, runs Build with Widget, Element, RenderObject, and buildScope, then Layout with constraints down and size up, then compositing bits, Paint with PaintingContext and Layer Tree, compositeFrame, semantics, and finally GPU rasterization. A side note explains finalizeTree and a legend explains phase colors.",
+      "expected": {
+        "diagramType": "phased_pipeline",
+        "minSpineNodes": 5,
+        "minPhases": 3,
+        "requiresLocalFlows": true,
+        "requiresLegend": true,
+        "requiresSideNotes": true
+      }
+    },
+    {
+      "id": "universal_infographic_case",
+      "input_type": "assistant_response",
+      "input": "A platform overview can be shown as an infographic with a central orchestration node, grouped source and consumer nodes, labeled edges, a legend, and one optional retry loop. The exact visual should be chosen by layout intent rather than by a narrow diagram family.",
+      "expected": {
+        "diagramType": "infographic",
+        "layoutIntents": [
+          "linear",
+          "layered",
+          "loop",
+          "matrix",
+          "hub_spoke",
+          "timeline",
+          "swimlane",
+          "comparison",
+          "hierarchy",
+          "dashboard",
+          "freeform"
+        ],
+        "requiresNodes": true,
+        "requiresEdges": true,
+        "supportsGroups": true,
+        "supportsInteractions": true
+      }
+    }
+  ]
+}

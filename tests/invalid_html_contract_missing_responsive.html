@@ -1,0 +1,32 @@
+<h2 class="sr-only">Module grid without responsive fallback</h2>
+<style>
+.mod-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.mod-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem; }
+.mod-title { font-size:14px; }
+.mod-sub { font-size:12px; }
+.mod-btn { font-size:12px; }
+.mod-item { font-size:12px; }
+.mod-label { color:var(--color-text-info); }
+.tone-info {}
+.tone-warn {}
+.tone-ok {}
+.tone-neutral {}
+</style>
+<div class="mod-grid">
+  <div class="mod-card">
+    <div class="mod-title">Reward design</div>
+    <div class="mod-sub">Missing one-column fallback</div>
+    <div class="mod-item"><span class="mod-label tone-info">Goal</span> Energy</div>
+    <div class="mod-item"><span class="mod-label tone-warn">Risk</span> Limits</div>
+    <div class="mod-item"><span class="mod-label tone-ok">Tip</span> Normalize</div>
+    <button class="mod-btn" onclick="sendPrompt('Explain reward design.')">Details</button>
+  </div>
+  <div class="mod-card">
+    <div class="mod-title">Safety layer</div>
+    <div class="mod-sub">Has content but no mobile CSS</div>
+    <div class="mod-item"><span class="mod-label tone-neutral">Guard</span> Runtime</div>
+    <div class="mod-item"><span class="mod-label tone-info">Mode</span> Shadow</div>
+    <div class="mod-item"><span class="mod-label tone-warn">Rollback</span> Automatic</div>
+    <button class="mod-btn" onclick="sendPrompt('Explain safety layer.')">Details</button>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<svg width="100%" viewBox="0 0 680 500" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Organization Hierarchy Infographic</title>
+<desc>A universal hierarchy infographic with parent-child ownership, grouped teams, escalation, legend, and clickable owner details.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<mask id="hierarchy-label-gaps" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="680" height="500" fill="white"/><rect x="296" y="164" width="88" height="22" fill="black" rx="3"/></mask>
+</defs>
+<g role="button" tabindex="0" aria-label="Explain the governance responsibility of the platform owner." onclick="sendPrompt('Explain the governance responsibility of the platform owner.')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('Explain the governance responsibility of the platform owner.')}"><rect x="220" y="34" width="240" height="58" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/><text x="340" y="57" text-anchor="middle" dominant-baseline="central" fill="rgb(206, 203, 246)" font-size="14" font-weight="500">Platform Owner</text><text x="340" y="77" text-anchor="middle" dominant-baseline="central" fill="rgb(175, 169, 236)" font-size="12">Strategy and governance</text></g>
+<rect x="40" y="142" width="600" height="190" rx="12" fill="none" stroke="rgb(133, 183, 235)" stroke-width="0.8" stroke-dasharray="5 4"/>
+<text x="56" y="166" fill="rgb(194, 192, 182)" font-size="12" font-weight="500">Delivery teams</text>
+<g><rect x="70" y="210" width="150" height="70" rx="8" fill="rgb(12, 68, 124)" stroke="rgb(133, 183, 235)" stroke-width="0.5"/><text x="145" y="237" text-anchor="middle" dominant-baseline="central" fill="rgb(181, 212, 244)" font-size="14" font-weight="500">Product</text><text x="145" y="257" text-anchor="middle" dominant-baseline="central" fill="rgb(133, 183, 235)" font-size="12">Roadmap</text></g>
+<g><rect x="265" y="210" width="150" height="70" rx="8" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/><text x="340" y="237" text-anchor="middle" dominant-baseline="central" fill="rgb(159, 225, 203)" font-size="14" font-weight="500">Engineering</text><text x="340" y="257" text-anchor="middle" dominant-baseline="central" fill="rgb(93, 202, 165)" font-size="12">Reliability</text></g>
+<g><rect x="460" y="210" width="150" height="70" rx="8" fill="rgb(99, 56, 6)" stroke="rgb(239, 159, 39)" stroke-width="0.5"/><text x="535" y="237" text-anchor="middle" dominant-baseline="central" fill="rgb(250, 199, 117)" font-size="14" font-weight="500">Design</text><text x="535" y="257" text-anchor="middle" dominant-baseline="central" fill="rgb(239, 159, 39)" font-size="12">Experience</text></g>
+<g><rect x="220" y="370" width="240" height="56" rx="8" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/><text x="340" y="392" text-anchor="middle" dominant-baseline="central" fill="rgb(245, 196, 179)" font-size="14" font-weight="500">Risk review</text><text x="340" y="412" text-anchor="middle" dominant-baseline="central" fill="rgb(240, 153, 123)" font-size="12">Escalation path</text></g>
+<path d="M340 92 L340 140" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1.5" marker-end="url(#arrow)" mask="url(#hierarchy-label-gaps)"/>
+<path d="M340 142 L145 208" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M340 142 L340 208" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M340 142 L535 208" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M340 280 L340 368" fill="none" stroke="rgb(216, 90, 48)" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+<rect x="296" y="164" width="88" height="22" rx="5" fill="rgb(38, 38, 36)" stroke="rgba(222, 220, 209, 0.3)" stroke-width="0.5"/><text x="340" y="178" text-anchor="middle" dominant-baseline="central" fill="rgb(194, 192, 182)" font-size="12">Delegates</text>
+<rect x="150" y="458" width="12" height="12" rx="2" fill="rgb(175, 169, 236)"/><text x="168" y="468" fill="rgb(194, 192, 182)" font-size="12">Owner</text>
+<rect x="280" y="458" width="12" height="12" rx="2" fill="rgb(133, 183, 235)"/><text x="298" y="468" fill="rgb(194, 192, 182)" font-size="12">Team</text>
+<rect x="390" y="458" width="12" height="12" rx="2" fill="rgb(240, 153, 123)"/><text x="408" y="468" fill="rgb(194, 192, 182)" font-size="12">Risk</text>
+</svg>

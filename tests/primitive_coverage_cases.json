@@ -1,0 +1,94 @@
+{
+  "requiredPrimitives": [
+    {
+      "id": "group_containers",
+      "evidence": [
+        {
+          "dsl": "examples/universal_primitive_coverage_infographic.dsl.json",
+          "requires": { "content.groups.min": 3 }
+        }
+      ]
+    },
+    {
+      "id": "lane_groups",
+      "evidence": [
+        {
+          "dsl": "examples/universal_support_swimlane_infographic.dsl.json",
+          "requires": { "layout.intent": "swimlane", "content.groups.min": 3 }
+        }
+      ]
+    },
+    {
+      "id": "nested_membership",
+      "evidence": [
+        {
+          "dsl": "examples/universal_primitive_coverage_infographic.dsl.json",
+          "requires": { "node.parent.present": true }
+        }
+      ]
+    },
+    {
+      "id": "feedback_loop_edges",
+      "evidence": [
+        {
+          "dsl": "examples/universal_reliability_feedback_infographic.dsl.json",
+          "requires": { "edge.route.includes": "loop", "edge.kind.includes": "feedback" }
+        }
+      ]
+    },
+    {
+      "id": "fanout_and_fanin",
+      "evidence": [
+        {
+          "dsl": "examples/universal_primitive_coverage_infographic.dsl.json",
+          "requires": { "graph.fanout.min": 2, "graph.fanin.min": 2 }
+        }
+      ]
+    },
+    {
+      "id": "phase_steps",
+      "evidence": [
+        {
+          "dsl": "examples/universal_product_roadmap_infographic.dsl.json",
+          "requires": { "layout.intent": "timeline", "content.steps.min": 3 }
+        }
+      ]
+    },
+    {
+      "id": "protected_connector_labels",
+      "evidence": [
+        {
+          "svg": "examples/universal_architecture_stack_infographic.interactive.svg",
+          "requires": { "svg.mask.present": true, "svg.label_backgrounds.min": 2 }
+        }
+      ]
+    },
+    {
+      "id": "legend_swatches",
+      "evidence": [
+        {
+          "svg": "examples/universal_strategy_comparison_infographic.interactive.svg",
+          "requires": { "svg.legend_swatches.min": 3 }
+        }
+      ]
+    },
+    {
+      "id": "card_grid",
+      "evidence": [
+        {
+          "dsl": "examples/universal_metrics_dashboard_infographic.dsl.json",
+          "requires": { "layout.intent": "dashboard", "node.kind.includes": "metric", "content.nodes.min": 4 }
+        }
+      ]
+    },
+    {
+      "id": "clickable_modules",
+      "evidence": [
+        {
+          "svg": "examples/universal_product_growth_freeform_infographic.interactive.svg",
+          "requires": { "svg.onclick.min": 4 }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Short LR Flow",
+    "description": "Use left-to-right layout when the flow is short and has no complex branches",
+    "diagramType": "flowchart",
+    "direction": "LR",
+    "mode": "component_ready",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "blue",
+      "green"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Start",
+      "color": "gray"
+    },
+    {
+      "id": "input",
+      "type": "action",
+      "label": "Submit form",
+      "color": "blue"
+    },
+    {
+      "id": "save",
+      "type": "action",
+      "label": "Save data",
+      "color": "blue"
+    },
+    {
+      "id": "done",
+      "type": "end",
+      "label": "Submit done",
+      "color": "green"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "input",
+      "route": "straight"
+    },
+    {
+      "from": "input",
+      "to": "save",
+      "route": "straight"
+    },
+    {
+      "from": "save",
+      "to": "done",
+      "route": "straight"
+    }
+  ]
+}

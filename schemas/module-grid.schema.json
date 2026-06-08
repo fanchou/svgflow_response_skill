@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/svgflow/module-grid.schema.json",
+  "title": "Module Grid DSL",
+  "type": "object",
+  "required": ["meta", "modules"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "description", "diagramType", "mode", "locale", "textDirection"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "diagramType": { "const": "module_grid" },
+        "mode": { "const": "html_preview" },
+        "locale": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$" },
+        "textDirection": { "enum": ["ltr", "rtl", "auto"] }
+      },
+      "additionalProperties": false
+    },
+    "modules": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/module" }
+    }
+  },
+  "$defs": {
+    "module": {
+      "type": "object",
+      "required": ["id", "title", "subtitle", "items", "action"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string", "minLength": 1 },
+        "icon": { "type": "string" },
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/item" }
+        },
+        "action": { "$ref": "#/$defs/action" }
+      },
+      "additionalProperties": false
+    },
+    "item": {
+      "type": "object",
+      "required": ["label", "tone", "text"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "tone": { "enum": ["info", "warn", "ok", "neutral"] },
+        "text": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "object",
+      "required": ["label", "prompt"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "prompt": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

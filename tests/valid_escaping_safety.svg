@@ -1,0 +1,10 @@
+<svg width="100%" viewBox="0 0 680 220" role="img" lang="en" dir="ltr" xmlns="http://www.w3.org/2000/svg">
+<title>Escaping safety fixture</title>
+<desc>Visible and attribute text uses XML entities for special characters.</desc>
+<defs></defs>
+<g role="button" tabindex="0" aria-label="Explain AT&amp;T &lt;edge&gt; readiness" onclick="sendPrompt('Explain AT&amp;T &lt;edge&gt; readiness.')" onkeydown="if(event.key==='Enter'||event.key===' '){sendPrompt('Explain AT&amp;T &lt;edge&gt; readiness.')}">
+<rect x="80" y="60" width="260" height="88" rx="8" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+<text x="210" y="96" text-anchor="middle" dominant-baseline="central" fill="rgb(206, 203, 246)" font-size="14" font-weight="500">AT&amp;T &lt;edge&gt;</text>
+<text x="210" y="120" text-anchor="middle" dominant-baseline="central" fill="rgb(175, 169, 236)" font-size="12">XML entities are preserved</text>
+</g>
+</svg>

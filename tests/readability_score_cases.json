@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "id": "platform_hub_spoke_readability",
+      "fixture": "examples/universal_platform_infographic.interactive.svg",
+      "layoutIntent": "hub_spoke",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "architecture_stack_readability",
+      "fixture": "examples/universal_architecture_stack_infographic.interactive.svg",
+      "layoutIntent": "layered",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "strategy_comparison_readability",
+      "fixture": "examples/universal_strategy_comparison_infographic.interactive.svg",
+      "layoutIntent": "comparison",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "metrics_dashboard_readability",
+      "fixture": "examples/universal_metrics_dashboard_infographic.interactive.svg",
+      "layoutIntent": "dashboard",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "org_hierarchy_readability",
+      "fixture": "examples/universal_org_hierarchy_infographic.interactive.svg",
+      "layoutIntent": "hierarchy",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "timeline_roadmap_readability",
+      "fixture": "examples/universal_product_roadmap_infographic.interactive.svg",
+      "layoutIntent": "timeline",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "swimlane_support_readability",
+      "fixture": "examples/universal_support_swimlane_infographic.interactive.svg",
+      "layoutIntent": "swimlane",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "feedback_loop_readability",
+      "fixture": "examples/universal_reliability_feedback_infographic.interactive.svg",
+      "layoutIntent": "loop",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    },
+    {
+      "id": "freeform_growth_readability",
+      "fixture": "examples/universal_product_growth_freeform_infographic.interactive.svg",
+      "layoutIntent": "freeform",
+      "minScore": 75,
+      "requiredSignals": ["labelProtection", "legend", "palette", "interactions", "textBudget", "balancedDensity"]
+    }
+  ]
+}

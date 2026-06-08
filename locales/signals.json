@@ -1,0 +1,20 @@
+{
+  "en": {
+    "sequence": ["first", "then", "next", "after", "finally", "on success"],
+    "decision": ["if", "whether", "when", "otherwise", "else", "success", "failure", "failed", "valid", "invalid", "timeout", "exists"],
+    "retry": ["retry", "try again", "return", "back", "resend"],
+    "edgeLabels": ["Yes", "No", "Success", "Failed", "Retry", "Back"]
+  },
+  "zh-CN": {
+    "sequence": ["首先", "然后", "接着", "随后", "之后", "下一步", "最后", "完成后", "成功后", "返回后"],
+    "decision": ["如果", "是否", "若", "当", "否则", "成功", "失败", "命中", "未命中", "为空", "有效", "通过", "存在", "超时"],
+    "retry": ["重试", "重新输入", "返回上一步", "再次提交", "重新发送", "继续等待"],
+    "edgeLabels": ["是", "否", "成功", "失败", "命中", "未命中", "重试", "返回"]
+  },
+  "ar": {
+    "sequence": ["ثم", "بعد ذلك", "أخيرا"],
+    "decision": ["إذا", "هل", "عند", "وإلا", "نجاح", "فشل", "مهلة"],
+    "retry": ["إعادة المحاولة", "رجوع", "أعد الإرسال"],
+    "edgeLabels": ["نعم", "لا", "نجاح", "فشل", "إعادة المحاولة", "رجوع"]
+  }
+}

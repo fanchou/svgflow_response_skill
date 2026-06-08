@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "id": "repair_long_text",
+      "sourceCase": "long_text_rejected",
+      "validator": "visual_quality",
+      "fixture": "tests/invalid_infographic_long_text.svg",
+      "failureSignal": "text is too long",
+      "repairRule": "Infographic text is too long",
+      "repairActions": [
+        "replace prose with a short label",
+        "move detail into subtitle, legend, or action prompt",
+        "keep visible text snippets within stable card limits"
+      ]
+    },
+    {
+      "id": "repair_missing_legend",
+      "sourceCase": "missing_legend_rejected",
+      "validator": "infographic_svg",
+      "fixture": "tests/invalid_infographic_missing_legend.svg",
+      "failureSignal": "compact legend",
+      "repairRule": "Compact legend is missing",
+      "repairActions": [
+        "add compact swatches near the bottom of the viewBox",
+        "keep swatches between 8 and 16 px",
+        "pair every swatch with a short label"
+      ]
+    },
+    {
+      "id": "repair_unprotected_labels",
+      "sourceCase": "missing_label_protection_rejected",
+      "validator": "infographic_svg",
+      "fixture": "tests/invalid_infographic_unprotected_labels.svg",
+      "failureSignal": "protect labels",
+      "repairRule": "Connector label lacks protection",
+      "repairActions": [
+        "add a label background rect",
+        "or add a mask gap behind the connector label",
+        "keep labels away from node edges"
+      ]
+    },
+    {
+      "id": "repair_narrow_palette",
+      "sourceCase": "narrow_palette_rejected",
+      "validator": "visual_quality",
+      "fixture": "tests/invalid_infographic_narrow_palette.svg",
+      "failureSignal": "palette is too narrow",
+      "repairRule": "Palette is too narrow",
+      "repairActions": [
+        "assign semantic tones by role",
+        "use at least four distinct official-style fills",
+        "add a legend when tone meanings repeat"
+      ]
+    },
+    {
+      "id": "repair_detached_prompt",
+      "sourceCase": "missing_clickable_group_rejected",
+      "validator": "visual_quality",
+      "fixture": "tests/invalid_infographic_missing_clickable.svg",
+      "failureSignal": "clickable groups",
+      "repairRule": "sendPrompt is detached",
+      "repairActions": [
+        "wrap the visible card or module in a clickable group",
+        "attach sendPrompt to the element users can click",
+        "remove detached prompt calls from scripts or invisible elements"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+<h2 class="sr-only">数字孪生结合强化学习的四大工程模块：奖励函数设计、算法选型、Sim2Real 迁移、安全约束</h2>
+<style>
+.mod-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:4px 0; overflow-wrap:anywhere; }
+.mod-card { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem 1.1rem; min-width:0; }
+.mod-title { font-size:14px; font-weight:500; color:var(--color-text-primary); margin:0 0 4px; display:flex; align-items:center; gap:8px; }
+.mod-sub { font-size:12px; color:var(--color-text-secondary); margin:0 0 10px; }
+.mod-item { font-size:12px; color:var(--color-text-secondary); line-height:1.8; padding:2px 0; border-top:0.5px solid var(--color-border-tertiary); }
+.mod-item:first-of-type { border-top:none; }
+.mod-label { display:inline-block; font-size:11px; font-weight:500; padding:2px 8px; border-radius:10px; margin-right:6px; }
+.tone-warn { background:var(--color-background-warning); color:var(--color-text-warning); }
+.tone-info { background:var(--color-background-info); color:var(--color-text-info); }
+.tone-ok { background:var(--color-background-success); color:var(--color-text-success); }
+.tone-neutral { background:var(--color-background-secondary); color:var(--color-text-secondary); }
+.mod-btn { font-size:12px; margin-top:10px; min-height:32px; padding:6px 12px; width:100%; }
+.mod-icon { font-size:18px; color:var(--color-text-tertiary); }
+@media (max-width: 560px) { .mod-grid { grid-template-columns:1fr; } }
+</style>
+<div class="mod-grid">
+<div class="mod-card">
+<div class="mod-title"><i class="ti ti-trophy mod-icon" aria-hidden="true"></i>奖励函数设计</div>
+<div class="mod-sub">最难、最影响结果的部分</div>
+<div class="mod-item"><span class="mod-label tone-info">目标项</span>能耗最小 / 产量最大 / 寿命最长</div>
+<div class="mod-item"><span class="mod-label tone-warn">惩罚项</span>超温、振动超限、越安全边界</div>
+<div class="mod-item"><span class="mod-label tone-neutral">塑形项</span>中间奖励引导探索方向</div>
+<div class="mod-item"><span class="mod-label tone-ok">技巧</span>归一化奖励，避免量纲失衡</div>
+<div class="mod-item"><span class="mod-label tone-warn">陷阱</span>奖励欺骗导致高奖励但违背真实目标</div>
+<button class="mod-btn" onclick="sendPrompt('RL 奖励函数设计中奖励欺骗问题如何避免？')">奖励欺骗的解法 ↗</button>
+</div>
+<div class="mod-card">
+<div class="mod-title"><i class="ti ti-cpu mod-icon" aria-hidden="true"></i>算法选型</div>
+<div class="mod-sub">连续动作空间是 IoT 控制的主战场</div>
+<div class="mod-item"><span class="mod-label tone-info">SAC</span>优先选择，样本效率高，自动调熵</div>
+<div class="mod-item"><span class="mod-label tone-info">TD3</span>确定性策略，低方差，工业稳定性好</div>
+<div class="mod-item"><span class="mod-label tone-neutral">PPO</span>离散和连续均可，训练稳定，调参容易</div>
+<div class="mod-item"><span class="mod-label tone-ok">MBPO</span>模型辅助策略优化，样本效率最高</div>
+<div class="mod-item"><span class="mod-label tone-warn">避免</span>DQN 不适合连续控制</div>
+<button class="mod-btn" onclick="sendPrompt('SAC 算法原理和在工业控制中的具体实现步骤')">SAC 算法详解 ↗</button>
+</div>
+<div class="mod-card">
+<div class="mod-title"><i class="ti ti-transfer mod-icon" aria-hidden="true"></i>Sim2Real 迁移</div>
+<div class="mod-sub">孪生体训练好，真机却不好用</div>
+<div class="mod-item"><span class="mod-label tone-warn">根因</span>孪生体与真实设备存在建模误差</div>
+<div class="mod-item"><span class="mod-label tone-info">域随机化</span>训练时扰动摩擦系数、延迟、噪声</div>
+<div class="mod-item"><span class="mod-label tone-info">域适应</span>对齐孪生和真实环境的状态分布</div>
+<div class="mod-item"><span class="mod-label tone-ok">渐进部署</span>影子模式到小范围再到全量</div>
+<div class="mod-item"><span class="mod-label tone-neutral">在线微调</span>真实数据持续微调孪生体参数</div>
+<button class="mod-btn" onclick="sendPrompt('Sim2Real 迁移的域随机化具体如何在 IoT 孪生体中实现？')">域随机化实现 ↗</button>
+</div>
+<div class="mod-card">
+<div class="mod-title"><i class="ti ti-shield mod-icon" aria-hidden="true"></i>安全约束层</div>
+<div class="mod-sub">RL 不能直接接触真实设备</div>
+<div class="mod-item"><span class="mod-label tone-warn">硬约束</span>过热、过压、过载立即截停</div>
+<div class="mod-item"><span class="mod-label tone-info">软约束</span>CPO/CMDP 在训练中内嵌</div>
+<div class="mod-item"><span class="mod-label tone-neutral">运行时守卫</span>策略输出动作前经安全校验器过滤</div>
+<div class="mod-item"><span class="mod-label tone-ok">影子模式</span>新策略先并行运行，观察后切换</div>
+<div class="mod-item"><span class="mod-label tone-info">回退机制</span>性能下降自动回滚到上一版本</div>
+<button class="mod-btn" onclick="sendPrompt('约束马尔可夫决策过程 CMDP 在安全强化学习中如何实现？')">安全 RL 详解 ↗</button>
+</div>
+</div>

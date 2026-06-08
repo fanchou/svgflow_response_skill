@@ -1,0 +1,69 @@
+<h2 class="sr-only">联邦学习工作流程交互演示：展示从全局模型分发到聚合的完整迭代过程</h2>
+<style>
+.fl-step { display:none; }
+.fl-step.active { display:block; }
+.fl-step svg { max-width:100%; height:auto; }
+.fl-step text { overflow-wrap:anywhere; }
+.dot { width:10px;height:10px;border-radius:50%;background:var(--color-border-secondary,#666);display:inline-block;transition:background .3s; }
+.dot.on { background:var(--color-text-info,#3B82F6); }
+.th { font-size:14px;font-weight:500; }
+.ts { font-size:12px;font-weight:400; }
+.c-purple rect { fill:#3C3489;stroke:#AFA9EC; }
+.c-purple text { fill:#CECBF6; }
+.c-teal rect { fill:#085041;stroke:#5DCAA5; }
+.c-teal text { fill:#9FE1CB; }
+.c-amber rect { fill:#633806;stroke:#EF9F27; }
+.c-amber text { fill:#FAC775; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  @keyframes travel { from{stroke-dashoffset:120} to{stroke-dashoffset:0} }
+  .anim-pulse { animation: pulse 1.2s ease-in-out infinite; }
+  .anim-travel { stroke-dasharray:8 4; animation: travel .8s linear infinite; }
+}
+</style>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+<div id="dots" style="display:flex;gap:8px"></div>
+<div style="display:flex;gap:8px">
+<button id="btn-prev" onclick="move(-1)" style="min-height:32px;min-width:32px;padding:6px 16px;font-size:13px" aria-label="上一步">←</button>
+<button id="btn-next" onclick="move(1)" style="min-height:32px;min-width:32px;padding:6px 16px;font-size:13px" aria-label="下一步">→</button>
+</div>
+</div>
+<div id="step-label" style="font-size:13px;color:var(--color-text-secondary,#888);margin-bottom:12px;min-height:18px"></div>
+<div id="steps-container">
+<div class="fl-step active" id="s0">
+<svg width="100%" viewBox="0 0 680 340" role="img" xmlns="http://www.w3.org/2000/svg"><title>步骤 1：云端服务器持有全局初始模型</title><desc>中央服务器在顶部，两个设备在底部，尚未通信</desc><defs><marker id="arr0" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5"/></marker></defs><g class="c-purple"><rect x="240" y="30" width="200" height="60" rx="10" stroke-width="0.5"/><text class="th" x="340" y="55" text-anchor="middle" dominant-baseline="central">全局模型服务器</text><text class="ts" x="340" y="74" text-anchor="middle" dominant-baseline="central">初始权重 W0</text></g><g class="c-teal"><rect x="120" y="240" width="160" height="72" rx="8" stroke-width="0.5"/><text class="th" x="200" y="265" text-anchor="middle" dominant-baseline="central">工厂设备 A</text><text class="ts" x="200" y="288" text-anchor="middle" dominant-baseline="central">本地数据 DA</text></g><g class="c-teal"><rect x="400" y="240" width="160" height="72" rx="8" stroke-width="0.5"/><text class="th" x="480" y="265" text-anchor="middle" dominant-baseline="central">车辆 B</text><text class="ts" x="480" y="288" text-anchor="middle" dominant-baseline="central">本地数据 DB</text></g></svg>
+</div>
+<div class="fl-step" id="s1">
+<svg width="100%" viewBox="0 0 680 340" role="img" xmlns="http://www.w3.org/2000/svg"><title>步骤 2：服务器下发全局模型</title><desc>两条向下箭头从服务器延伸到设备</desc><defs><marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5"/></marker></defs><g class="c-purple"><rect x="240" y="30" width="200" height="60" rx="10" stroke-width="0.5"/><text class="th" x="340" y="55" text-anchor="middle" dominant-baseline="central">全局模型服务器</text><text class="ts" x="340" y="74" text-anchor="middle" dominant-baseline="central">广播 W0</text></g><line class="anim-travel" x1="250" y1="90" x2="200" y2="238" stroke="#1D9E75" stroke-width="2" marker-end="url(#arr1)"/><line class="anim-travel" x1="430" y1="90" x2="480" y2="238" stroke="#1D9E75" stroke-width="2" marker-end="url(#arr1)"/><g class="c-teal"><rect x="120" y="240" width="160" height="72" rx="8" stroke-width="0.5"/><text class="th" x="200" y="264" text-anchor="middle" dominant-baseline="central">设备 A</text><text class="ts anim-pulse" x="200" y="288" text-anchor="middle" dominant-baseline="central">接收 W0</text></g><g class="c-teal"><rect x="400" y="240" width="160" height="72" rx="8" stroke-width="0.5"/><text class="th" x="480" y="264" text-anchor="middle" dominant-baseline="central">设备 B</text><text class="ts anim-pulse" x="480" y="288" text-anchor="middle" dominant-baseline="central">接收 W0</text></g></svg>
+</div>
+<div class="fl-step" id="s2">
+<svg width="100%" viewBox="0 0 680 340" role="img" xmlns="http://www.w3.org/2000/svg"><title>步骤 3：各设备本地训练</title><desc>设备使用本地数据训练，原始数据不离开设备</desc><g class="c-purple"><rect x="240" y="30" width="200" height="60" rx="10" stroke-width="0.5"/><text class="th" x="340" y="55" text-anchor="middle" dominant-baseline="central">全局模型服务器</text><text class="ts" x="340" y="74" text-anchor="middle" dominant-baseline="central">等待更新</text></g><g class="c-amber"><rect x="120" y="210" width="160" height="100" rx="8" stroke-width="0.5"/><text class="th" x="200" y="238" text-anchor="middle" dominant-baseline="central">设备 A</text><text class="ts" x="200" y="262" text-anchor="middle" dominant-baseline="central">本地训练中</text><text class="ts anim-pulse" x="200" y="286" text-anchor="middle" dominant-baseline="central">梯度计算中</text></g><g class="c-amber"><rect x="400" y="210" width="160" height="100" rx="8" stroke-width="0.5"/><text class="th" x="480" y="238" text-anchor="middle" dominant-baseline="central">设备 B</text><text class="ts" x="480" y="262" text-anchor="middle" dominant-baseline="central">本地训练中</text><text class="ts anim-pulse" x="480" y="286" text-anchor="middle" dominant-baseline="central">梯度计算中</text></g></svg>
+</div>
+<div class="fl-step" id="s3">
+<svg width="100%" viewBox="0 0 680 340" role="img" xmlns="http://www.w3.org/2000/svg"><title>步骤 4：上传梯度并聚合</title><desc>设备仅上传梯度更新，服务器聚合生成新模型</desc><defs><marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5"/></marker></defs><g class="c-purple"><rect x="220" y="24" width="240" height="78" rx="10" stroke-width="0.5"/><text class="th" x="340" y="54" text-anchor="middle" dominant-baseline="central">聚合服务器</text><text class="ts anim-pulse" x="340" y="80" text-anchor="middle" dominant-baseline="central">生成新全局模型 W1</text></g><line class="anim-travel" x1="200" y1="210" x2="300" y2="104" stroke="#7F77DD" stroke-width="2" marker-end="url(#arr3)"/><line class="anim-travel" x1="480" y1="210" x2="380" y2="104" stroke="#7F77DD" stroke-width="2" marker-end="url(#arr3)"/><g class="c-teal"><rect x="120" y="210" width="160" height="72" rx="8" stroke-width="0.5"/><text class="th" x="200" y="236" text-anchor="middle" dominant-baseline="central">设备 A</text><text class="ts" x="200" y="260" text-anchor="middle" dominant-baseline="central">仅上传梯度</text></g><g class="c-teal"><rect x="400" y="210" width="160" height="72" rx="8" stroke-width="0.5"/><text class="th" x="480" y="236" text-anchor="middle" dominant-baseline="central">设备 B</text><text class="ts" x="480" y="260" text-anchor="middle" dominant-baseline="central">仅上传梯度</text></g></svg>
+</div>
+</div>
+<script>
+var cur = 0;
+var labels = [
+  "1 / 4 - 初始状态：各设备持有孤立本地数据",
+  "2 / 4 - 模型下发：服务器广播全局初始权重",
+  "3 / 4 - 本地训练：私有数据不离开设备",
+  "4 / 4 - 联邦聚合：服务器合成新全局模型"
+];
+var total = 4;
+function render() {
+  document.querySelectorAll('.fl-step').forEach(function(el,i){ el.classList.toggle('active', i===cur); });
+  document.getElementById('step-label').textContent = labels[cur];
+  document.getElementById('btn-prev').disabled = cur===0;
+  document.getElementById('btn-next').textContent = cur===total-1 ? '↺ 重播' : '→';
+  var dots = document.getElementById('dots');
+  dots.innerHTML = '';
+  for(var i=0;i<total;i++){ var d=document.createElement('span'); d.className='dot'+(i===cur?' on':''); dots.appendChild(d); }
+}
+function move(d) {
+  if(d===1 && cur===total-1){ cur=0; } else { cur=Math.max(0,Math.min(total-1,cur+d)); }
+  render();
+}
+render();
+</script>

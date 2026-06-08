@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "title": "搜索提交流程",
+    "description": "用户提交搜索词后，系统校验输入并渲染搜索结果",
+    "diagramType": "flowchart",
+    "direction": "TB",
+    "mode": "preview_svg",
+    "locale": "zh-CN",
+    "textDirection": "ltr"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "blue",
+      "amber"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "开始",
+      "color": "gray"
+    },
+    {
+      "id": "input",
+      "type": "action",
+      "label": "输入关键词",
+      "color": "blue"
+    },
+    {
+      "id": "valid",
+      "type": "decision",
+      "label": "有效?",
+      "color": "amber"
+    },
+    {
+      "id": "retry",
+      "type": "action",
+      "label": "提示重试",
+      "color": "amber"
+    },
+    {
+      "id": "render",
+      "type": "end",
+      "label": "渲染结果",
+      "color": "gray"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "input"
+    },
+    {
+      "from": "input",
+      "to": "valid"
+    },
+    {
+      "from": "valid",
+      "to": "render",
+      "label": "是",
+      "branch": "main"
+    },
+    {
+      "from": "valid",
+      "to": "retry",
+      "label": "否",
+      "branch": "left"
+    },
+    {
+      "from": "retry",
+      "to": "input",
+      "label": "返回",
+      "route": "loop-left"
+    }
+  ]
+}

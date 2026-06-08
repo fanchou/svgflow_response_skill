@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "id": "decision_matrix_e2e",
+      "inputType": "assistant_response",
+      "input": "The team can build, buy, or partner. Build gives control but is slow, buy is fastest but creates vendor risk, and partner shares delivery but adds contract overhead. The final visual should compare the options and highlight rollout risk.",
+      "expectedTemplate": "decision_matrix",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "comparison",
+      "dsl": "examples/universal_strategy_comparison_infographic.dsl.json",
+      "svg": "examples/universal_strategy_comparison_infographic.interactive.svg"
+    },
+    {
+      "id": "architecture_stack_e2e",
+      "inputType": "assistant_response",
+      "input": "The platform is organized as a layered stack: channels send requests to an API layer, the API calls service capabilities, services read and write the data layer, and observability monitors every layer. Users should be able to inspect each layer.",
+      "expectedTemplate": "architecture_stack",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "layered",
+      "dsl": "examples/universal_architecture_stack_infographic.dsl.json",
+      "svg": "examples/universal_architecture_stack_infographic.interactive.svg"
+    },
+    {
+      "id": "swimlane_workflow_e2e",
+      "inputType": "assistant_response",
+      "input": "A support request moves across customer, support, engineering, and operations lanes. The customer reports an issue, support triages it, engineering fixes product defects, operations deploys the fix, and support closes the loop with the customer.",
+      "expectedTemplate": "swimlane_workflow",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "swimlane",
+      "dsl": "examples/universal_support_swimlane_infographic.dsl.json",
+      "svg": "examples/universal_support_swimlane_infographic.interactive.svg"
+    },
+    {
+      "id": "roadmap_timeline_e2e",
+      "inputType": "assistant_response",
+      "input": "The rollout plan has four phases: discovery in Q1, pilot in Q2, controlled rollout in Q3, and full adoption in Q4. Each phase has a milestone, a risk, and a readiness gate that determines whether the next phase can start.",
+      "expectedTemplate": "roadmap_timeline",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "timeline",
+      "dsl": "examples/universal_product_roadmap_infographic.dsl.json",
+      "svg": "examples/universal_product_roadmap_infographic.interactive.svg"
+    },
+    {
+      "id": "cause_effect_map_e2e",
+      "inputType": "assistant_response",
+      "input": "Customer churn increased because onboarding is slow, activation emails are inconsistent, and support handoffs lose context. The visual should connect causes to symptoms, business impact, and mitigations.",
+      "expectedTemplate": "cause_effect_map",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "loop",
+      "dsl": "examples/universal_churn_cause_effect_infographic.dsl.json",
+      "svg": "examples/universal_churn_cause_effect_infographic.interactive.svg"
+    },
+    {
+      "id": "feedback_loop_e2e",
+      "inputType": "assistant_response",
+      "input": "A reliability system observes incidents, prioritizes fixes, deploys mitigations, measures service health, and feeds lessons back into planning. It needs primary action paths and secondary feedback paths.",
+      "expectedTemplate": "feedback_loop",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "loop",
+      "dsl": "examples/universal_reliability_feedback_infographic.dsl.json",
+      "svg": "examples/universal_reliability_feedback_infographic.interactive.svg"
+    },
+    {
+      "id": "freeform_insight_map_e2e",
+      "inputType": "assistant_response",
+      "inputFile": "tests/real_response_product_growth.md",
+      "expectedTemplate": "freeform_insight_map",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "freeform",
+      "dsl": "examples/universal_product_growth_freeform_infographic.dsl.json",
+      "svg": "examples/universal_product_growth_freeform_infographic.interactive.svg"
+    }
+  ]
+}

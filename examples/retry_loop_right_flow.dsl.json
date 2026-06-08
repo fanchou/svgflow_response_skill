@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "Timeout Retry Flow",
+    "description": "A timeout enters the right waiting branch and loops back to retry the request",
+    "diagramType": "flowchart",
+    "direction": "TB",
+    "mode": "raw_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "style": {
+    "maxNodes": 8,
+    "colorLimit": 3,
+    "preferredColors": [
+      "gray",
+      "blue",
+      "amber"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Start",
+      "color": "gray"
+    },
+    {
+      "id": "send",
+      "type": "action",
+      "label": "Send request",
+      "color": "blue"
+    },
+    {
+      "id": "success",
+      "type": "decision",
+      "label": "Success?",
+      "color": "amber"
+    },
+    {
+      "id": "update",
+      "type": "end",
+      "label": "Update page",
+      "color": "gray"
+    },
+    {
+      "id": "wait",
+      "type": "action",
+      "label": "Wait to retry",
+      "subtitle": "Timeout",
+      "color": "amber"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "send"
+    },
+    {
+      "from": "send",
+      "to": "success"
+    },
+    {
+      "from": "success",
+      "to": "update",
+      "label": "Success",
+      "branch": "main"
+    },
+    {
+      "from": "success",
+      "to": "wait",
+      "label": "Failed",
+      "branch": "right",
+      "route": "l-shape"
+    },
+    {
+      "from": "wait",
+      "to": "send",
+      "label": "Retry",
+      "route": "loop-right"
+    }
+  ]
+}

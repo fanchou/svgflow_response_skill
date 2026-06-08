@@ -1,0 +1,9 @@
+<svg width="100%" viewBox="0 0 680 260" role="img" lang="ar" dir="rtl" xmlns="http://www.w3.org/2000/svg">
+<title>مخطط جاهزية المنتج</title>
+<desc>مثال عربي يتحقق من اتجاه النص وتوازن طول التسميات داخل البطاقات.</desc>
+<defs></defs>
+<rect x="60" y="40" width="560" height="150" rx="10" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+<text x="340" y="78" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="rgb(159, 225, 203)">خريطة جاهزية المنتج</text>
+<text x="340" y="108" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(93, 202, 165)">البحث · التصميم · الإطلاق</text>
+<text x="340" y="138" text-anchor="middle" dominant-baseline="central" font-size="12" data-fit="wrap" fill="rgb(93, 202, 165)">كل تسمية قصيرة أو معلنة كقابلة للالتفاف.</text>
+</svg>

@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Churn Cause Effect Map",
+    "description": "A universal cause-effect infographic connecting churn drivers, symptoms, business impact, and mitigations.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 560,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "slow_onboarding", "title": "Slow onboarding", "subtitle": "Time to value is unclear", "kind": "risk", "tone": "coral" },
+      { "id": "email_gaps", "title": "Email gaps", "subtitle": "Activation path is uneven", "kind": "risk", "tone": "amber" },
+      { "id": "handoff_loss", "title": "Handoff loss", "subtitle": "Support context drops", "kind": "risk", "tone": "gray" },
+      { "id": "low_activation", "title": "Low activation", "subtitle": "Fewer users reach value", "kind": "evidence", "tone": "blue" },
+      { "id": "churn", "title": "Churn increase", "subtitle": "Retention and expansion fall", "kind": "output", "tone": "purple" },
+      { "id": "mitigation", "title": "Mitigation plan", "subtitle": "Guide, automate, preserve context", "kind": "recommendation", "tone": "green" }
+    ],
+    "groups": [
+      { "id": "causes", "title": "Contributing causes", "members": ["slow_onboarding", "email_gaps", "handoff_loss"], "tone": "coral" },
+      { "id": "outcomes", "title": "Observed outcomes", "members": ["low_activation", "churn"], "tone": "blue" }
+    ],
+    "edges": [
+      { "from": "slow_onboarding", "to": "low_activation", "label": "Delays", "kind": "causal" },
+      { "from": "email_gaps", "to": "low_activation", "label": "Confuses", "kind": "causal" },
+      { "from": "handoff_loss", "to": "churn", "label": "Frustrates", "kind": "causal" },
+      { "from": "low_activation", "to": "churn", "label": "Predicts", "kind": "causal" },
+      { "from": "mitigation", "to": "slow_onboarding", "label": "Reduce", "kind": "feedback", "dashed": true }
+    ],
+    "labels": [
+      { "text": "Cause-effect intent separates drivers and outcomes.", "for": "churn", "tone": "neutral" }
+    ],
+    "legends": [
+      { "label": "Cause", "tone": "coral" },
+      { "label": "Signal", "tone": "blue" },
+      { "label": "Action", "tone": "green" }
+    ]
+  },
+  "layout": {
+    "intent": "loop",
+    "direction": "LR",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["coral", "amber", "gray", "blue", "purple", "green"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "mitigation",
+      "action": "sendPrompt",
+      "prompt": "Explain the churn mitigation plan."
+    }
+  ]
+}

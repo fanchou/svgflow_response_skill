@@ -1,0 +1,9 @@
+<svg width="100%" viewBox="0 0 680 260" role="img" lang="zh-CN" dir="ltr" xmlns="http://www.w3.org/2000/svg">
+<title>多语言文本适配示例</title>
+<desc>中文标签保持自然字距，并使用明确的语言元数据。</desc>
+<defs></defs>
+<rect x="60" y="40" width="560" height="150" rx="10" fill="rgb(12, 68, 124)" stroke="rgb(133, 183, 235)" stroke-width="0.5"/>
+<text x="340" y="78" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="rgb(181, 212, 244)">用户增长诊断</text>
+<text x="340" y="108" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(133, 183, 235)">获客 · 激活 · 留存 · 推荐</text>
+<text x="340" y="138" text-anchor="middle" dominant-baseline="central" font-size="12" data-fit="wrap" fill="rgb(133, 183, 235)">中文不使用负字距，标签长度保持可读。</text>
+</svg>

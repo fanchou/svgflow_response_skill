@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "Platform Overview Infographic",
+    "description": "A universal infographic structure with grouped nodes, labeled edges, a feedback loop, a legend, and clickable interactions.",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "en-US",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 520,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      {
+        "id": "entry",
+        "title": "User question",
+        "kind": "entity",
+        "tone": "gray"
+      },
+      {
+        "id": "orchestrator",
+        "title": "Orchestrator",
+        "subtitle": "Plan and route work",
+        "kind": "process",
+        "tone": "purple"
+      },
+      {
+        "id": "sources",
+        "title": "Knowledge sources",
+        "subtitle": "Docs, data, web, tools",
+        "kind": "container",
+        "tone": "blue"
+      },
+      {
+        "id": "synthesizer",
+        "title": "Synthesizer",
+        "subtitle": "Rank, reconcile, cite",
+        "kind": "process",
+        "tone": "amber"
+      },
+      {
+        "id": "answer",
+        "title": "Grounded answer",
+        "subtitle": "Citations and confidence",
+        "kind": "output",
+        "tone": "gray"
+      }
+    ],
+    "groups": [
+      {
+        "id": "retrieval",
+        "title": "Retrieval layer",
+        "members": ["sources"],
+        "tone": "blue"
+      }
+    ],
+    "edges": [
+      {
+        "from": "entry",
+        "to": "orchestrator",
+        "label": "Request",
+        "kind": "control"
+      },
+      {
+        "from": "orchestrator",
+        "to": "sources",
+        "label": "Fan out",
+        "kind": "data"
+      },
+      {
+        "from": "sources",
+        "to": "synthesizer",
+        "label": "Evidence",
+        "kind": "data"
+      },
+      {
+        "from": "synthesizer",
+        "to": "answer",
+        "label": "Grounded result",
+        "kind": "primary"
+      },
+      {
+        "from": "synthesizer",
+        "to": "orchestrator",
+        "label": "Replan if weak",
+        "kind": "feedback",
+        "route": "loop",
+        "dashed": true
+      }
+    ],
+    "labels": [
+      {
+        "text": "Layout intent chooses the visual shape; content semantics stay stable.",
+        "for": "orchestrator",
+        "tone": "neutral"
+      }
+    ],
+    "legends": [
+      {
+        "label": "Control",
+        "tone": "purple"
+      },
+      {
+        "label": "Evidence",
+        "tone": "blue"
+      },
+      {
+        "label": "Output",
+        "tone": "gray"
+      }
+    ]
+  },
+  "layout": {
+    "intent": "hub_spoke",
+    "direction": "TB",
+    "density": "standard",
+    "nodeLimit": 12
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["gray", "purple", "blue", "amber"],
+    "cornerRadius": 8
+  },
+  "interactions": [
+    {
+      "target": "orchestrator",
+      "action": "sendPrompt",
+      "prompt": "Explain the orchestration responsibilities in this platform."
+    },
+    {
+      "target": "sources",
+      "action": "sendPrompt",
+      "prompt": "Compare the knowledge sources used by this platform."
+    }
+  ]
+}

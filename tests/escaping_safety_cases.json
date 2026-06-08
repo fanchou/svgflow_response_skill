@@ -1,0 +1,31 @@
+{
+  "valid": [
+    {
+      "id": "escaped_svg_entities",
+      "fixture": "tests/valid_escaping_safety.svg",
+      "signals": ["xmlEntities", "safeInlineHandlers"]
+    },
+    {
+      "id": "production_module_grid_html",
+      "fixture": "examples/chinese_rl_engineering.module_grid.html",
+      "signals": ["safeHtmlText", "safeInlineHandlers"]
+    }
+  ],
+  "invalid": [
+    {
+      "id": "unescaped_svg_ampersand",
+      "fixture": "tests/invalid_escaping_svg_unescaped_amp.svg",
+      "expectedFailure": "XML parse error"
+    },
+    {
+      "id": "html_injected_tag",
+      "fixture": "tests/invalid_escaping_html_injected_tag.html",
+      "expectedFailure": "unsafe HTML tag"
+    },
+    {
+      "id": "html_javascript_uri",
+      "fixture": "tests/invalid_escaping_html_javascript_uri.html",
+      "expectedFailure": "unsafe javascript URI"
+    }
+  ]
+}

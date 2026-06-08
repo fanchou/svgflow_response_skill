@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "智能体 RAG 架构图",
+    "description": "展示编排智能体如何拆解用户问题、调度子智能体从多个知识源检索，并合成有依据的最终回答。",
+    "diagramType": "agentic_pipeline",
+    "mode": "html_preview",
+    "locale": "zh-CN",
+    "textDirection": "ltr",
+    "viewBox": {
+      "width": 690,
+      "height": 620
+    }
+  },
+  "entry": {
+    "id": "question",
+    "title": "用户问题",
+    "actionPrompt": "智能体 RAG 中用户问题是什么样的？"
+  },
+  "orchestrator": {
+    "id": "orchestrator",
+    "title": "编排智能体",
+    "subtitle": "规划、拆解任务、路由子任务",
+    "actionPrompt": "智能体 RAG 中编排智能体的职责是什么？"
+  },
+  "workers": [
+    {
+      "id": "vector",
+      "agent": {
+        "id": "vector_agent",
+        "title": "向量检索",
+        "subtitle": "语义相似度匹配",
+        "actionPrompt": "向量检索子智能体是如何工作的？"
+      },
+      "source": {
+        "id": "vector_db",
+        "title": "向量数据库",
+        "subtitle": "嵌入向量存储",
+        "actionPrompt": "哪类文档适合存入向量数据库？"
+      }
+    },
+    {
+      "id": "sql",
+      "agent": {
+        "id": "sql_agent",
+        "title": "SQL 智能体",
+        "subtitle": "结构化数据查询",
+        "actionPrompt": "结构化数据智能体在 RAG 中如何工作？"
+      },
+      "source": {
+        "id": "relational_db",
+        "title": "关系型数据库",
+        "subtitle": "表格与行数据",
+        "actionPrompt": "关系型数据库如何融入 RAG？"
+      }
+    },
+    {
+      "id": "web",
+      "agent": {
+        "id": "web_agent",
+        "title": "网络搜索",
+        "subtitle": "实时网页数据",
+        "actionPrompt": "网络搜索智能体在智能体 RAG 中如何工作？"
+      },
+      "source": {
+        "id": "internet",
+        "title": "互联网",
+        "subtitle": "实时网页内容",
+        "actionPrompt": "实时网络检索与本地索引有何区别？"
+      }
+    },
+    {
+      "id": "tool",
+      "agent": {
+        "id": "tool_agent",
+        "title": "工具 / API 调用",
+        "subtitle": "计算与执行动作",
+        "actionPrompt": "工具调用智能体在智能体 RAG 中做什么？"
+      },
+      "source": {
+        "id": "external_api",
+        "title": "外部 API",
+        "subtitle": "SaaS、代码执行器",
+        "actionPrompt": "智能体 RAG 中哪些外部 API 比较实用？"
+      }
+    }
+  ],
+  "synthesizer": {
+    "id": "synthesizer",
+    "title": "合成器（LLM）",
+    "subtitle": "重排序、消解冲突、生成引用",
+    "actionPrompt": "智能体 RAG 中合成器如何整合多路结果？"
+  },
+  "output": {
+    "id": "grounded_answer",
+    "title": "有依据的最终答案",
+    "subtitle": "含引用与置信度",
+    "actionPrompt": "智能体 RAG 中什么样的回答算有依据的好答案？"
+  },
+  "loops": [
+    {
+      "id": "replan",
+      "from": "synthesizer",
+      "to": "orchestrator",
+      "label": "结果不足，重新规划",
+      "dashed": true
+    }
+  ]
+}

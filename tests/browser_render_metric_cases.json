@@ -1,0 +1,41 @@
+{
+  "valid": [
+    {
+      "id": "walkthrough_browser_metrics",
+      "fixture": "examples/chinese_federated_learning.walkthrough.html",
+      "type": "walkthrough",
+      "viewports": [360, 720],
+      "assertions": ["noHorizontalOverflow", "svgVisible", "singleActiveStep", "clickTargets"]
+    },
+    {
+      "id": "module_grid_browser_metrics",
+      "fixture": "examples/chinese_rl_engineering.module_grid.html",
+      "type": "module_grid",
+      "viewports": [360, 720],
+      "assertions": ["noHorizontalOverflow", "cardsVisible", "clickTargets"]
+    }
+  ],
+  "invalid": [
+    {
+      "id": "fixed_svg_overflows_browser",
+      "fixture": "tests/invalid_render_surface_fixed_svg.html",
+      "type": "walkthrough",
+      "viewports": [360],
+      "expectedFailure": "horizontal overflow"
+    },
+    {
+      "id": "tiny_buttons_fail_browser",
+      "fixture": "tests/invalid_render_surface_tiny_buttons.html",
+      "type": "module_grid",
+      "viewports": [360],
+      "expectedFailure": "click target"
+    },
+    {
+      "id": "missing_overflow_protection_fails_browser",
+      "fixture": "tests/invalid_render_surface_overflow.html",
+      "type": "module_grid",
+      "viewports": [360],
+      "expectedFailure": "horizontal overflow"
+    }
+  ]
+}
