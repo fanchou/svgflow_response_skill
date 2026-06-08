@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "IoT 数据湖分层架构",
+    "description": "从设备接入到消费层的五层结构：接入层、流处理层、存储层三分区、服务层、消费层。",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "zh-CN",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 680,
+    "height": 680,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "queue_buffer", "title": "消息队列缓冲", "subtitle": "背压 / 削峰 / 重放", "kind": "container", "tone": "coral", "parent": "ingestion" },
+      { "id": "device_connection", "title": "设备连接管理", "subtitle": "认证 / 会话 / 租户", "kind": "process", "tone": "coral", "parent": "ingestion" },
+      { "id": "schema_registry", "title": "Schema 注册", "subtitle": "格式标准化", "kind": "container", "tone": "coral", "parent": "ingestion" },
+      { "id": "window_cep", "title": "窗口聚合 / CEP", "subtitle": "实时事件识别", "kind": "process", "tone": "amber", "parent": "stream_processing" },
+      { "id": "quality_filter", "title": "质量校验 / 过滤", "subtitle": "异常值 / 缺失值", "kind": "process", "tone": "amber", "parent": "stream_processing" },
+      { "id": "dedupe_late", "title": "去重 / 迟到处理", "subtitle": "乱序与水位线", "kind": "process", "tone": "amber", "parent": "stream_processing" },
+      { "id": "bronze_zone", "title": "Bronze 区", "subtitle": "原始 / 不可变", "items": ["Parquet · Avro", "全量保留 3-7年", "冷存储 / 对象存储", "按设备 / 日期分区"], "kind": "container", "tone": "coral", "parent": "storage" },
+      { "id": "silver_zone", "title": "Silver 区", "subtitle": "清洗 / 标准化", "items": ["Delta Lake · Iceberg", "保留 1-3年", "支持 ACID 事务", "时间旅行查询"], "kind": "process", "tone": "amber", "parent": "storage" },
+      { "id": "gold_zone", "title": "Gold 区", "subtitle": "聚合 / 业务指标", "items": ["列式 / 压缩", "保留 90天滚动", "物化视图", "低延迟查询"], "kind": "output", "tone": "teal", "parent": "storage" },
+      { "id": "query_engine", "title": "Trino / Spark SQL", "subtitle": "统一查询", "kind": "process", "tone": "purple", "parent": "serving" },
+      { "id": "catalog_lineage", "title": "数据目录 / 血缘", "subtitle": "元数据管理", "kind": "container", "tone": "purple", "parent": "serving" },
+      { "id": "access_control", "title": "行列级权限控制", "subtitle": "细粒度安全", "kind": "risk", "tone": "purple", "parent": "serving" },
+      { "id": "ai_ml", "title": "AI / ML", "kind": "output", "tone": "gray", "parent": "consumption" },
+      { "id": "bi_report", "title": "BI 报表", "kind": "output", "tone": "gray", "parent": "consumption" },
+      { "id": "digital_twin", "title": "数字孪生", "kind": "output", "tone": "gray", "parent": "consumption" },
+      { "id": "realtime_monitor", "title": "实时监控", "kind": "output", "tone": "gray", "parent": "consumption" },
+      { "id": "open_api", "title": "开放 API", "kind": "output", "tone": "gray", "parent": "consumption" }
+    ],
+    "groups": [
+      { "id": "ingestion", "title": "接入层", "subtitle": "MQTT · Kafka · HTTP · CoAP · OPC-UA", "members": ["queue_buffer", "device_connection", "schema_registry"], "tone": "coral" },
+      { "id": "stream_processing", "title": "流处理层", "subtitle": "实时计算 · 异常检测 · 数据清洗 · 特征提取", "members": ["window_cep", "quality_filter", "dedupe_late"], "tone": "amber" },
+      { "id": "storage", "title": "存储层（三分区架构）", "subtitle": "Bronze 保真、Silver 可信、Gold 服务业务指标", "members": ["bronze_zone", "silver_zone", "gold_zone"], "tone": "teal" },
+      { "id": "serving", "title": "服务层", "subtitle": "统一查询 · 数据目录 · 访问控制 · 血缘追踪", "members": ["query_engine", "catalog_lineage", "access_control"], "tone": "purple" },
+      { "id": "consumption", "title": "消费层", "subtitle": "AI、BI、数字孪生、实时监控和开放API", "members": ["ai_ml", "bi_report", "digital_twin", "realtime_monitor", "open_api"], "tone": "gray" }
+    ],
+    "edges": [
+      { "from": "schema_registry", "to": "window_cep", "label": "标准事件", "kind": "data", "route": "orthogonal" },
+      { "from": "dedupe_late", "to": "bronze_zone", "label": "落原始区", "kind": "data", "route": "orthogonal" },
+      { "from": "bronze_zone", "to": "silver_zone", "label": "清洗标准化", "kind": "data", "route": "orthogonal" },
+      { "from": "silver_zone", "to": "gold_zone", "label": "聚合指标", "kind": "data", "route": "orthogonal" },
+      { "from": "gold_zone", "to": "query_engine", "label": "服务查询", "kind": "data", "route": "orthogonal" },
+      { "from": "query_engine", "to": "ai_ml", "label": "消费", "kind": "data", "route": "orthogonal" }
+    ],
+    "labels": [
+      { "text": "核心结构是层次与生命周期，不是简单的数据流向。", "for": "storage", "tone": "teal" }
+    ],
+    "legends": [
+      { "label": "接入", "tone": "coral" },
+      { "label": "实时处理", "tone": "amber" },
+      { "label": "湖仓分区", "tone": "teal" },
+      { "label": "服务治理", "tone": "purple" },
+      { "label": "消费", "tone": "gray" }
+    ]
+  },
+  "layout": {
+    "intent": "layered",
+    "direction": "TB",
+    "density": "detailed",
+    "nodeLimit": 24
+  },
+  "style": {
+    "theme": "official_dark",
+    "palette": ["coral", "amber", "teal", "purple", "gray"],
+    "cornerRadius": 12
+  },
+  "interactions": [
+    { "target": "queue_buffer", "action": "sendPrompt", "prompt": "IoT数据接入层如何做协议适配、消息缓冲和背压控制？" },
+    { "target": "device_connection", "action": "sendPrompt", "prompt": "IoT接入层如何做设备认证、连接管理和租户隔离？" },
+    { "target": "schema_registry", "action": "sendPrompt", "prompt": "IoT数据接入时如何做格式标准化和Schema注册？" },
+    { "target": "window_cep", "action": "sendPrompt", "prompt": "IoT流处理中窗口聚合和CEP复杂事件处理如何实现？" },
+    { "target": "quality_filter", "action": "sendPrompt", "prompt": "IoT流数据的实时质量校验和异常过滤策略如何设计？" },
+    { "target": "dedupe_late", "action": "sendPrompt", "prompt": "IoT实时流中如何做数据去重、乱序和迟到数据处理？" },
+    { "target": "bronze_zone", "action": "sendPrompt", "prompt": "数据湖Bronze区原始数据存储格式、分区和生命周期策略如何设计？" },
+    { "target": "silver_zone", "action": "sendPrompt", "prompt": "数据湖Silver区清洗、标准化和ACID表格式如何设计？" },
+    { "target": "gold_zone", "action": "sendPrompt", "prompt": "数据湖Gold区聚合指标、物化视图和低延迟查询如何设计？" },
+    { "target": "query_engine", "action": "sendPrompt", "prompt": "IoT数据湖统一查询引擎如何选型：Trino、Spark SQL还是云数仓？" },
+    { "target": "catalog_lineage", "action": "sendPrompt", "prompt": "IoT数据湖数据目录、元数据管理和血缘追踪如何实现？" },
+    { "target": "access_control", "action": "sendPrompt", "prompt": "IoT数据湖行列级权限和细粒度访问控制如何设计？" }
+  ]
+}

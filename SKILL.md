@@ -1,17 +1,17 @@
 ---
 name: svgflow-response
-description: Use when an assistant response, technical explanation, workflow, architecture, knowledge system, layered structure, or multi-step process should become a compact SVG or HTML infographic.
+description: Use when an assistant response, raw user question, technical explanation, workflow, architecture, knowledge system, layered structure, or multi-step process should become a compact SVG or HTML infographic.
 ---
 
 # SVGFlow Response-to-Infographic Skill
 
 ## Role
 
-You are a Response-to-Infographic renderer. Your input is an assistant response, not the user's raw prompt.
+You are a Response-to-Infographic renderer. Your input is usually an assistant response. If the user invokes the skill with only a raw question or topic, first synthesize a concise source brief that answers the question structurally, then visualize that brief.
 
 Extract the most useful information structure from that response before thinking about visual style. Prefer the universal `infographic` DSL for new work, then choose a layout intent that fits the semantic structure. Use a legacy specialized family only when a fixture, renderer, or explicit user request requires it. Build the DSL first, plan layout, render valid SVG or HTML, validate, repair once if needed, and output only the requested artifact.
 
-Do not answer the user's original question. This skill is a post-processing visualization module.
+Do not output a prose answer to the user's original question unless the user asks for one. Use any synthesized brief only as internal source material for the infographic.
 
 ## Pipeline
 
@@ -20,6 +20,7 @@ Follow this order:
 ```text
 Assistant Response
   -> Suitability Check
+  -> Source Brief if input is only a raw question
   -> Semantic Structure Pass
   -> Response Parser
   -> Universal Infographic DSL Builder
@@ -99,7 +100,7 @@ Choose visual shape with `layout.intent`, not by inventing a new diagram family:
 | intent | Use when |
 |---|---|
 | `linear` | Ordered process, pipeline, sequence, or lifecycle |
-| `layered` | Architecture stack, data lake, platform layers, or dependency tiers |
+| `layered` | Architecture stack, platform layers, dependency tiers, or zone-based maps |
 | `loop` | Feedback system, control loop, training loop, calibration loop |
 | `matrix` | Card grid, capability grid, comparison modules |
 | `hub_spoke` | Orchestrator, central concept, fan-out/fan-in, knowledge map |
@@ -112,11 +113,11 @@ Choose visual shape with `layout.intent`, not by inventing a new diagram family:
 
 Use specialized families below as compatibility templates, not as the default expansion path.
 
-For AIoT, IoT, edge-cloud, digital twin, sensor-to-cloud, or AI operations architectures, prefer the v2 `dark_layered_architecture` template. Render it as a product-grade dark layered architecture map with full-width layer bands, compact component chips, side data/control rails, and bottom legend swatches. Do not collapse these responses into numbered explanation cards.
+For dense layered architecture responses with explicit layers, peer components, and directional flows, prefer the v2 `dark_layered_architecture` template when a product-grade dark architecture map fits the requested style or an existing fixture requires it. Render full-width layer bands, compact component chips, side flow rails when relationships support them, and bottom legend swatches. Do not collapse these responses into numbered explanation cards.
 
 When `style.archetype = "dark_layered_architecture"` and `scripts/render_infographic.py` is available, prefer building the DSL and rendering through that script instead of hand-writing SVG. Hand-write SVG only when the script is unavailable or the user explicitly asks for inline output only.
 
-Do not treat `dark_layered_architecture` as a fixed answer. First identify the actual information structure: layers, responsibilities, peer components, data flow, control flow, feedback, and cross-cutting constraints. Use the template only to express that structure. If the source has a different number of meaningful layers, preserve the source semantics unless the user asked for the canonical AIoT reference stack.
+Do not treat `dark_layered_architecture` as a fixed answer. First identify the actual information structure: layers, responsibilities, peer components, data flow, control flow, feedback, and cross-cutting constraints. Use the template only to express that structure. If the source has a different number of meaningful layers, preserve the source semantics unless the user explicitly asked for a canonical reference stack.
 
 The authoritative legacy-to-v2 mapping is `schemas/legacy-to-infographic-map.json`. If a legacy family is used, first confirm it cannot be represented cleanly as `diagramType = "infographic"` with a layout intent.
 
@@ -129,7 +130,7 @@ Choose the smallest family that preserves the response structure:
 | Universal infographic | `infographic` | Preferred v2 model for most new information graphics |
 | Flowchart | `flowchart` | Ordered process, decision, branch, error, retry, or final state |
 | Knowledge map | `knowledge_map` | Chapters, concepts, topic clusters, principle grids, clickable learning modules |
-| Architecture map | `architecture_map` | Layers, zones, nested platform components, service stacks, data lake or infrastructure diagrams |
+| Architecture map | `architecture_map` | Layers, zones, nested platform components, service stacks, or infrastructure diagrams |
 | Interactive walkthrough | `interactive_walkthrough` | A process needs step controls, progress dots, one SVG per state, and optional pulse/travel animation |
 | System loop | `system_loop` | Actor-environment feedback loop with labeled signals, guards, deployment, or calibration paths |
 | Module grid | `module_grid` | HTML card grid with modules, semantic badges, item lists, icons, and CTA buttons |
@@ -151,6 +152,31 @@ For every nontrivial infographic, run a semantic structure pass:
 3. Name relationship verbs before drawing arrows: data, control, dependency, feedback, cause, contrast, or reference.
 4. Put responsibilities and implementation examples into `subtitle` or `items` instead of promoting every phrase to a peer node.
 5. Choose layout only after the semantic roles and relationships are clear.
+
+Treat information-structure extraction as a private modeling step, not as visual styling:
+
+1. Split the source into atomic claims.
+2. Test candidate structures: containment, sequence, responsibility lanes, comparison, causality, hierarchy, and feedback.
+3. Choose the organizing axis by coverage, exclusivity, stability, visual affordance, and non-distortion.
+4. Promote standalone responsibilities and relationships to groups, nodes, or edges.
+5. Demote examples, technologies, formats, thresholds, policies, and incidental details into subtitles, items, labels, or legends unless they are the subject.
+6. Keep secondary axes subordinate; do not mix multiple primary structures just because they are visually available.
+
+Before selecting a visual template, write a private Structure Decision Record:
+
+- `subject`: the concrete thing being designed or explained.
+- `reader_question`: what the diagram must help the reader understand.
+- `organizing_axis`: the main structure, such as lifecycle layers, responsibility lanes, storage zones, option columns, causal loop, or metric dashboard.
+- `major_groups`: the containers that should become bands, zones, lanes, columns, or clusters.
+- `peer_modules`: the sibling components inside each group.
+- `detail_fields`: facts that belong inside a module, such as protocol, format, retention, SLA, policy, or examples.
+- `relationship_verbs`: real verbs that justify edges.
+- `promoted_claims`: claims promoted to groups, nodes, or edges.
+- `demoted_claims`: claims kept as subtitles, items, badges, labels, or legends.
+- `ambiguities`: missing or unclear assumptions that must not be invented.
+- `not_the_structure`: tempting templates that would flatten or distort the content.
+
+When the source contains major layers with important sub-zones inside one or more layers, treat those sub-zones as semantic peers rather than decorative chips. Prefer the layered or zoned structure over a generic left-to-right flow when the user asks for an architecture, layer model, or structural design.
 
 For `flowchart`, if there are more than 8 candidate nodes, compress in this order:
 

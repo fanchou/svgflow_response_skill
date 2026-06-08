@@ -19,6 +19,7 @@ examples/chinese_federated_learning.walkthrough.html
 examples/chinese_federated_learning_walkthrough.dsl.json
 examples/chinese_iot_data_lake_architecture.dsl.json
 examples/chinese_iot_data_lake_architecture.interactive.svg
+examples/chinese_iot_data_lake_platform.dsl.json
 examples/chinese_refactoring_ui_intro.preview.html
 examples/chinese_rl_engineering.module_grid.html
 examples/chinese_rl_engineering_module_grid.dsl.json
@@ -50,6 +51,8 @@ examples/universal_reliability_feedback_infographic.interactive.svg
 examples/universal_product_growth_freeform_infographic.dsl.json
 examples/universal_product_growth_freeform_infographic.interactive.svg
 examples/universal_primitive_coverage_infographic.dsl.json
+examples/iot-data-lake-architecture.preview.html
+examples/iot_data_lake_architecture.svg
 examples/arabic_text_fit.svg
 examples/chinese_text_fit.svg
 examples/refactoring_ui_knowledge_map.dsl.json

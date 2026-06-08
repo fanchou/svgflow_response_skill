@@ -57,9 +57,17 @@
       "expectedDecision": "visualize"
     },
     {
-      "id": "select_dark_layered_architecture_aiot",
+      "id": "select_zoned_layered_architecture",
       "inputType": "assistant_response",
-      "input": "AI时代的物联网系统架构包含感知层传感器、边缘AI推理、云端IoT平台、数字孪生、LLM应用层，以及数据上行和AI决策下行控制流。",
+      "input": "Design a layered architecture with intake, processing, a central layer split into three named zones, a serving layer, and consumer outputs. Each zone has its own format, retention, policy, and SLA details.",
+      "expectedTemplate": "zoned_layered_architecture",
+      "expectedLayoutIntent": "layered",
+      "expectedDecision": "visualize"
+    },
+    {
+      "id": "select_dark_layered_architecture",
+      "inputType": "assistant_response",
+      "input": "Create a product-grade dark layered architecture map with application, platform, execution, and source layers. Show component chips, upward data flow, downward control flow, feedback, side rails, and a legend.",
       "expectedTemplate": "dark_layered_architecture",
       "expectedLayoutIntent": "layered",
       "expectedDecision": "visualize"

@@ -99,11 +99,27 @@
       ]
     },
     {
+      "id": "zoned_layered_architecture",
+      "name": "Zoned Layered Architecture",
+      "diagramType": "infographic",
+      "layoutIntent": "layered",
+      "whenToUse": "Use for architectures where major layers contain important named zones, sub-areas, tiers, partitions, or capability regions with their own responsibilities and detail fields.",
+      "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
+      "nodeKinds": ["container", "process", "output", "risk", "metric"],
+      "edgeKinds": ["data", "dependency", "control"],
+      "rendererNotes": [
+        "Preserve the layer and zone hierarchy before drawing flows.",
+        "Use a vertical stack for architecture questions and reserve left-to-right layout for explicit pipeline requests.",
+        "Make important zones large sibling cards with internal detail rows.",
+        "Represent protocols, formats, policies, retention, SLAs, examples, and constraints as node items, not peer nodes."
+      ]
+    },
+    {
       "id": "dark_layered_architecture",
       "name": "Dark Layered Architecture",
       "diagramType": "infographic",
       "layoutIntent": "layered",
-      "whenToUse": "Use for AI-era systems, AIoT, IoT, edge-cloud architectures, and product-grade architecture diagrams that need visible layers, component chips, and bidirectional data/control flows.",
+      "whenToUse": "Use for product-grade architecture diagrams that need visible layers, component chips, side rails, legends, and bidirectional or cross-cutting flows.",
       "requiredPrimitives": ["nodes", "groups", "edges", "labels", "legends", "interactions"],
       "nodeKinds": ["container", "entity", "process", "output", "risk"],
       "edgeKinds": ["data", "control", "feedback", "dependency"],
@@ -111,7 +127,7 @@
         "Use the source response's semantic layers and flows first; the template is a visual carrier, not the source of truth.",
         "Use a dark canvas with four or more full-width rounded layer bands.",
         "Put compact component chips inside each layer rather than prose cards.",
-        "Add side rails for upstream data flow and downstream AI/control flow when both are present.",
+        "Add side rails for opposite-direction or cross-cutting flows when both are present.",
         "Use bottom legend swatches for layer semantics and keep all labels short."
       ]
     },

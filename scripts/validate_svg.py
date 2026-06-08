@@ -1634,8 +1634,8 @@ def detect_input_quality_signals(text: str) -> dict[str, object]:
     comparison_terms = len(re.findall(r"\b(cost|speed|risk|fit|tradeoff|compare|comparison|cheap|quick|maintenance|extensibility)\b", text, re.I))
     process_terms = len(re.findall(r"\b(after|then|if|when|receives?|sends?|writes?|validates?|creates?|publishes?)\b", text, re.I))
     process_terms += len(re.findall(r"(\u63a5\u6536|\u6821\u9a8c|\u521b\u5efa|\u6210\u529f|\u5931\u8d25|\u901a\u77e5|\u53d6\u6d88|\u91cd\u8bd5|ثم|إذا|يرسل|يتحقق)", text))
-    infographic_terms = len(re.findall(r"\b(metric|metrics|kpi|uptime|latency|alert|incident|hierarchy|organization|org|team|lead|owns|ownership|responsibility|escalation|lane|lanes|workflow|customer|support|engineering|operations|handoff|timeline|roadmap|phase|milestone|layer|architecture|dashboard|snapshot|cluster|clusters|concept|principle|principles|activation|collaboration|monetization|retention|evidence|signal|signals|risk|risks|recommendation|recommendations|confidence|ownership|sequential|prioritize|prioritizes|impact|effort|reliability|observes|fixes|mitigation|mitigations|health|lessons|feedback|aiot|iot|edge|sensor|sensors|device|devices|cloud|platform|digital twin|llm)\b", text, re.I))
-    infographic_terms += len(re.findall(r"(物联网|架构|感知层|边缘层|平台层|应用层|传感器|设备|数据湖|数字孪生|大模型|决策流|数据上行|云端|边缘|安全)", text))
+    infographic_terms = len(re.findall(r"\b(metric|metrics|kpi|uptime|latency|alert|incident|hierarchy|organization|org|team|lead|owns|ownership|responsibility|escalation|lane|lanes|workflow|customer|support|engineering|operations|handoff|timeline|roadmap|phase|milestone|layer|layers|architecture|dashboard|snapshot|cluster|clusters|concept|principle|principles|activation|collaboration|monetization|retention|evidence|signal|signals|risk|risks|recommendation|recommendations|confidence|ownership|sequential|prioritize|prioritizes|impact|effort|reliability|observes|fixes|mitigation|mitigations|health|lessons|feedback|zone|zones|tier|tiers|component|components|module|modules|policy|sla|status|dependency|dependencies|platform)\b", text, re.I))
+    infographic_terms += len(re.findall(r"(架构|层级|分层|流程|阶段|指标|风险|建议|反馈|依赖|责任|模块|区域|分区|看板|时间线|对比|组件|策略|状态)", text))
     entity_count = len(set(entity_like)) + len(set(cjk_terms)) + len(set(arabic_terms))
     locale = "en-US"
     direction = "ltr"
@@ -1712,9 +1712,15 @@ def count_matches(text: str, terms: list[str]) -> int:
 
 TEMPLATE_SELECTION_RULES = [
     {
+        "template": "zoned_layered_architecture",
+        "layoutIntent": "layered",
+        "terms": ["zone", "zones", "zoned", "sub-area", "sub-areas", "tier", "tiers", "partition", "partitions", "region", "regions", "central layer", "named zones", "retention", "policy", "sla", "details"],
+        "threshold": 3,
+    },
+    {
         "template": "dark_layered_architecture",
         "layoutIntent": "layered",
-        "terms": ["aiot", "iot", "internet of things", "物联网", "edge", "边缘", "sensor", "sensors", "感知", "device", "devices", "digital twin", "llm", "ai decision", "cloud", "platform"],
+        "terms": ["dark", "product-grade", "layered architecture", "component chips", "side rails", "legend", "upward data flow", "downward control flow", "bidirectional", "cross-cutting"],
         "threshold": 3,
     },
     {
@@ -1824,6 +1830,7 @@ def validate_template_selection_cases(path: Path) -> None:
         "swimlane_workflow",
         "roadmap_timeline",
         "architecture_stack",
+        "zoned_layered_architecture",
         "dark_layered_architecture",
         "feedback_loop",
         "concept_map",
@@ -1906,10 +1913,10 @@ def load_pipeline_helper(root: Path) -> object:
 
 def validate_prompt_guidance(root: Path) -> None:
     required = {
-        "prompts/response_parser.md": ["universal infographic", "layout intent", "comparison", "input quality gate", "overview", "semantic pass", "relationship verbs"],
-        "prompts/flow_dsl_builder.md": ["diagramType: infographic", "layout.intent", "dashboard", "semantic model", "Preserve hierarchy"],
-        "prompts/layout_planner.md": ["Universal infographic layout", "hub_spoke", "hierarchy", "semantic structure", "semantic hierarchy"],
-        "prompts/svg_renderer.md": ["Universal infographic SVG", "layout.intent", "Escape prompt text", "semantic hierarchy", "information structure"],
+        "prompts/response_parser.md": ["universal infographic", "layout intent", "comparison", "input quality gate", "overview", "semantic pass", "relationship verbs", "Structure Decision Record", "Information architecture extraction", "atomic claims", "coverage", "promoted_claims", "demoted_claims", "zoned_layered_architecture"],
+        "prompts/flow_dsl_builder.md": ["diagramType: infographic", "layout.intent", "dashboard", "semantic model", "Preserve hierarchy", "Structure Decision Record", "promoted_claims", "demoted_claims", "zoned layered architectures"],
+        "prompts/layout_planner.md": ["Universal infographic layout", "hub_spoke", "hierarchy", "semantic structure", "semantic hierarchy", "Zoned layered layout"],
+        "prompts/svg_renderer.md": ["Universal infographic SVG", "layout.intent", "Escape prompt text", "semantic hierarchy", "information structure", "Zoned layered SVG"],
         "prompts/validator_repair.md": [
             "Universal infographic checklist",
             "layout intent",
@@ -2066,6 +2073,7 @@ def validate_template_catalog(path: Path) -> None:
         "swimlane_workflow",
         "roadmap_timeline",
         "architecture_stack",
+        "zoned_layered_architecture",
         "dark_layered_architecture",
         "feedback_loop",
         "concept_map",

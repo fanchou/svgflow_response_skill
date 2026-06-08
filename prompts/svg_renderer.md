@@ -34,7 +34,7 @@ Universal infographic SVG rules:
 
 Dark layered architecture SVG rules:
 
-1. Use these rules when the selected template is `dark_layered_architecture`, or when `layout.intent = "layered"` and `style.theme = "official_dark"` for an AIoT, IoT, edge-cloud, or AI platform architecture.
+1. Use these rules when the selected template is `dark_layered_architecture`, or when `layout.intent = "layered"` and `style.theme = "official_dark"` for a dense architecture with explicit layer groups, peer components, and directional flows.
 2. Prefer `viewBox="0 0 690 720"` with a dark canvas, four full-width rounded layer bands, and compact component chips inside each band.
 3. Layer order should read from business/application at the top to device/perception at the bottom when the diagram explains system architecture; use arrows to clarify actual data/control direction.
 4. Use deep but distinct layer tones: purple for applications/AI decisioning, green/teal for platform and data, amber for edge execution, and coral/brown for devices/perception.
@@ -42,8 +42,17 @@ Dark layered architecture SVG rules:
 6. Do not render this template as numbered prose cards. The primary visual objects are layer bands, chips, side rails, connector arrows, and legend swatches.
 7. Keep chip labels short, center aligned, and clickable as whole groups when `sendPrompt` interactions exist.
 8. Let information structure drive the layer map: layer bands represent groups, chips represent nodes, chip subtitles/items represent responsibilities or implementation examples, and side rails represent explicit data/control edges or labels.
-9. If the response has fewer or more than four real layers, preserve the actual semantic layers unless the user asked for the canonical four-layer AIoT reference architecture.
+9. If the response has fewer or more than four real layers, preserve the actual semantic layers unless the user asked for a canonical reference architecture.
 10. Avoid visually dense but semantically flat output. Dense architecture diagrams should show differentiated layer responsibilities, component roles, and directional flows.
+
+Zoned layered SVG rules:
+
+1. Use these rules when the selected template is `zoned_layered_architecture`, or when the source has major layers and important nested zones.
+2. Render a vertical layer stack for architecture or structural-design questions.
+3. Make the semantically dominant layer the visual center when its internal zones carry the main meaning.
+4. Render zones as large sibling cards, not small chips, when each zone has its own responsibilities or detail fields.
+5. Put zone details such as formats, protocols, policies, ownership, retention, SLAs, examples, or constraints as subordinate text rows inside the zone cards.
+6. Do not flatten zoned architecture into a left-to-right pipeline unless the user explicitly asks for a pipeline.
 
 Strict flowchart SVG rules:
 

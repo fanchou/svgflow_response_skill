@@ -18,6 +18,11 @@ Rules:
 8. Treat the DSL as the semantic model, not a drawing sketch. A node exists because the response names a meaningful entity, capability, state, metric, risk, or output. A group exists because the response implies a real layer, actor, phase, category, zone, or option set. An edge exists because the response states or strongly implies a relationship verb.
 9. Preserve hierarchy: groups hold major semantic containers, nodes hold peer modules inside those containers, and `items` hold implementation details or examples that should not become peer nodes.
 10. Preserve directionality: use `kind = "data"`, `"control"`, `"feedback"`, or `"dependency"` to distinguish flow meaning instead of drawing every connector as a generic arrow.
+11. Preserve the Structure Decision Record from the parser. If `not_the_structure` warns against a flat data-flow or prose-card layout, do not rebuild the DSL as that layout.
+12. Every group, node, and edge must be backed by a source claim or synthesized source brief claim. If the evidence is only an example, protocol, tool, threshold, or adjective, make it an `item`, `subtitle`, `label`, or `legend` instead of a peer node.
+13. Keep `promoted_claims` and `demoted_claims` consistent with the DSL. A promoted claim should have a visible primitive; a demoted claim should remain subordinate and should not reappear as an equal card.
+14. If two candidate structures compete, encode only the highest-scoring organizing axis in `layout.intent`; express secondary axes through legends, badges, side labels, rails, or node items.
+15. Preserve containment explicitly. When a node belongs to a group, set or imply that parent relationship through the group `members` list, node `parent`, or stable id naming. Do not rely on spatial proximity alone to communicate hierarchy.
 
 Universal infographic rules:
 
@@ -38,8 +43,9 @@ Universal infographic rules:
 15. Use `kind = "media"` for image, icon, screenshot, or document placeholders that should be represented visually.
 16. Use `layout.intent = "dashboard"` when metric cards are the main reading path.
 17. For layered architectures, put layer responsibilities in group titles/subtitles or labels, put components in nodes, put examples/technologies in node `subtitle` or `items`, and put cross-layer movement in edges and labels.
-18. For AIoT, IoT, edge-cloud, or AI operations systems, model at least these semantic categories when present in the source: sensing/device layer, edge execution, platform/data/model layer, application/decision layer, upstream data flow, downstream AI/control flow, and cross-cutting security/identity/governance.
-19. Do not add architecture parts just because a template usually has them. If a common component is absent from the response, omit it or keep it as a generic label only when the user explicitly requested a complete reference architecture.
+18. For dense layered architectures with two-way or cross-cutting relationships, model only the categories present in the source: source/input layer, execution or processing layer, shared platform or service layer, output or application layer, upward data flow, downward control flow, feedback flow, and cross-cutting policy or governance.
+19. For zoned layered architectures, model major lifecycle or architecture layers as groups and significant zones inside a layer as peer nodes. Put formats, retention windows, policies, SLAs, protocols, technologies, and examples into `subtitle` or `items`.
+20. Do not add architecture parts just because a template usually has them. If a common component is absent from the response, omit it or keep it as a generic label only when the user explicitly requested a complete reference architecture.
 
 Flowchart-specific rules:
 

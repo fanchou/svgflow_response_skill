@@ -34,6 +34,15 @@ Universal infographic layout:
 15. Render groups before nodes; render edges below labels; render legends near the bottom or side.
 16. Use masks or label backgrounds when labels sit on top of connectors.
 
+Zoned layered layout:
+
+1. Use this when the selected template is `zoned_layered_architecture`, or when the source has major layers and one or more layers contain important named zones, sub-areas, tiers, or partitions.
+2. Prefer a vertical layer stack when the question asks for architecture, layers, or structural design. Use a left-to-right flow only when the source explicitly asks for a pipeline or sequence.
+3. Render peripheral layers as compact bands when their main purpose is context, intake, routing, or output.
+4. Give the semantically dominant layer more height when its internal zones carry the core meaning.
+5. Render zones as peer cards with internal detail rows for formats, protocols, policies, retention, ownership, SLAs, examples, or constraints.
+6. Keep cross-layer connectors subtle and only draw them when the DSL contains real edges.
+
 Flowchart layout:
 
 1. Main flow center x is 340.
