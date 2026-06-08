@@ -11,6 +11,7 @@ const RUNTIME_PATHS = [
   "schemas",
   "templates",
   "validators",
+  "scripts/render_infographic.py",
 ];
 
 function usage() {
@@ -86,6 +87,7 @@ function copyRuntime(sourceRoot, targetRoot) {
     if (!existsSync(source)) continue;
     const target = join(targetRoot, relativePath);
     const isDirectory = statSync(source).isDirectory();
+    mkdirSync(dirname(target), { recursive: true });
     cpSync(source, target, {
       recursive: isDirectory,
       force: true,

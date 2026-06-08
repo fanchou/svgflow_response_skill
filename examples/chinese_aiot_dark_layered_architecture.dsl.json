@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "AI时代物联网系统架构图",
+    "description": "展示感知层、边缘层、平台层、应用层四层架构及AI能力分布。",
+    "diagramType": "infographic",
+    "mode": "preview_svg",
+    "locale": "zh-CN",
+    "textDirection": "ltr"
+  },
+  "canvas": {
+    "width": 690,
+    "height": 720,
+    "background": "official_dark"
+  },
+  "content": {
+    "nodes": [
+      { "id": "llm_engine", "title": "LLM 推理引擎", "kind": "process", "tone": "purple", "parent": "application" },
+      { "id": "digital_twin", "title": "数字孪生", "kind": "container", "tone": "purple", "parent": "application" },
+      { "id": "autonomous_dispatch", "title": "自主决策调度", "kind": "process", "tone": "purple", "parent": "application" },
+      { "id": "predictive_alerts", "title": "预测性维护告警", "kind": "output", "tone": "purple", "parent": "application" },
+      { "id": "data_lake", "title": "数据湖", "subtitle": "时序 / 流式", "kind": "container", "tone": "teal", "parent": "platform" },
+      { "id": "model_training", "title": "模型训练", "subtitle": "联邦 / 持续学习", "kind": "process", "tone": "teal", "parent": "platform" },
+      { "id": "device_management", "title": "设备管理", "subtitle": "OTA / 影子设备", "kind": "process", "tone": "teal", "parent": "platform" },
+      { "id": "security_center", "title": "安全中台", "subtitle": "零信任 / 加密", "kind": "risk", "tone": "teal", "parent": "platform" },
+      { "id": "edge_inference", "title": "边缘推理节点", "subtitle": "TinyML · ONNX", "kind": "process", "tone": "amber", "parent": "edge" },
+      { "id": "edge_gateway", "title": "边缘网关", "subtitle": "协议转换 · 数据融合", "kind": "container", "tone": "amber", "parent": "edge" },
+      { "id": "offline_compute", "title": "离线缓存与弹性计算", "subtitle": "断网续传 · 本地存储", "kind": "process", "tone": "amber", "parent": "edge" },
+      { "id": "multimodal_sensors", "title": "多模态传感器", "subtitle": "温/压/视觉/声音", "kind": "entity", "tone": "coral", "parent": "perception" },
+      { "id": "ai_chip", "title": "AI 端侧芯片", "subtitle": "NPU · MCU", "kind": "entity", "tone": "coral", "parent": "perception" },
+      { "id": "actuators", "title": "执行器", "subtitle": "闭环反馈控制", "kind": "entity", "tone": "coral", "parent": "perception" },
+      { "id": "device_identity", "title": "安全身份标识", "subtitle": "证书 / 密钥管理", "kind": "risk", "tone": "coral", "parent": "perception" }
+    ],
+    "groups": [
+      { "id": "application", "title": "应用层", "members": ["llm_engine", "digital_twin", "autonomous_dispatch", "predictive_alerts"], "tone": "purple" },
+      { "id": "platform", "title": "平台层", "members": ["data_lake", "model_training", "device_management", "security_center"], "tone": "teal" },
+      { "id": "edge", "title": "边缘层", "members": ["edge_inference", "edge_gateway", "offline_compute"], "tone": "amber" },
+      { "id": "perception", "title": "感知层", "members": ["multimodal_sensors", "ai_chip", "actuators", "device_identity"], "tone": "coral" }
+    ],
+    "edges": [
+      { "from": "multimodal_sensors", "to": "edge_gateway", "label": "数据上行", "kind": "data", "route": "orthogonal" },
+      { "from": "edge_gateway", "to": "data_lake", "label": "特征 / 事件", "kind": "data", "route": "orthogonal" },
+      { "from": "data_lake", "to": "llm_engine", "label": "上下文", "kind": "data", "route": "orthogonal" },
+      { "from": "autonomous_dispatch", "to": "actuators", "label": "AI 决策流", "kind": "control", "route": "loop", "dashed": true }
+    ],
+    "labels": [
+      { "text": "数据上行流", "for": "data_lake", "tone": "teal" },
+      { "text": "AI 决策流", "for": "autonomous_dispatch", "tone": "purple" }
+    ],
+    "legends": [
+      { "label": "应用与决策", "tone": "purple" },
+      { "label": "云端平台", "tone": "teal" },
+      { "label": "边缘执行", "tone": "amber" },
+      { "label": "端侧感知", "tone": "coral" }
+    ]
+  },
+  "layout": {
+    "intent": "layered",
+    "direction": "TB",
+    "density": "detailed",
+    "nodeLimit": 24
+  },
+  "style": {
+    "archetype": "dark_layered_architecture",
+    "theme": "official_dark",
+    "palette": ["purple", "teal", "amber", "coral"],
+    "cornerRadius": 14
+  },
+  "interactions": [
+    { "target": "llm_engine", "action": "sendPrompt", "prompt": "AI时代IoT应用层如何集成大语言模型？" },
+    { "target": "digital_twin", "action": "sendPrompt", "prompt": "IoT数字孪生技术如何实现？" },
+    { "target": "edge_inference", "action": "sendPrompt", "prompt": "边缘AI推理引擎如何部署到IoT设备？" },
+    { "target": "device_identity", "action": "sendPrompt", "prompt": "IoT设备身份认证与安全通信设计" }
+  ]
+}

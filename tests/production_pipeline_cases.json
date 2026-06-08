@@ -49,6 +49,26 @@
       "repairPolicy": "single_pass"
     },
     {
+      "id": "production_dark_aiot_architecture",
+      "inputType": "assistant_response",
+      "input": "AI时代的物联网系统应该采用四层架构：感知层负责多模态传感和安全身份，边缘层负责本地AI推理和协议转换，平台层负责数据湖、模型训练、设备管理和安全中台，应用层负责LLM推理、数字孪生、自主调度和预测性维护。图中需要展示数据上行流和AI决策下行流。",
+      "expectedTemplate": "dark_layered_architecture",
+      "expectedDiagramType": "infographic",
+      "expectedLayoutIntent": "layered",
+      "dsl": "examples/chinese_aiot_dark_layered_architecture.dsl.json",
+      "svg": "examples/ai_iot_architecture.svg",
+      "validators": [
+        "infographic_dsl",
+        "infographic_svg",
+        "visual_quality",
+        "readability_score",
+        "text_fit",
+        "escaping_safety",
+        "interaction_accessibility"
+      ],
+      "repairPolicy": "single_pass"
+    },
+    {
       "id": "production_unknown_experiment_priority",
       "inputType": "assistant_response",
       "input": "The growth team has nine experiments. Score each by user impact and implementation effort, then call out quick wins, strategic bets, and low-priority work. The response is not a process; it needs a prioritization map with a legend and drill-down prompts.",

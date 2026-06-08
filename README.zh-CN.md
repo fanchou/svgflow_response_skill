@@ -138,6 +138,7 @@ python scripts/install_skill.py --source /path/to/svgflow_response_skill --skill
 | `validators/` | 校验清单和修复规则 |
 | `scripts/install-skill.mjs` | 兼容 npx 的安装器 |
 | `scripts/install_skill.py` | 用于本地/source 安装的 Python 安装器 |
+| `scripts/render_infographic.py` | 用于支持的视觉 archetype 的确定性渲染器 |
 | `examples/` | 开发 fixture，运行时不必安装 |
 | `tests/` | 正向和负向 fixture 用例 |
 | `docs/production-checklist.md` | 维护者发布检查清单 |

@@ -57,6 +57,14 @@
       "expectedDecision": "visualize"
     },
     {
+      "id": "select_dark_layered_architecture_aiot",
+      "inputType": "assistant_response",
+      "input": "AI时代的物联网系统架构包含感知层传感器、边缘AI推理、云端IoT平台、数字孪生、LLM应用层，以及数据上行和AI决策下行控制流。",
+      "expectedTemplate": "dark_layered_architecture",
+      "expectedLayoutIntent": "layered",
+      "expectedDecision": "visualize"
+    },
+    {
       "id": "select_feedback_loop",
       "inputType": "assistant_response",
       "input": "A reliability loop observes incidents, prioritizes fixes, deploys mitigations, measures health, and feeds lessons back into planning using feedback paths.",

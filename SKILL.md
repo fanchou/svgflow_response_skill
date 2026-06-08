@@ -40,8 +40,15 @@ Assistant Response
 - v2 template catalog: `templates/infographic-templates.json`
 - Plan layout: `prompts/layout_planner.md`, `schemas/layout.schema.json`
 - Render SVG: `prompts/svg_renderer.md`, `templates/preview_svg.template.svg`, `templates/embedded_svg.template.svg`
+- Deterministic renderer for supported visual archetypes: `scripts/render_infographic.py`
 - Host CSS for `raw_svg` and `component_ready`: `templates/host_css.template.css`
 - Repair output: `prompts/validator_repair.md`, `validators/svg_validation_checklist.md`, `validators/repair_rules.md`
+- Verify package during maintenance: `python3 scripts/validate_svg.py --package .`
+- Verify release readiness during maintenance: `python3 scripts/validate_svg.py --release-check .`
+- Production checklist: `docs/production-checklist.md`
+- Production validation covers input quality, unknown infographic fallback, template selection, readability score, text-fit, escaping safety, interaction accessibility, renderer contract, production SVG contract, production HTML contract, render surface contract, browser render metrics, and SVG or HTML artifact validators.
+- Browser render metrics command: `node scripts/check_browser_render_metrics.mjs --root . --cases tests/browser_render_metric_cases.json`
+- Repair and production fixtures use `scripts/run_repair_signal_fixture.py` and `scripts/run_pipeline_fixture.py`.
 
 ## Suitability
 
@@ -104,6 +111,10 @@ Choose visual shape with `layout.intent`, not by inventing a new diagram family:
 | `freeform` | Official-style custom layout where no regular intent fits |
 
 Use specialized families below as compatibility templates, not as the default expansion path.
+
+For AIoT, IoT, edge-cloud, digital twin, sensor-to-cloud, or AI operations architectures, prefer the v2 `dark_layered_architecture` template. Render it as a product-grade dark layered architecture map with full-width layer bands, compact component chips, side data/control rails, and bottom legend swatches. Do not collapse these responses into numbered explanation cards.
+
+When `style.archetype = "dark_layered_architecture"` and `scripts/render_infographic.py` is available, prefer building the DSL and rendering through that script instead of hand-writing SVG. Hand-write SVG only when the script is unavailable or the user explicitly asks for inline output only.
 
 The authoritative legacy-to-v2 mapping is `schemas/legacy-to-infographic-map.json`. If a legacy family is used, first confirm it cannot be represented cleanly as `diagramType = "infographic"` with a layout intent.
 

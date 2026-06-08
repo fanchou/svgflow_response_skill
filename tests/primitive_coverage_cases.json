@@ -6,6 +6,10 @@
         {
           "dsl": "examples/universal_primitive_coverage_infographic.dsl.json",
           "requires": { "content.groups.min": 3 }
+        },
+        {
+          "dsl": "examples/chinese_aiot_dark_layered_architecture.dsl.json",
+          "requires": { "layout.intent": "layered", "content.groups.min": 4, "content.nodes.min": 12 }
         }
       ]
     },

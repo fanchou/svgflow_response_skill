@@ -17,6 +17,7 @@ RUNTIME_PATHS = [
     "schemas",
     "templates",
     "validators",
+    "scripts/render_infographic.py",
 ]
 
 

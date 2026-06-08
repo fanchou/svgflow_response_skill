@@ -29,6 +29,16 @@ Universal infographic SVG rules:
 12. Long unbreakable labels must be shortened, split with `<tspan>`, or rendered with explicit `data-fit` and `textLength` metadata.
 13. Do not use negative letter spacing; it is brittle for CJK, Arabic, Hebrew, and mixed-language labels.
 
+Dark layered architecture SVG rules:
+
+1. Use these rules when the selected template is `dark_layered_architecture`, or when `layout.intent = "layered"` and `style.theme = "official_dark"` for an AIoT, IoT, edge-cloud, or AI platform architecture.
+2. Prefer `viewBox="0 0 690 720"` with a dark canvas, four full-width rounded layer bands, and compact component chips inside each band.
+3. Layer order should read from business/application at the top to device/perception at the bottom when the diagram explains system architecture; use arrows to clarify actual data/control direction.
+4. Use deep but distinct layer tones: purple for applications/AI decisioning, green/teal for platform and data, amber for edge execution, and coral/brown for devices/perception.
+5. Add side rails when useful: left side for data flowing upward from devices to cloud, right side for AI/control decisions flowing downward.
+6. Do not render this template as numbered prose cards. The primary visual objects are layer bands, chips, side rails, connector arrows, and legend swatches.
+7. Keep chip labels short, center aligned, and clickable as whole groups when `sendPrompt` interactions exist.
+
 Strict flowchart SVG rules:
 
 1. Start with `<svg` and end with `</svg>`.

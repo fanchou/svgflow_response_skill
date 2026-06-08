@@ -12,6 +12,7 @@ Global rules:
 4. `H = max(bottom of all elements) + 40` for SVG outputs.
 5. Avoid overlaps between text, connectors, and cards.
 6. Keep repeated cards aligned to a visible grid.
+7. When the selected template is `dark_layered_architecture`, use a 690 x 720 canvas, a dark background, four full-width horizontal layer bands, compact chips inside each layer, a left data-flow rail, a right AI/control-flow rail, and legend swatches near the bottom.
 
 Universal infographic layout:
 

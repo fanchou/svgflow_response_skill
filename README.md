@@ -140,6 +140,7 @@ This repository is a development package. The installable runtime skill is the s
 | `validators/` | Validation checklists and repair rules |
 | `scripts/install-skill.mjs` | npx-compatible installer |
 | `scripts/install_skill.py` | Python installer for local/source installs |
+| `scripts/render_infographic.py` | Deterministic renderer for supported visual archetypes |
 | `examples/` | Development fixtures, not required at runtime |
 | `tests/` | Positive and negative fixture cases |
 | `docs/production-checklist.md` | Release checklist for maintainers |
@@ -174,6 +175,21 @@ python3 scripts/validate_svg.py --interaction-accessibility .
 python3 scripts/validate_svg.py --production-svg-contract .
 python3 scripts/validate_svg.py --production-html-contract .
 python3 scripts/validate_svg.py --render-surface .
+```
+
+Production validation covers input quality, unknown infographic fallback, template selection, readability score, text-fit, escaping safety, interaction accessibility, renderer contract, production SVG contract, production HTML contract, render surface contract, browser render metrics, and negative pipeline cases. Production pipeline fixtures run DSL plus SVG or HTML artifact validators. Negative pipeline cases include text-fit failures, interaction-accessibility failures, prompt escaping failures, and layout drift. The release checklist is in `docs/production-checklist.md`.
+
+Repair and pipeline fixtures:
+
+```bash
+python3 scripts/run_repair_signal_fixture.py --root . --case repair_long_text
+python3 scripts/run_pipeline_fixture.py --root . --case production_freeform_growth
+```
+
+Render a deterministic archetype fixture from DSL:
+
+```bash
+python3 scripts/render_infographic.py examples/chinese_aiot_dark_layered_architecture.dsl.json --output examples/ai_iot_architecture.svg
 ```
 
 Run browser render metrics when Chrome or Chromium is available:

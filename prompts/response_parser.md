@@ -46,7 +46,9 @@ Tasks:
 
 Default output should describe a universal infographic rather than a named legacy family. Include the chosen layout intent and only include a legacy family hint when it is necessary for compatibility.
 
-When a response matches a common pattern, emit a v2 template hint from `templates/infographic-templates.json`, such as `decision_matrix`, `kpi_dashboard`, `org_hierarchy`, `cause_effect_map`, `swimlane_workflow`, `roadmap_timeline`, `architecture_stack`, `feedback_loop`, or `concept_map`.
+When a response matches a common pattern, emit a v2 template hint from `templates/infographic-templates.json`, such as `decision_matrix`, `kpi_dashboard`, `org_hierarchy`, `cause_effect_map`, `swimlane_workflow`, `roadmap_timeline`, `architecture_stack`, `dark_layered_architecture`, `feedback_loop`, or `concept_map`.
+
+Use `dark_layered_architecture` instead of a generic prose-card infographic when the response describes an AI-era architecture such as AIoT, IoT, edge-cloud, sensor-to-cloud, device-platform-application, digital twin, LLM-enabled operations, or bidirectional data/control flows. This template should produce a product-grade layered architecture map, not numbered explanation cards.
 
 Use `locales/signals.json` for localized sequence, decision, retry, return, and edge-label signals. If the response language is not listed there, infer signals from the source language and preserve that language in labels.
 

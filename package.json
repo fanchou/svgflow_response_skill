@@ -21,6 +21,7 @@
     "templates/",
     "validators/",
     "scripts/install-skill.mjs",
+    "scripts/render_infographic.py",
     "README.md",
     "README.zh-CN.md",
     "skill.json"

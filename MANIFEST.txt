@@ -7,6 +7,9 @@ agents/openai.yaml
 package.json
 docs/production-checklist.md
 examples/arabic_payment_flow.dsl.json
+examples/ai_iot_architecture.svg
+examples/aiot-system-design.preview.html
+examples/chinese_aiot_dark_layered_architecture.dsl.json
 examples/chinese_agentic_rag_pipeline.dsl.json
 examples/chinese_agentic_rag_pipeline.interactive.svg
 examples/chinese_flutter_render_phased_pipeline.dsl.json
@@ -83,6 +86,7 @@ scripts/run_repair_signal_fixture.py
 scripts/check_browser_render_metrics.mjs
 scripts/install-skill.mjs
 scripts/install_skill.py
+scripts/render_infographic.py
 scripts/validate_svg.py
 skill.json
 templates/embedded_svg.template.svg

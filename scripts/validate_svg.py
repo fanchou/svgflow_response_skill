@@ -1593,7 +1593,8 @@ def detect_input_quality_signals(text: str) -> dict[str, object]:
     comparison_terms = len(re.findall(r"\b(cost|speed|risk|fit|tradeoff|compare|comparison|cheap|quick|maintenance|extensibility)\b", text, re.I))
     process_terms = len(re.findall(r"\b(after|then|if|when|receives?|sends?|writes?|validates?|creates?|publishes?)\b", text, re.I))
     process_terms += len(re.findall(r"(\u63a5\u6536|\u6821\u9a8c|\u521b\u5efa|\u6210\u529f|\u5931\u8d25|\u901a\u77e5|\u53d6\u6d88|\u91cd\u8bd5|ثم|إذا|يرسل|يتحقق)", text))
-    infographic_terms = len(re.findall(r"\b(metric|metrics|kpi|uptime|latency|alert|incident|hierarchy|organization|org|team|lead|owns|ownership|responsibility|escalation|lane|lanes|workflow|customer|support|engineering|operations|handoff|timeline|roadmap|phase|milestone|layer|architecture|dashboard|snapshot|cluster|clusters|concept|principle|principles|activation|collaboration|monetization|retention|evidence|signal|signals|risk|risks|recommendation|recommendations|confidence|ownership|sequential|prioritize|prioritizes|impact|effort|reliability|observes|fixes|mitigation|mitigations|health|lessons|feedback)\b", text, re.I))
+    infographic_terms = len(re.findall(r"\b(metric|metrics|kpi|uptime|latency|alert|incident|hierarchy|organization|org|team|lead|owns|ownership|responsibility|escalation|lane|lanes|workflow|customer|support|engineering|operations|handoff|timeline|roadmap|phase|milestone|layer|architecture|dashboard|snapshot|cluster|clusters|concept|principle|principles|activation|collaboration|monetization|retention|evidence|signal|signals|risk|risks|recommendation|recommendations|confidence|ownership|sequential|prioritize|prioritizes|impact|effort|reliability|observes|fixes|mitigation|mitigations|health|lessons|feedback|aiot|iot|edge|sensor|sensors|device|devices|cloud|platform|digital twin|llm)\b", text, re.I))
+    infographic_terms += len(re.findall(r"(物联网|架构|感知层|边缘层|平台层|应用层|传感器|设备|数据湖|数字孪生|大模型|决策流|数据上行|云端|边缘|安全)", text))
     entity_count = len(set(entity_like)) + len(set(cjk_terms)) + len(set(arabic_terms))
     locale = "en-US"
     direction = "ltr"
@@ -1669,6 +1670,12 @@ def count_matches(text: str, terms: list[str]) -> int:
 
 
 TEMPLATE_SELECTION_RULES = [
+    {
+        "template": "dark_layered_architecture",
+        "layoutIntent": "layered",
+        "terms": ["aiot", "iot", "internet of things", "物联网", "edge", "边缘", "sensor", "sensors", "感知", "device", "devices", "digital twin", "llm", "ai decision", "cloud", "platform"],
+        "threshold": 3,
+    },
     {
         "template": "swimlane_workflow",
         "layoutIntent": "swimlane",
@@ -1776,6 +1783,7 @@ def validate_template_selection_cases(path: Path) -> None:
         "swimlane_workflow",
         "roadmap_timeline",
         "architecture_stack",
+        "dark_layered_architecture",
         "feedback_loop",
         "concept_map",
         "universal_fallback",
@@ -2017,6 +2025,7 @@ def validate_template_catalog(path: Path) -> None:
         "swimlane_workflow",
         "roadmap_timeline",
         "architecture_stack",
+        "dark_layered_architecture",
         "feedback_loop",
         "concept_map",
         "freeform_insight_map",
@@ -2061,6 +2070,7 @@ def validate_e2e_cases(path: Path, root: Path) -> None:
     expected_templates = {
         "decision_matrix",
         "architecture_stack",
+        "dark_layered_architecture",
         "swimlane_workflow",
         "roadmap_timeline",
         "cause_effect_map",
